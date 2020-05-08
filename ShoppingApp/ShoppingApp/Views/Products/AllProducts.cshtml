@@ -1,0 +1,143 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<ShoppingApp.Data.Models.Product>
+
+@{
+    ViewBag.Title = "All Products";
+}
+
+
+@{
+    if (TempData["MessageDelete"] != null)
+    {
+        <br />
+        <div class="alert alert-danger text-center">@TempData["MessageDelete"]</div>
+    }
+}
+
+@*@Html.ActionLink("Edit Product", "EditProduct", new { id = item.Id })
+    @Html.ActionLink("Product Details", "ProductDetails", new { id = item.Id })
+    @Html.ActionLink("Delete Product", "DeleteProduct", new { id = item.Id })*@
+
+
+<div class="containerProducts">
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="text-center" style="margin-top:19px;margin-bottom:19px;">
+
+                @using (Html.BeginForm("AllProducts", "Products", FormMethod.Get))
+                {
+                    <div>
+                        <h3><b>Filters</b></h3>
+                        <br />
+                        <h4><b>Select Gender</b></h4>
+
+                        @Html.RadioButton("gender", "AllProducts", true) All
+                        @Html.RadioButton("gender", "Man") Man
+                        @Html.RadioButton("gender", "Woman") Woman
+
+
+                        <br /><br /><br />
+
+
+                        <h4><b>Select Product Type</b></h4>
+
+                        @Html.DropDownList("productType",
+                        new SelectList(Enum.GetValues(typeof(ShoppingApp.Data.Enums.ProductType))), "All",
+                        new { @class = "inpField" })
+
+                        <br /><br /><br /><br />
+
+                        <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="inpField" style="background-color:orange;" />
+
+
+                        <br />
+
+
+                        @*<h3><b>Search</b></h3>
+
+                            <input type="text" name="SearchKeyword" placeholder="Search by Keyword" class="inpField" />
+                            <br /><br />
+                            <input type="submit" id="btnSearchKeyword" name="SearchKeyword" value="Search" class="inpField" style="background-color:orange;" />*@
+
+
+                    </div>
+                }
+
+                <br />
+
+            </div>
+        </div>
+
+
+
+        <div class="col-md-9">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-2">
+                    <div class="card" style="width: 15rem; height:25rem;">
+                        <a href="~/Products/ProductDetails/@item.Id">
+                            @if (item.ImagePath != null)
+                            {
+                                <img src="@Url.Content(item.ImagePath)" class="card-img-top img-responsive" alt="ProductImage">
+                            }
+                        </a>
+                        <div class="card-body" style="padding:3px;">
+                            <p>@item.Model</p>
+                            <p>@item.Brand</p>
+                            <p>
+                                <b class="pull-left">@item.Price $</b>
+                                @using (Html.BeginForm("ShoppingCart", "Products", new { id = item.Id }, FormMethod.Post))
+                                {
+                                    <button type = "submit" class="btnAddToCart pull-right"><i class="fa fa-shopping-cart"></i></button>
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="text-center" id="pag">
+        @Html.PagedListPager(Model, page => Url.Action("AllProducts", new
+   {
+       page,
+       gender = Request.QueryString["gender"],
+       productType = Request.QueryString["productType"],
+       Search = Request.QueryString["Search"]
+   }))
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        setTimeout(function () { $(".alert").slideUp(); }, 3000);
+    })
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

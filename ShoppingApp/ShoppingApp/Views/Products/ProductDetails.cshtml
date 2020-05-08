@@ -1,0 +1,137 @@
+﻿@model ShoppingApp.Data.Models.Product
+@using Microsoft.AspNet.Identity;
+
+
+@{
+    ViewBag.Title = "Product Details";
+}
+
+
+
+@{
+    <div>
+        @if (TempData["MessageCreate"] != null)
+        {
+        <br />
+        <div class="alert alert-success text-center">@TempData["MessageCreate"]</div>
+        }
+
+        @if (TempData["MessageEdit"] != null)
+        {
+        <br />
+        <div class="alert alert-success text-center">@TempData["MessageEdit"]</div>
+        }
+    </div>
+}
+
+
+
+
+    <div class="containerProducts">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="@Url.Content(Model.ImagePath)" class="card-img-top img-responsive" alt="ProductImage" style="margin:auto;">
+            </div>
+
+
+
+            <div class="col-md-6">
+
+                <h1>@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.Model)</h1>
+                <br />
+
+                <dl>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Cathegory)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Cathegory)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProductType)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProductType)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Brand)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Brand)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Model)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Model)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Description)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Price) $
+                    </dd>
+                </dl>
+
+
+                <br /><br /><br />
+
+                <div class="text-center">
+
+
+                    @using (Html.BeginForm("ShoppingCart", "Products", new { id = Model.Id }, FormMethod.Post))
+                    {
+                        <button type="submit" class="inpField2" style="background-color:orange;">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                        <br /><br /><br />
+                    }
+
+
+
+                    @Html.ActionLink("Back to List", "AllProducts")
+
+                    <br />
+
+                    @{
+                        if (User.Identity.GetUserId() != null)
+                        {
+                            if (User.Identity.GetUserId().ToString() == Model.UserId.ToString())
+                            {
+                                @Html.ActionLink("Edit Product", "EditProduct", new { id = Model.Id })
+                                <br />
+                                @Html.ActionLink("Delete Product", "DeleteProduct", new { id = Model.Id })
+                            }
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            setTimeout(function () { $(".alert").slideUp(); }, 3000);
+        })
+
+    </script>
