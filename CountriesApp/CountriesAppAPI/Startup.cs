@@ -42,6 +42,7 @@ namespace AppAPI
 
 
             services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<ICityRepository, CityRepository>();
 
 
 
@@ -60,10 +61,27 @@ namespace AppAPI
             //Register Swagger
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("CountriesAppOpenAPISpec", new Microsoft.OpenApi.Models.OpenApiInfo()
+                options.SwaggerDoc("CountriesAppOpenAPISpecCountries", new Microsoft.OpenApi.Models.OpenApiInfo()
                 {
-                    Title = "CountriesApp API",
-                    Version = "1"
+                    Title = "CountriesApp API (Countries)",
+                    Version = "1",
+                    Description = "Travel App API",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Email = "donevskipetar@gmail.com",
+                        Name = "Petar Donevski"
+                    }
+                });
+                options.SwaggerDoc("CountriesAppOpenAPISpecCities", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "CountriesApp API (Cities)",
+                    Version = "1",
+                    Description = "Travel App API",
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                    {
+                        Email = "donevskipetar@gmail.com",
+                        Name = "Petar Donevski"
+                    }
                 });
             });
 
@@ -84,7 +102,8 @@ namespace AppAPI
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/CountriesAppOpenAPISpec/swagger.json", "Countries App API");
+                options.SwaggerEndpoint("/swagger/CountriesAppOpenAPISpecCountries/swagger.json", "Countries App API (Countries)");
+                options.SwaggerEndpoint("/swagger/CountriesAppOpenAPISpecCities/swagger.json", "Countries App API (Cities)");
                 options.RoutePrefix = ""; //set swagger UI to be default page
             });
 

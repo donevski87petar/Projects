@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w022O4Sjep1QYZH1APqNIY2aZAEDQKTiqPvuAi4RHn1LHIrLGia8NHnO5RuKvXE8brNW7yQNR7xGu44ExS2VQQ==",
+  "dgSpecHash": "bg8SZhDLaziooD1gQ3PAKxMJfdG0Vdg5vNQCShFChgrszadhQ4sWcukS9YkNHntfqQY36iOLD1BUhog/xFCcXg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\AppAPI\\CountriesAppAPI.csproj",
+  "projectFilePath": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\CountriesAppAPI\\CountriesAppAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Petar\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

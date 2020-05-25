@@ -15,7 +15,7 @@ namespace CountriesAppAPI.Data
         }
 
         public DbSet<Country> Countries { get; set; }
+        public DbSet<City> Cities { get; set; }
 
-        public DbSet<CountriesAppAPI.DTOs.CountryDTO> CountryDTO { get; set; }
     }
 }

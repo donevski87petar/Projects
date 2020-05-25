@@ -13,6 +13,9 @@ namespace CountriesAppAPI.Mapper
         public Mappings()
         {
             CreateMap<Country, CountryDTO>().ReverseMap();
+            CreateMap<City, CityDTO>().ReverseMap();
+            CreateMap<City, CityCreateDTO>().ReverseMap();
+            CreateMap<City, CityUpdateDTO>().ReverseMap();
         }
         
     }

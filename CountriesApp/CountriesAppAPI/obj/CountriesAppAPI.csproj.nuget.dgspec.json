@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Petar\\source\\repos\\CountriesApp\\AppAPI\\CountriesAppAPI.csproj": {}
+    "C:\\Users\\Petar\\source\\repos\\CountriesApp\\CountriesAppAPI\\CountriesAppAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Petar\\source\\repos\\CountriesApp\\AppAPI\\CountriesAppAPI.csproj": {
+    "C:\\Users\\Petar\\source\\repos\\CountriesApp\\CountriesAppAPI\\CountriesAppAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\AppAPI\\CountriesAppAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\CountriesAppAPI\\CountriesAppAPI.csproj",
         "projectName": "CountriesAppAPI",
-        "projectPath": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\AppAPI\\CountriesAppAPI.csproj",
+        "projectPath": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\CountriesAppAPI\\CountriesAppAPI.csproj",
         "packagesPath": "C:\\Users\\Petar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\AppAPI\\obj\\",
+        "outputPath": "C:\\Users\\Petar\\source\\repos\\CountriesApp\\CountriesAppAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

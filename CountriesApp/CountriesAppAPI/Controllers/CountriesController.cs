@@ -13,6 +13,7 @@ namespace CountriesAppAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "CountriesAppOpenAPISpecCountries")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public class CountriesController : Controller
     {
