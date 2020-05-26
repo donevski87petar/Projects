@@ -1,0 +1,102 @@
+﻿@model CountriesAppWEB.Models.ViewModels.CityViewModel
+
+@{
+    var title = "Add City";
+}
+
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+
+    @*validation summary*@
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <div class="row px-2 mx-2 backgroundWhite border">
+
+        @if (Model.City.Id != 0)
+        {
+            <input type="hidden" asp-for="City.Id" />
+            title = "Edit City";
+        }
+
+
+        <div class="col-12 p-3">
+            <h2 class="text-primary">@title</h2>
+        </div>
+        <div class="col-8">
+
+            @*ROW*@
+            <div class="form-group row">
+
+                <div class="col-4">
+                    Country
+                </div>
+
+                <div class="col-8">
+                    @Html.DropDownListFor(m => m.City.CountryId, Model.CountryList,
+                        "Please select Country", new { @class = "form-control" })
+                    <span asp-validation-for="City.CountryId" class="text-danger"></span>
+                </div>
+
+            </div>
+            @*ROW*@
+
+            @*ROW*@
+            <div class="form-group row">
+
+                <div class="col-4">
+                    <label asp-for="City.Name"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="City.Name" class="form-control" />
+                    <span asp-validation-for="City.Name" class="text-danger"></span>
+                </div>
+
+            </div>
+            @*ROW*@
+
+            @*ROW*@
+            @*<div class="form-group row">
+
+                <div class="col-4">
+                    <label for="Flag"></label>
+                </div>
+
+                <div class="col-8">
+                    <input type="file" asp-for="Flag" id="countryFlag" name="files" class="form-control" />
+
+                </div>
+
+            </div>*@
+            @*ROW*@
+
+
+
+            <div class="form-group row">
+                <div class="col-4 offset-4">
+                    <button type="submit" class="btn btn-primary form-control">
+                        @(Model.City.Id != 0? "Update" : "Add")
+                    </button>
+                </div>
+                <div class="col-4">
+                    <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                </div>
+            </div>
+        </div>
+        @*Display the image*@
+        @*<div class="col-4 text-right" style="width:250px;">
+            @if (Model.Flag != null)
+            {
+                var base64 = Convert.ToBase64String(Model.Flag);
+                var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                <img src="@imgsrc" width="100" />
+            }
+        </div>*@
+        @*Display the image*@
+    </div>
+
+</form>
+
+
+

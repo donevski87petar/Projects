@@ -8,7 +8,7 @@ namespace CountriesAppWEB
     public static class SD
     {
         public static string ApiBaseURL = "https://localhost:44370/"; 
-        public static string CountriesAPIPath = ApiBaseURL + "/api/Countries/";
-        public static string CitiesAPIPath = ApiBaseURL + "/api/Cities/";
+        public static string CountriesAPIPath = ApiBaseURL + "api/Countries/";
+        public static string CitiesAPIPath = ApiBaseURL + "api/Cities/";
     }
 }

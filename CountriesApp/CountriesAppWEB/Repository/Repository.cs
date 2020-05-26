@@ -24,7 +24,7 @@ namespace CountriesAppWEB.Repository
 
         public async Task<T> GetAsync(string url, int Id)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
+            var request = new HttpRequestMessage(HttpMethod.Get, url+Id);
 
             var client = _clientFactory.CreateClient();
             //if (token != null && token.Length != 0)

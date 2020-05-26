@@ -4,13 +4,18 @@
 }
 
 
+@{
+    ViewData["Title"] = "Index";
+}
+
+
 <div class="p-4" style="border-radius:20px;">
     <div class="row">
         <div class="col-6">
-            <h2 class="text-primary">Country List</h2>
+            <h2 class="text-primary">City List</h2>
         </div>
         <div class="col-6 text-right">
-            <a asp-action="Upsert" class="btn btn-primary text-white"><i class="fas fa-plus"></i> &nbsp; Add New Country</a>
+            <a asp-action="Upsert" class="btn btn-primary text-white"><i class="fas fa-plus"></i> &nbsp; Add New City</a>
         </div>
     </div>
     <br />
@@ -19,11 +24,8 @@
         <table id="myTable" class="display table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Capital</th>
-                    <th>Region</th>
-                    <th>Area</th>
-                    <th>Population</th>
+                    <th>Country</th>
+                    <th>City</th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,5 +35,6 @@
 
 
 @section Scripts{
-    <script src="~/js/countries.js"></script>
+    <script src="~/js/cities.js"></script>
 }
+

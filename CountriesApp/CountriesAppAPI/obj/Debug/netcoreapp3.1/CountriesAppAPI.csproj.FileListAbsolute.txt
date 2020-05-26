@@ -461,4 +461,3 @@ C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.dll
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.pdb
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.genruntimeconfig.cache
-C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.csprojAssemblyReference.cache

@@ -8,25 +8,22 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $('#myTable').DataTable({
         "ajax": {
-            "url" : "/countries/GetAllCountries",
+            "url": "/cities/GetAllCities",
             "type": "GET",
             "datatype": "json"
         },
         "columns":
             [
-                { "data": "name", "width": "20%" },
-                { "data": "capital", "width": "20%" },
-                { "data": "region", "width": "10%" },
-                { "data": "area", "width": "10%" },
-                { "data": "population", "width": "10%" },
+                { "data": "country.name", "width": "25%" },
+                { "data": "name", "width": "25%" },
                 {
                     "data": "id",
                     "render": function (data) {
                         return `<div class="text-center">
-                                <a href="/countries/Upsert/${data}" class='btn btn-success text-white'
+                                <a href="/cities/Upsert/${data}" class='btn btn-success text-white'
                                     style='cursor:pointer;'> <i class='far fa-edit'></i></a>
 
-                                <a onclick=Delete("/countries/Delete/${data}") class='btn btn-danger text-white'
+                                <a onclick=Delete("/cities/Delete/${data}") class='btn btn-danger text-white'
                                     style='cursor:pointer;'> <i class='far fa-trash-alt'></i></a>
                                 </div>`
                     }, "width": "10%"
