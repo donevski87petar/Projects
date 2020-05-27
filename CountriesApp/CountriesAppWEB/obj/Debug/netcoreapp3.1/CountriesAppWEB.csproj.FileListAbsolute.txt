@@ -396,3 +396,4 @@ C:\Users\Petar\source\repos\CountriesApp\CountriesAppWEB\obj\Debug\netcoreapp3.1
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppWEB\obj\Debug\netcoreapp3.1\Razor\Views\Countries\Upsert.cshtml.g.cs
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppWEB\obj\Debug\netcoreapp3.1\Razor\Views\Cities\Index.cshtml.g.cs
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppWEB\obj\Debug\netcoreapp3.1\Razor\Views\Cities\Upsert.cshtml.g.cs
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppWEB\obj\Debug\netcoreapp3.1\CountriesAppWEB.csprojAssemblyReference.cache

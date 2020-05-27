@@ -1,26 +1,94 @@
-﻿@{
+﻿@model CountriesAppWEB.Models.ViewModels.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p id="par"></p>
+@{
+    double countries = @Model.CountryList.Count();
+    double total = countries / 195 * 100;
+}
+
+<div class="jumbotron text-center bg-dark text-warning" style="width:100%;">
+    <h2 class="display-4">Welcome to Travel App</h2>
+    <br />
+    <h3>You have visited total of @Model.CountryList.Count() Countries and @Model.CityList.Count() Cities</h3>
+    <h3>which is  @total.ToString("#.##") % of the world :)</h3>
+    <br />
+    <p class="text-white-50">Travel app helps you keep tracking of the places that you have visited.</p>
 </div>
 
 
-<script src="~/lib/jquery/dist/jquery.js"></script>
-<script type="text/javascript">
 
-    //$.ajax('https://localhost:44370/api/countries/11',
-    //    {
-    //        type: 'GET'
-    //        dataType: 'application/json', // type of response data
-    //        timeout: 5000,     // timeout milliseconds
-    //        success: function (data, status, xhr) {   // success callback function
-    //            $('#par').append(data.name + ' ' + data.capital + ' ' + data.region);
-    //        },
-    //        error: function (jqXhr, textStatus, errorMessage) { // error callback 
-    //            $('#par').append('Error: ' + errorMessage);
-    //        }
-    //    });
-</script>
+
+<div class="container">
+    <div class="row pb-4 text-dark">
+
+        @foreach (var country in Model.CountryList)
+        {
+
+            <div class="container pb-4">
+                <div class="card border">
+
+                    <div class="card-header bg-dark text-light ml-0 row container">
+                        <div class="col-12 col-md-6">
+                            <h3>@country.Name</h3>
+                        </div>
+                        <div class="col-12 col-md-6 text-md-right">
+                            <h3 class="text-warning">Capital : @country.Capital </h3>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="container rounded p-2">
+                            <div class="row">
+                                <div class="col-12 col-lg-8">
+                                    <div class="row">
+                                        <div class="col-12">
+
+                                            <ul class="list-group float-left">
+                                                <li class="list-group-item"><b>Country info:</b></li>
+                                                <li class="list-group-item">Region: @country.Region</li>
+                                                <li class="list-group-item">Area: @country.Area</li>
+                                                <li class="list-group-item">Population: @country.Population</li>
+                                            </ul>
+
+
+                                            @if (Model.CityList.Where(c => c.CountryId == country.Id).Count() > 0)
+                                            {
+                                                <ul class="float-none" style="padding-left:250px;">
+                                                    <li><b>Cities visited :</b></li>
+                                                    @foreach (var cities in Model.CityList.Where(c => c.CountryId == country.Id))
+                                                    {
+
+                                                        <li>@cities.Name</li>
+
+                                                    }
+                                                </ul>
+                                            }
+                                            else
+                                            {
+                                                <ul style="padding-left:250px;">
+                                                    <li>No City was added yet</li>
+                                                </ul>
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-4 text-center">
+                                    @{
+                                        var base64 = Convert.ToBase64String(country.Flag);
+                                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                    <img src="@finalStr" class="card-img-top p-2 rounded" width="100;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
