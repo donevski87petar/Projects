@@ -14,16 +14,16 @@ function loadDataTable() {
         },
         "columns":
             [
-                { "data": "country.name", "width": "25%" },
-                { "data": "name", "width": "25%" },
+                { "data": "country.name", "width": "45%" },
+                { "data": "name", "width": "45%" },
                 {
                     "data": "id",
                     "render": function (data) {
                         return `<div class="text-center">
-                                <a href="/cities/Upsert/${data}" class='btn btn-success text-white'
+                                <a href="/cities/Upsert/${data}" class='btn btn-warning text-dark border-dark'
                                     style='cursor:pointer;'> <i class='far fa-edit'></i></a>
 
-                                <a onclick=Delete("/cities/Delete/${data}") class='btn btn-danger text-white'
+                                <a onclick=Delete("/cities/Delete/${data}") class='btn btn-warning text-dark border-dark'
                                     style='cursor:pointer;'> <i class='far fa-trash-alt'></i></a>
                                 </div>`
                     }, "width": "10%"

@@ -9,7 +9,7 @@
 }
 
 <div class="jumbotron text-center bg-dark text-warning" style="width:100%;">
-    <h2 class="display-4">Welcome to Travel App</h2>
+    <h1>Welcome to Travel App</h1>
     <br />
     <h3>You have visited total of @Model.CountryList.Count() Countries and @Model.CityList.Count() Cities</h3>
     <h3>which is  @total.ToString("#.##") % of the world :)</h3>
@@ -27,29 +27,44 @@
         {
 
             <div class="container pb-4">
-                <div class="card border">
+                <div class="card border" style="border:1px solid black;">
 
-                    <div class="card-header bg-dark text-light ml-0 row container">
+                    @*Header*@
+                    <div class="card-header bg-dark text-warning ml-0 row container">
                         <div class="col-12 col-md-6">
                             <h3>@country.Name</h3>
                         </div>
                         <div class="col-12 col-md-6 text-md-right">
-                            <h3 class="text-warning">Capital : @country.Capital </h3>
+                            <h3 class="text-white-50">Region : @country.Region </h3>
                         </div>
                     </div>
 
                     <div class="card-body">
                         <div class="container rounded p-2">
                             <div class="row">
+
+
+                                @*Image*@
+                                <div class="col-12 col-lg-4 text-center">
+                                    @{
+                                        var base64 = Convert.ToBase64String(country.Flag);
+                                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                                    }
+                                    <img src="@finalStr" class="card-img-top p-2 rounded" />
+                                </div>
+
+
+                                @*Info*@
                                 <div class="col-12 col-lg-8">
+
                                     <div class="row">
                                         <div class="col-12">
 
-                                            <ul class="list-group float-left">
-                                                <li class="list-group-item"><b>Country info:</b></li>
-                                                <li class="list-group-item">Region: @country.Region</li>
-                                                <li class="list-group-item">Area: @country.Area</li>
-                                                <li class="list-group-item">Population: @country.Population</li>
+                                            <ul class="float-left">
+                                                <li><b>Country info:</b></li>
+                                                <li>Capital: @country.Capital</li>
+                                                <li>Area: @country.Area</li>
+                                                <li>Population: @country.Population</li>
                                             </ul>
 
 
@@ -72,19 +87,17 @@
                                                 </ul>
                                             }
 
+
                                         </div>
                                     </div>
+
                                 </div>
-                                <div class="col-12 col-lg-4 text-center">
-                                    @{
-                                        var base64 = Convert.ToBase64String(country.Flag);
-                                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                                    }
-                                    <img src="@finalStr" class="card-img-top p-2 rounded" width="100;" />
-                                </div>
+
+
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 

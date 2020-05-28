@@ -11,7 +11,7 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
-    <div class="row px-2 mx-2 backgroundWhite border">
+    <div class="row px-2 mx-2 border">
 
         @if (Model.City.Id != 0)
         {
@@ -80,7 +80,7 @@
                     </button>
                 </div>
                 <div class="col-4">
-                    <a asp-action="Index" class="btn bg-primary text-white form-control">Back to List</a>
+                    <a asp-action="Index" class="btn bg-warning text-dark form-control">Back to List</a>
                 </div>
             </div>
         </div>
