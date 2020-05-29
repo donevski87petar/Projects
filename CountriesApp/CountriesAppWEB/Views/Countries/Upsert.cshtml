@@ -11,7 +11,7 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 
-        <div class="row px-2 mx-2 border">
+        <div class="row px-2 mx-2">
 
             @if (Model.Id != 0)
             {
@@ -21,7 +21,7 @@
 
 
             <div class="col-12 p-3">
-                <h2 class="text-primary">@title</h2>
+                <h1 class="text-dark">@title</h1>
             </div>
             <div class="col-8">
 
@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="col-8">
-                        <input asp-for="Name" class="form-control" />
+                        <input asp-for="Name" class="border-dark form-control" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
 
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="col-8">
-                        <input asp-for="Capital" class="form-control" />
+                        <input asp-for="Capital" class="border-dark form-control" />
                         <span asp-validation-for="Capital" class="text-danger"></span>
                     </div>
 
@@ -63,7 +63,7 @@
                     </div>
 
                     <div class="col-8">
-                        <input asp-for="Region" class="form-control" />
+                        <input asp-for="Region" class="border-dark form-control" />
                         <span asp-validation-for="Region" class="text-danger"></span>
                     </div>
 
@@ -78,7 +78,7 @@
                     </div>
 
                     <div class="col-8">
-                        <input asp-for="Area" class="form-control" />
+                        <input asp-for="Area" class="border-dark form-control" />
                         <span asp-validation-for="Area" class="text-danger"></span>
                     </div>
 
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="col-8">
-                        <input asp-for="Population" class="form-control" />
+                        <input asp-for="Population" class="border-dark form-control" />
                         <span asp-validation-for="Population" class="text-danger"></span>
                     </div>
 
@@ -119,12 +119,12 @@
 
                 <div class="form-group row">
                     <div class="col-4 offset-4">
-                        <button type="submit" class="btn bg-primary text-white form-control">
+                        <button type="submit" class="btn btn-warning text-dark form-control">
                             @(Model.Id != 0? "Update" : "Add")
                         </button>
                     </div>
                     <div class="col-4">
-                        <a asp-action="Index" class="btn bg-warning text-dark form-control">Back to List</a>
+                        <a asp-action="Index" class="btn btn-warning text-dark form-control">Back to List</a>
                     </div>
                 </div>
             </div>

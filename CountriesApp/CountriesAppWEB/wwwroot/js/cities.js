@@ -14,19 +14,19 @@ function loadDataTable() {
         },
         "columns":
             [
-                { "data": "country.name", "width": "45%" },
-                { "data": "name", "width": "45%" },
+                { "data": "country.name", "width": "40%" },
+                { "data": "name", "width": "40%" },
                 {
                     "data": "id",
                     "render": function (data) {
                         return `<div class="text-center">
-                                <a href="/cities/Upsert/${data}" class='btn btn-warning text-dark border-dark'
-                                    style='cursor:pointer;'> <i class='far fa-edit'></i></a>
+                                <a href="/cities/Upsert/${data}" class='btn btn-warning text-dark border'
+                                    style='cursor:pointer;'><i class='far fa-edit'></i></a>
 
-                                <a onclick=Delete("/cities/Delete/${data}") class='btn btn-warning text-dark border-dark'
-                                    style='cursor:pointer;'> <i class='far fa-trash-alt'></i></a>
+                                <a onclick=Delete("/cities/Delete/${data}") class='btn btn-warning text-dark border'
+                                    style='cursor:pointer;'><i class='far fa-trash-alt'></i></a>
                                 </div>`
-                    }, "width": "10%"
+                    }, "width": "20%"
                 }
             ]
     });

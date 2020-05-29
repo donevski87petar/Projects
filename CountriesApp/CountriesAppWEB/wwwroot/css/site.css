@@ -26,6 +26,18 @@
     font-weight: 600;
 }
 
+.container {
+    max-width: 960px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.pb-4, .py-4 {
+    padding-bottom: 1.5rem !important;
+    margin-left: -15px;
+    margin-right: -45px;
+}
+
 .card-img-top {
     width: 250px;
     margin-left: -90px;
@@ -51,6 +63,7 @@
 button, select {
     text-transform: none;
     border-radius: 5px;
+    font-weight:600;
 }
 
 .card-body {
@@ -62,6 +75,7 @@ button, select {
 
 .btn-warning {
     font-weight: 600;
+    border: 1px solid #343a40;
 }
 
 
