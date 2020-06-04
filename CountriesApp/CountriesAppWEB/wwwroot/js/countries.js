@@ -23,10 +23,10 @@ function loadDataTable() {
                     "data": "id",
                     "render": function (data) {
                         return `<div class="text-center">
-                                <a href="/countries/Upsert/${data}" class='btn btn-warning text-dark'
+                                <a href="/countries/Upsert/${data}"
                                     style='cursor:pointer;'> <i class='far fa-edit'></i></a>
 
-                                <a onclick=Delete("/countries/Delete/${data}") class='btn btn-warning text-dark'
+                                <a onclick=Delete("/countries/Delete/${data}")
                                     style='cursor:pointer;'> <i class='far fa-trash-alt'></i></a>
                                 </div>`
                     }, "width": "15%"

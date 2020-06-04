@@ -34,13 +34,13 @@
 
 .pb-4, .py-4 {
     padding-bottom: 1.5rem !important;
-    margin-left: -15px;
-    margin-right: -45px;
+    /*margin-left: -15px;
+    margin-right: -45px;*/
 }
 
 .card-img-top {
-    width: 250px;
-    margin-left: -90px;
+    width: 200px;
+    height: 120px;
 }
 
 .p-2 {
