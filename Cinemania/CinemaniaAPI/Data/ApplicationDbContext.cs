@@ -1,4 +1,5 @@
 ﻿using CinemaniaAPI.Models;
+using CinemaniaAPI.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,19 @@ namespace CinemaniaAPI.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+
+
+        //Ceed Database
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Movie>().HasData(
+        //        new Movie
+        //        {
+        //            Title = "Terminator",
+        //            Genre = Genre.Action
+        //        }
+        //        );
+        //}
 
 
     }

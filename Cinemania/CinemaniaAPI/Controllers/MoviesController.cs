@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using CinemaniaAPI.Mapper;
 using CinemaniaAPI.Models;
 using CinemaniaAPI.Models.DTO;
 using CinemaniaAPI.Repository.IRepository;
@@ -26,6 +27,8 @@ namespace CinemaniaAPI.Controllers
         
      
         [HttpGet]
+        [ProducesResponseType(200 , Type = typeof(List<MovieDTO>))]
+        [ProducesResponseType(400)]
         public IActionResult GetAllMovies()
         {
             var movieList = _movieRepository.GetMovies();
@@ -42,6 +45,10 @@ namespace CinemaniaAPI.Controllers
 
 
         [HttpGet("{movieId:int}" , Name = "GetMovie")]
+        [ProducesResponseType(200, Type = typeof(MovieDTO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesDefaultResponseType]
         public IActionResult GetMovie(int movieId)
         {
             var movie = _movieRepository.GetMovie(movieId);
@@ -57,6 +64,10 @@ namespace CinemaniaAPI.Controllers
 
 
         [HttpPost]
+        [ProducesResponseType(201, Type = typeof(MovieDTO))]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public IActionResult CreateMovie([FromBody] MovieDTO movieDTO)
         {
             //Check for errors
@@ -73,7 +84,7 @@ namespace CinemaniaAPI.Controllers
 
 
             //If there is no error convert movieDTO to movie domain model
-            var movie = _mapper.Map<Movie>(movieDTO);
+            var movie = _mapper.Map<Models.Movie>(movieDTO);
 
             //if movie wasnt created 
             if (!_movieRepository.CreateMovie(movie))
@@ -87,6 +98,10 @@ namespace CinemaniaAPI.Controllers
 
 
         [HttpPatch("{movieId:int}", Name = "UpdateMovie")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public IActionResult UpdateMovie(int movieId , [FromBody] MovieDTO movieDTO)
         {
             //Check for errors
@@ -102,7 +117,7 @@ namespace CinemaniaAPI.Controllers
             }
 
             //If there is no error convert movieDTO to movie domain model
-            var movie = _mapper.Map<Movie>(movieDTO);
+            var movie = _mapper.Map<Models.Movie>(movieDTO);
 
             //if movie wasnt created 
             if (!_movieRepository.UpdateMovie(movie))
@@ -116,6 +131,11 @@ namespace CinemaniaAPI.Controllers
 
 
         [HttpDelete("{movieId:int}", Name = "DeleteMovie")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(409)]
+        [ProducesResponseType(500)]
         public IActionResult DeleteMovie(int movieId)
         {
             if (!_movieRepository.MovieExists(movieId))
