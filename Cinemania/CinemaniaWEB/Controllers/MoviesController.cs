@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using CinemaniaAPI.Models.DTO;
+using CinemaniaAPI.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -19,6 +20,68 @@ namespace CinemaniaWEB.Controllers
             string stringData = response.Content.ReadAsStringAsync().Result;
             List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
 
+            return View(movieList);
+        }
+
+
+        [HttpGet]
+        public IActionResult TopMovies()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            var movieListOrdered = movieList.OrderBy(m => m.Rating).Reverse();
+            return View(movieListOrdered);
+        }
+
+
+        [HttpGet]
+        public IActionResult Action()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            movieList = movieList.Where(m => m.Genre.ToString() == "Action");
+            return View(movieList);
+        }
+
+        [HttpGet]
+        public IActionResult Thriller()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            movieList = movieList.Where(m => m.Genre.ToString() == "Thriller");
+            return View(movieList);
+        }
+
+        [HttpGet]
+        public IActionResult Comedy()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            movieList = movieList.Where(m => m.Genre.ToString() == "Comedy");
+            return View(movieList);
+        }
+
+        [HttpGet]
+        public IActionResult Crime()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            movieList = movieList.Where(m => m.Genre.ToString() == "Crime");
+            return View(movieList);
+        }
+
+        [HttpGet]
+        public IActionResult Horror()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            IEnumerable<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            movieList = movieList.Where(m => m.Genre.ToString() == "Horror");
             return View(movieList);
         }
 

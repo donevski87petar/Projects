@@ -42,6 +42,7 @@ namespace CinemaniaAPI.Repository
             return _db.Movies.OrderBy(m => m.Title).ToList();
         }
 
+
         public bool MovieExists(string name)
         {
             bool value = _db.Movies.Any(a => a.Title.ToLower().Trim() == name.ToLower().Trim());

@@ -6,9 +6,11 @@ using AutoMapper;
 using CinemaniaAPI.Mapper;
 using CinemaniaAPI.Models;
 using CinemaniaAPI.Models.DTO;
+using CinemaniaAPI.Models.Enums;
 using CinemaniaAPI.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace CinemaniaAPI.Controllers
 {
@@ -42,6 +44,7 @@ namespace CinemaniaAPI.Controllers
 
             return Ok(movieListDTO);
         }
+
 
 
         [HttpGet("{movieId:int}" , Name = "GetMovie")]
@@ -84,7 +87,7 @@ namespace CinemaniaAPI.Controllers
 
 
             //If there is no error convert movieDTO to movie domain model
-            var movie = _mapper.Map<Models.Movie>(movieDTO);
+            var movie = _mapper.Map<Movie>(movieDTO);
 
             //if movie wasnt created 
             if (!_movieRepository.CreateMovie(movie))
@@ -117,7 +120,7 @@ namespace CinemaniaAPI.Controllers
             }
 
             //If there is no error convert movieDTO to movie domain model
-            var movie = _mapper.Map<Models.Movie>(movieDTO);
+            var movie = _mapper.Map<Movie>(movieDTO);
 
             //if movie wasnt created 
             if (!_movieRepository.UpdateMovie(movie))

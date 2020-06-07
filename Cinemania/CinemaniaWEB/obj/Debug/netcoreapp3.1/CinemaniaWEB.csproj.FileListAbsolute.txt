@@ -175,3 +175,9 @@ C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\EditMovie.cshtml.g.cs
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\MovieDetails.cshtml.g.cs
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\DeleteMovie.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\TopMovies.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Action.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Crime.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Thriller.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Comedy.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Horror.cshtml.g.cs
