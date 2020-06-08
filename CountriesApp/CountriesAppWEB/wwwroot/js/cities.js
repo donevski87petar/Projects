@@ -21,10 +21,10 @@ function loadDataTable() {
                     "render": function (data) {
                         return `<div class="text-center">
                                 <a href="/cities/Upsert/${data}"
-                                    style='cursor:pointer;'><i class='far fa-edit'></i></a>
+                                    style='cursor:pointer;' class="text-dark"><i class='far fa-edit'></i></a>
 
                                 <a onclick=Delete("/cities/Delete/${data}")
-                                    style='cursor:pointer;'><i class='far fa-trash-alt'></i></a>
+                                    style='cursor:pointer;'  class="text-dark"><i class='far fa-trash-alt'></i></a>
                                 </div>`
                     }, "width": "20%"
                 }
