@@ -53,7 +53,6 @@ C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\bin\Debug\netcoreapp3.1\
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\RestaurantApp.csprojAssemblyReference.cache
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\RestaurantApp.RazorAssemblyInfo.cache
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\RestaurantApp.RazorAssemblyInfo.cs
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\RestaurantApp.AssemblyInfoInputs.cache
@@ -207,3 +206,9 @@ C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Subcategory\Edit.cshtml.g.cs
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Subcategory\Details.cshtml.g.cs
 C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Subcategory\Delete.cshtml.g.cs
+C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Index.cshtml.g.cs
+C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Create.cshtml.g.cs
+C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\RestaurantApp.csprojAssemblyReference.cache
+C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Edit.cshtml.g.cs
+C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Details.cshtml.g.cs
+C:\Users\Petar\source\repos\RestaurantApp\RestaurantApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MenuItem\Delete.cshtml.g.cs

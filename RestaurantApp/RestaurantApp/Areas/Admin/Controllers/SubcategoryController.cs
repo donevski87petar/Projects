@@ -109,7 +109,7 @@ namespace RestaurantApp.Areas.Admin.Controllers
             return View(model);
         }
 
-        //POST - EDIT
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id , SubcategoryAndCategoryViewModel model)

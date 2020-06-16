@@ -17,5 +17,6 @@ namespace RestaurantApp.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Subcategory> Subcategories { get; set; }
         public DbSet<MenuItem> MenuItem { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }

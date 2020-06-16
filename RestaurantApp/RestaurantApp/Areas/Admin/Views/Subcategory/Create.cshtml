@@ -69,10 +69,10 @@
 </div>
 
 @section Scripts{
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
 
     <script>
-    function updateSubCategoryList() {
+        function updateSubCategoryList() {
             var categorySelected = document.getElementById("ddlCategorylist").value;
 
             $list = $('#SubCategoryList');
@@ -103,5 +103,7 @@
             updateSubCategoryList();
         });</script>
 
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
 }
