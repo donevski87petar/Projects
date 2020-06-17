@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AajRJzPA5MVA/hJE4UzwD6ght4hBgh3mHJ41bl583uRuk9aE7cYtWOq+6mhDvbC68B0qfE/YT86RWsfqapB/LA==",
+  "dgSpecHash": "DGPQa+Vroz88ygPep0qcpXl5Dbu7S3Q5axxxPPFAaX22mP31j3pdSF2o0uVaSlPO5iUPD4C8Tk7nlaVKFXZQgQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj",
+  "projectFilePath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Petar\\.nuget\\packages\\automapper\\9.0.0\\automapper.9.0.0.nupkg.sha512",
     "C:\\Users\\Petar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\7.0.0\\automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",

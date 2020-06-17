@@ -8740,11 +8740,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
       "projectName": "CinemaniaAPI",
-      "projectPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
+      "projectPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
       "packagesPath": "C:\\Users\\Petar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\obj\\",
+      "outputPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

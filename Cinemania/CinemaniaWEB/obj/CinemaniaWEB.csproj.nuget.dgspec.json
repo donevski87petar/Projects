@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj": {}
+    "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj": {
+    "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
         "projectName": "CinemaniaAPI",
-        "projectPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
+        "projectPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
         "packagesPath": "C:\\Users\\Petar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\obj\\",
+        "outputPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -98,14 +98,14 @@
         }
       }
     },
-    "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj": {
+    "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj",
+        "projectUniqueName": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj",
         "projectName": "CinemaniaWEB",
-        "projectPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj",
+        "projectPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaWEB\\CinemaniaWEB.csproj",
         "packagesPath": "C:\\Users\\Petar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaWEB\\obj\\",
+        "outputPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaWEB\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -124,8 +124,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj": {
-                "projectPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj"
+              "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj": {
+                "projectPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj"
               }
             }
           }
