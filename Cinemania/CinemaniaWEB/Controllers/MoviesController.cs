@@ -8,29 +8,46 @@ using CinemaniaAPI.Models.DTO;
 using CinemaniaAPI.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using ReflectionIT.Mvc.Paging;
 
 namespace CinemaniaWEB.Controllers
 {
     public class MoviesController : Controller
     {
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string search , int page = 1)
         {
+
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
             string stringData = response.Content.ReadAsStringAsync().Result;
             List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
-
-            return View(movieList);
+      
+            if (!String.IsNullOrEmpty(search))
+            {
+                var searchedItem = movieList.Where(m =>
+                       m.Title.ToLower().Contains(search.ToLower())
+                    || m.Actors.ToLower().Contains(search.ToLower())
+                    || m.Director.ToLower().Contains(search.ToLower())
+                    || m.ReleaseYear.ToString().ToLower().Contains(search.ToLower())
+                    || m.Genre.ToString().ToLower().Contains(search.ToLower()));
+                var modelSearch = PagingList.Create(searchedItem, 10 , page);
+                return View(modelSearch);
+            }
+            var model = PagingList.Create(movieList , 5 , page);
+            return View(model);
+            //return View(movieList);
         }
 
 
         [HttpGet]
         public IActionResult TopMovies()
         {
+            ViewData["i"] = 1;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
             string stringData = response.Content.ReadAsStringAsync().Result;
             List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
-            var movieListOrdered = movieList.OrderBy(m => m.Rating).Reverse();
+            var movieListOrdered = movieList.OrderBy(m => m.Rating).Reverse().Take(10);
+
             return View(movieListOrdered);
         }
 

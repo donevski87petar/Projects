@@ -8740,11 +8740,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
       "projectName": "CinemaniaAPI",
-      "projectPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
+      "projectPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\CinemaniaAPI.csproj",
       "packagesPath": "C:\\Users\\Petar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Petar\\Documents\\Projects\\Cinemania\\CinemaniaAPI\\obj\\",
+      "outputPath": "C:\\Users\\Petar\\source\\repos\\Cinemania\\CinemaniaAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8827,7 +8827,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
