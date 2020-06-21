@@ -1,5 +1,4 @@
-﻿@*@model IEnumerable<CinemaniaAPI.Models.DTO.MovieDTO>*@
-@model ReflectionIT.Mvc.Paging.PagingList<CinemaniaAPI.Models.DTO.MovieDTO>
+﻿@model ReflectionIT.Mvc.Paging.PagingList<CinemaniaAPI.Models.DTO.MovieDTO>
 @using ReflectionIT.Mvc.Paging
 @addTagHelper *,ReflectionIT.Mvc.Paging
 
@@ -108,3 +107,7 @@
         }
     </tbody>
 </table>
+
+<div class="paginationPages">
+    @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model , @class="btn btn-dark"})
+</div>

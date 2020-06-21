@@ -35,14 +35,12 @@ namespace CinemaniaWEB.Controllers
             }
             var model = PagingList.Create(movieList , 5 , page);
             return View(model);
-            //return View(movieList);
         }
 
 
         [HttpGet]
         public IActionResult TopMovies()
         {
-            ViewData["i"] = 1;
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
             string stringData = response.Content.ReadAsStringAsync().Result;
             List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);

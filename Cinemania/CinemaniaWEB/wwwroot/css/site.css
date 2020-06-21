@@ -6,6 +6,7 @@ a.navbar-brand {
     text-align: center;
     word-break: break-all;
     color: #343a40;
+    font-size: 20px;
 }
 
 .nav-link {
@@ -13,6 +14,7 @@ a.navbar-brand {
     padding: .5rem 1rem;
     word-break: break-all;
     color: #343a40;
+    font-size: 20px;
 }
 
 .dropdown-toggle {
@@ -20,13 +22,12 @@ a.navbar-brand {
     color: #343a40;
     background-color: transparent;
     border: 0;
-    font-size: inherit;
+    font-size: 20px;
     margin-top: 7px;
     font-weight: 600;
 }
 
 .navbar {
-    background-color: deepskyblue;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -37,6 +38,43 @@ a.navbar-brand {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: .5rem 1rem;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin: auto;
+    margin-bottom: 185px;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -80px;
+    margin-left: -80px;
+    margin-bottom: -50px;
+}
+
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+    font-size: 20px;
+    width: 50px;
+    margin: auto;
 }
 
 /* Provide sufficient contrast against white background */
