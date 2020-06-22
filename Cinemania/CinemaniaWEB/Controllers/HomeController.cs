@@ -21,12 +21,6 @@ namespace CinemaniaWEB.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-
-            //HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
-            //string stringData = response.Content.ReadAsStringAsync().Result;
-            //List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
-
-
             HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
             string stringData = response.Content.ReadAsStringAsync().Result;
             List<MovieDTO> allMovieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
@@ -40,10 +34,6 @@ namespace CinemaniaWEB.Controllers
                 CrimeMovies = allMovieList.Where(m => m.Genre.ToString() == "Crime"),
                 HorrorMovies = allMovieList.Where(m => m.Genre.ToString() == "Horror")
             };
-
-            //var movieListOrdered = movieList.OrderByDescending(m => m.ReleaseYear);
-            //var moviesLast = movieListOrdered;//.Take(6);
-            //return View(moviesLast);
             return View(viewModel);
         }
 

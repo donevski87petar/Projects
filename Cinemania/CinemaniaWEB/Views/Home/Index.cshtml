@@ -21,7 +21,9 @@
                         </a>
                         <div class="card-body">
                             <p class="card-text" hidden>@movieNewest.Id</p>
-                            <p class="card-text">@movieNewest.Title (@movieNewest.ReleaseYear)</p>
+                            <p class="card-text">
+                                <a href="~/movies/moviedetails/@movieNewest.Id">@movieNewest.Title (@movieNewest.ReleaseYear)</a>
+                            </p>
                             <p class="card-text">IMDB Rating: @movieNewest.Rating</p>
                         </div>
                     </div>

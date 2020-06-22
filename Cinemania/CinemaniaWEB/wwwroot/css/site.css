@@ -5,24 +5,21 @@ a.navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
-    color: #343a40;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .nav-link {
     display: block;
     padding: .5rem 1rem;
     word-break: break-all;
-    color: #343a40;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .dropdown-toggle {
     white-space: nowrap;
-    color: #343a40;
     background-color: transparent;
     border: 0;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 7px;
     font-weight: 600;
 }
@@ -48,10 +45,10 @@ a.navbar-brand {
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: black;
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    border: 1px solid black;
+    border-radius: 10px;
     margin: auto;
     margin-bottom: 185px;
 }
@@ -64,6 +61,21 @@ a.navbar-brand {
     margin-right: -80px;
     margin-left: -80px;
     margin-bottom: -50px;
+}
+
+.card-img-top {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+img {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 2rem;
 }
 
 .pagination {
