@@ -307,4 +307,3 @@ C:\Users\Petar\Documents\Projects\Cinemania\CinemaniaAPI\obj\Debug\netcoreapp3.1
 C:\Users\Petar\Documents\Projects\Cinemania\CinemaniaAPI\obj\Debug\netcoreapp3.1\CinemaniaAPI.dll
 C:\Users\Petar\Documents\Projects\Cinemania\CinemaniaAPI\obj\Debug\netcoreapp3.1\CinemaniaAPI.pdb
 C:\Users\Petar\Documents\Projects\Cinemania\CinemaniaAPI\obj\Debug\netcoreapp3.1\CinemaniaAPI.genruntimeconfig.cache
-C:\Users\Petar\source\repos\Cinemania\CinemaniaAPI\obj\Debug\netcoreapp3.1\CinemaniaAPI.csprojAssemblyReference.cache

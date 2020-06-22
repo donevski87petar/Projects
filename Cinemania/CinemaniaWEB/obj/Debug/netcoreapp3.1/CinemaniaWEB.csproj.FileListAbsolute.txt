@@ -376,3 +376,4 @@ C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Micro
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\CinemaniaWEB.csproj.CoreCompileInputs.cache
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\CinemaniaWEB.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\CinemaniaWEB.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Movies\PopularMovies.cshtml.g.cs

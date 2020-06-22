@@ -61,6 +61,14 @@ namespace CinemaniaWEB
             }
             app.UseHttpsRedirection();
 
+
+
+            /////////////////////////////////////////////////////////////////
+            CinemaniaIdentityDataInitializer.SeedData(userManager, roleManager);
+            /////////////////////////////////////////////////////////////////
+
+
+
             app.UseStaticFiles();
 
             app.UseRouting();

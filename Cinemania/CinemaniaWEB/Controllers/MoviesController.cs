@@ -39,7 +39,6 @@ namespace CinemaniaWEB.Controllers
             return View(model);
         }
 
-
         [HttpGet]
         public IActionResult TopMovies()
         {
@@ -51,6 +50,16 @@ namespace CinemaniaWEB.Controllers
             return View(movieListOrdered);
         }
 
+        [HttpGet]
+        public IActionResult PopularMovies()
+        {
+            HttpResponseMessage response = GlobalVariables.WebApiClient.GetAsync("movies").Result;
+            string stringData = response.Content.ReadAsStringAsync().Result;
+            List<MovieDTO> movieList = JsonConvert.DeserializeObject<List<MovieDTO>>(stringData);
+            var movieListOrdered = movieList.Where(m => m.Rating > 6.5).Take(10);
+
+            return View(movieListOrdered);
+        }
 
         [HttpGet]
         public IActionResult Action()

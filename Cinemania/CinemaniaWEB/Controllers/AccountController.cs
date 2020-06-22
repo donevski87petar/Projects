@@ -47,10 +47,10 @@ namespace CinemaniaWEB.Controllers
 
                 if (result.Succeeded)
                 {
-                    if (!roleManager.RoleExistsAsync("NormalUser").Result)
+                    if (!roleManager.RoleExistsAsync("User").Result)
                     {
                         CinemaniaIdentityRole role = new CinemaniaIdentityRole();
-                        role.Name = "Cinemania User";
+                        role.Name = "User";
                         role.Description = "Perform normal operations.";
                         IdentityResult roleResult = roleManager.
                         CreateAsync(role).Result;
@@ -61,7 +61,7 @@ namespace CinemaniaWEB.Controllers
                         }
                     }
 
-                    userManager.AddToRoleAsync(user, "Cinemania User").Wait();
+                    userManager.AddToRoleAsync(user, "User").Wait();
                     return RedirectToAction("Login", "Account");
                 }
             }

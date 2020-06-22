@@ -72,11 +72,14 @@
 
             <br /><br /><br />
 
-            <div class="text-center">
-                @Html.ActionLink("Edit Movie", "EditMovie", new { id = Model.Id })
-                @Html.ActionLink("Delete Movie", "DeleteMovie", new { id = Model.Id })
-                <a asp-controller="Movies" asp-action="Index">Back to Movies</a>
-            </div>
+                        <div class="text-center">
+                            @if (User.IsInRole("Administrator"))
+                            {
+                                @Html.ActionLink("Edit Movie", "EditMovie", new { id = Model.Id })
+                                @Html.ActionLink("Delete Movie", "DeleteMovie", new { id = Model.Id })
+                            }
+                                <a asp-controller="Movies" asp-action="Index">Back to Movies</a>
+                            </div>
 
         </div>
     </div>

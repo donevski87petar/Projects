@@ -1,52 +1,15 @@
-﻿@model ReflectionIT.Mvc.Paging.PagingList<CinemaniaAPI.Models.DTO.MovieDTO>
-@using ReflectionIT.Mvc.Paging
-@addTagHelper *,ReflectionIT.Mvc.Paging
+﻿@model IEnumerable<CinemaniaAPI.Models.DTO.MovieDTO>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "PopularMovies";
 }
 
-
-<div class="text-center">
-    <h1>All Movies Index</h1>
-</div>
-
-<br />
-<br />
-
-<div class="paginationPages">
-    @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model })
-</div>
-
-
-@if (User.IsInRole("Administrator"))
-{
-    <div class="float-left">
-        <a asp-controller="Movies" asp-action="AddMovie" class="btn btn-dark float-left">Add New Movie</a>
-    </div>
-}
-
-
-<div class="float-right">
-    <form asp-controller="Movies" asp-action="Index" method="get">
-        <div class="row">
-            <input type="text" name="search" placeholder="Enter keyword" />
-            <input type="submit" value="Search" class="btn btn-dark float-right" />
-        </div>
-    </form>
-</div>
-
-
-<br />
-<br />
-<br />
-
+<h1>PopularMovies</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
@@ -69,6 +32,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Actors)
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -108,11 +72,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Actors)
                 </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id })
+                </td>
             </tr>
         }
     </tbody>
 </table>
-
-<div class="paginationPages">
-    @await this.Component.InvokeAsync("Pager", new { pagingList = this.Model, @class = "btn btn-dark" })
-</div>
