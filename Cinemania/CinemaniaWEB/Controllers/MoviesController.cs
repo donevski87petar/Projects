@@ -6,12 +6,14 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using CinemaniaAPI.Models.DTO;
 using CinemaniaAPI.Models.Enums;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using ReflectionIT.Mvc.Paging;
 
 namespace CinemaniaWEB.Controllers
 {
+    [Authorize]
     public class MoviesController : Controller
     {
         [HttpGet]

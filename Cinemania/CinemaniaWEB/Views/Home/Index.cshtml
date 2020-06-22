@@ -4,224 +4,223 @@
     ViewData["Title"] = "Index";
 }
 
-
-    <div class="container">
-        <h1 class="text-center">Newest movies</h1>
-        <div class="row text-center">
-            @foreach (var movieNewest in Model.NewestMovies)
-            {
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
-                    <div class="card" style="width: 12rem;height:18rem;">
-                        @{
-                            var base64 = Convert.ToBase64String(movieNewest.Cover);
-                            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        }
-                        <a href="~/movies/moviedetails/@movieNewest.Id">
-                            <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" hidden>@movieNewest.Id</p>
-                            <p class="card-text">
-                                <a href="~/movies/moviedetails/@movieNewest.Id">@movieNewest.Title (@movieNewest.ReleaseYear)</a>
-                            </p>
-                            <p class="card-text">IMDB Rating: @movieNewest.Rating</p>
-                        </div>
+<div class="container">
+    <h1 class="text-center">Newest movies</h1>
+    <div class="row text-center">
+        @foreach (var movieNewest in Model.NewestMovies)
+        {
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                <div class="card" style="width: 12rem;height:18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(movieNewest.Cover);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <a href="~/movies/moviedetails/@movieNewest.Id">
+                        <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text" hidden>@movieNewest.Id</p>
+                        <p class="card-text">
+                            <a href="~/movies/moviedetails/@movieNewest.Id">@movieNewest.Title (@movieNewest.ReleaseYear)</a>
+                        </p>
+                        <p class="card-text">IMDB Rating: @movieNewest.Rating</p>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="row text-center float-right">
-            <a href="~/Movies/Index" class="btn btn-dark">Go to Newest Movies</a>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            </div>
+        }
     </div>
 
+    <div class="row text-center float-right">
+        <a href="~/Movies/Index" class="btn btn-dark">Go to Newest Movies</a>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
 
 
-    <div class="container">
-        <h1 class="text-center">Action</h1>
-        <div class="row text-center">
-            @foreach (var movieAction in Model.ActionMovies)
-            {
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
-                    <div class="card" style="width: 12rem;height:18rem;">
-                        @{
-                            var base64 = Convert.ToBase64String(movieAction.Cover);
-                            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        }
-                        <a href="~/movies/moviedetails/@movieAction.Id">
-                            <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" hidden>@movieAction.Id</p>
-                            <p class="card-text">@movieAction.Title (@movieAction.ReleaseYear)</p>
-                            <p class="card-text">IMDB Rating: @movieAction.Rating</p>
-                        </div>
+
+<div class="container">
+    <h1 class="text-center">Action</h1>
+    <div class="row text-center">
+        @foreach (var movieAction in Model.ActionMovies)
+        {
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                <div class="card" style="width: 12rem;height:18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(movieAction.Cover);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <a href="~/movies/moviedetails/@movieAction.Id">
+                        <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text" hidden>@movieAction.Id</p>
+                        <p class="card-text">@movieAction.Title (@movieAction.ReleaseYear)</p>
+                        <p class="card-text">IMDB Rating: @movieAction.Rating</p>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="row text-center float-right">
-            <a href="~/Movies/Action" class="btn btn-dark">Go to Action Movies</a>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            </div>
+        }
     </div>
 
-    <div class="container">
-        <h1 class="text-center">Thriller</h1>
-        <div class="row text-center">
-            @foreach (var movieThriller in Model.ThrillerMovies)
-            {
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
-                    <div class="card" style="width: 12rem;height:18rem;">
-                        @{
-                            var base64 = Convert.ToBase64String(movieThriller.Cover);
-                            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        }
-                        <a href="~/movies/moviedetails/@movieThriller.Id">
-                            <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" hidden>@movieThriller.Id</p>
-                            <p class="card-text">@movieThriller.Title (@movieThriller.ReleaseYear)</p>
-                            <p class="card-text">IMDB Rating: @movieThriller.Rating</p>
-                        </div>
+    <div class="row text-center float-right">
+        <a href="~/Movies/Action" class="btn btn-dark">Go to Action Movies</a>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+
+<div class="container">
+    <h1 class="text-center">Thriller</h1>
+    <div class="row text-center">
+        @foreach (var movieThriller in Model.ThrillerMovies)
+        {
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                <div class="card" style="width: 12rem;height:18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(movieThriller.Cover);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <a href="~/movies/moviedetails/@movieThriller.Id">
+                        <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text" hidden>@movieThriller.Id</p>
+                        <p class="card-text">@movieThriller.Title (@movieThriller.ReleaseYear)</p>
+                        <p class="card-text">IMDB Rating: @movieThriller.Rating</p>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="row text-center float-right">
-            <a href="~/Movies/thriller" class="btn btn-dark">Go to Thriller Movies</a>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            </div>
+        }
     </div>
 
-    <div class="container">
-        <h1 class="text-center">Crime</h1>
-        <div class="row text-center">
-            @foreach (var movieCrime in Model.CrimeMovies)
-            {
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
-                    <div class="card" style="width: 12rem;height:18rem;">
-                        @{
-                            var base64 = Convert.ToBase64String(movieCrime.Cover);
-                            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        }
-                        <a href="~/movies/moviedetails/@movieCrime.Id">
-                            <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" hidden>@movieCrime.Id</p>
-                            <p class="card-text">@movieCrime.Title (@movieCrime.ReleaseYear)</p>
-                            <p class="card-text">IMDB Rating: @movieCrime.Rating</p>
-                        </div>
+    <div class="row text-center float-right">
+        <a href="~/Movies/thriller" class="btn btn-dark">Go to Thriller Movies</a>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+
+<div class="container">
+    <h1 class="text-center">Crime</h1>
+    <div class="row text-center">
+        @foreach (var movieCrime in Model.CrimeMovies)
+        {
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                <div class="card" style="width: 12rem;height:18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(movieCrime.Cover);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <a href="~/movies/moviedetails/@movieCrime.Id">
+                        <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text" hidden>@movieCrime.Id</p>
+                        <p class="card-text">@movieCrime.Title (@movieCrime.ReleaseYear)</p>
+                        <p class="card-text">IMDB Rating: @movieCrime.Rating</p>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="row text-center float-right">
-            <a href="~/Movies/Crime" class="btn btn-dark">Go to Crime Movies</a>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            </div>
+        }
     </div>
 
+    <div class="row text-center float-right">
+        <a href="~/Movies/Crime" class="btn btn-dark">Go to Crime Movies</a>
+    </div>
 
-    <div class="container">
-        <h1 class="text-center">Comedy</h1>
-        <div class="row text-center">
-            @foreach (var movieComedy in Model.ComedyMovies)
-            {
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
-                    <div class="card" style="width: 12rem;height:18rem;">
-                        @{
-                            var base64 = Convert.ToBase64String(movieComedy.Cover);
-                            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        }
-                        <a href="~/movies/moviedetails/@movieComedy.Id">
-                            <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" hidden>@movieComedy.Id</p>
-                            <p class="card-text">@movieComedy.Title (@movieComedy.ReleaseYear)</p>
-                            <p class="card-text">IMDB Rating: @movieComedy.Rating</p>
-                        </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+
+
+<div class="container">
+    <h1 class="text-center">Comedy</h1>
+    <div class="row text-center">
+        @foreach (var movieComedy in Model.ComedyMovies)
+        {
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                <div class="card" style="width: 12rem;height:18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(movieComedy.Cover);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <a href="~/movies/moviedetails/@movieComedy.Id">
+                        <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text" hidden>@movieComedy.Id</p>
+                        <p class="card-text">@movieComedy.Title (@movieComedy.ReleaseYear)</p>
+                        <p class="card-text">IMDB Rating: @movieComedy.Rating</p>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="row text-center float-right">
-            <a href="~/Movies/Comedy" class="btn btn-dark">Go to Comedy Movies</a>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            </div>
+        }
     </div>
 
-    <div class="container">
-        <h1 class="text-center">Horror</h1>
-        <div class="row text-center">
-            @foreach (var movieHorror in Model.HorrorMovies)
-            {
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
-                    <div class="card" style="width: 12rem;height:18rem;">
-                        @{
-                            var base64 = Convert.ToBase64String(movieHorror.Cover);
-                            var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        }
-                        <a href="~/movies/moviedetails/@movieHorror.Id">
-                            <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
-                        </a>
-                        <div class="card-body">
-                            <p class="card-text" hidden>@movieHorror.Id</p>
-                            <p class="card-text">@movieHorror.Title (@movieHorror.ReleaseYear)</p>
-                            <p class="card-text">IMDB Rating: @movieHorror.Rating</p>
-                        </div>
+    <div class="row text-center float-right">
+        <a href="~/Movies/Comedy" class="btn btn-dark">Go to Comedy Movies</a>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+
+<div class="container">
+    <h1 class="text-center">Horror</h1>
+    <div class="row text-center">
+        @foreach (var movieHorror in Model.HorrorMovies)
+        {
+            <div class="col-xl-2 col-lg-2 col-md-3 col-sm-4">
+                <div class="card" style="width: 12rem;height:18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(movieHorror.Cover);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                    }
+                    <a href="~/movies/moviedetails/@movieHorror.Id">
+                        <img src="@finalStr" class="card-img-top" height="285" alt="cover" />
+                    </a>
+                    <div class="card-body">
+                        <p class="card-text" hidden>@movieHorror.Id</p>
+                        <p class="card-text">@movieHorror.Title (@movieHorror.ReleaseYear)</p>
+                        <p class="card-text">IMDB Rating: @movieHorror.Rating</p>
                     </div>
                 </div>
-            }
-        </div>
-
-        <div class="row text-center float-right">
-            <a href="~/Movies/Horror" class="btn btn-dark">Go to Horror Movies</a>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            </div>
+        }
     </div>
+
+    <div class="row text-center float-right">
+        <a href="~/Movies/Horror" class="btn btn-dark">Go to Horror Movies</a>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</div>

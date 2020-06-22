@@ -365,6 +365,14 @@ C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Micro
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.dll
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.Views.dll
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\ReflectionIT.Mvc.Paging.dll
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\CinemaniaWEB.csproj.CoreCompileInputs.cache
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\CinemaniaWEB.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Petar\source\repos\Cinemania\CinemaniaWEB\obj\Debug\netcoreapp3.1\CinemaniaWEB.MvcApplicationPartsAssemblyInfo.cache
