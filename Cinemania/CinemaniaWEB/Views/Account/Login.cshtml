@@ -1,36 +1,48 @@
 ﻿@model CinemaniaWEB.Models.ViewModels.LoginViewModel
 
 
-<div class="loginDiv">
 
-    <h1 class="text-center">Login</h1>
-    <form asp-controller="Account" asp-action="Login" method="post">
-        <table>
-            <tr>
-                <td><label asp-for="UserName"></label></td>
-                <td><input asp-for="UserName" /></td>
-            </tr>
-            <tr>
-                <td><label asp-for="Password"></label></td>
-                <td><input asp-for="Password" /></td>
-            </tr>
-            <tr>
-                <td><label asp-for="RememberMe"></label></td>
-                <td><input asp-for="RememberMe" /></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" value="Login" />
-                </td>
-            </tr>
-        </table>
-        <div asp-validation-summary="All"></div>
-    </form>
-</div>
+    <br />
+    <br />
+    <br />
 
 
+    <div class="row">
 
-@*<script src="~/Scripts/jquery.js"></script>
-<script src="~/Scripts/jquery.validate.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.js">
-</script>*@
+        <div class="col-4"></div>
+
+        <div class="col-4 border">
+            <h1 class="text-center">Login</h1>
+            <form asp-controller="Account" asp-action="Login" method="post">
+                <table>
+                    <tr>
+                        <td><label asp-for="UserName"></label></td>
+                        <td><input asp-for="UserName" /></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="Password"></label></td>
+                        <td><input asp-for="Password" /></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="RememberMe"></label></td>
+                        <td><input asp-for="RememberMe" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Login" class="btn btn-dark" />
+                        </td>
+                    </tr>
+                </table>
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </form>
+        </div>
+
+        <div class="col-4"></div>
+
+    </div>
+
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>

@@ -56,7 +56,7 @@
                             var base64 = Convert.ToBase64String(item.Cover);
                             var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
                         }
-                        <img src="@finalStr" width="50" height="50" alt="cover" />
+                        <img src="@finalStr" width="75" height="100" alt="cover" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Title)

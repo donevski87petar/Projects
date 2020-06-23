@@ -4,16 +4,16 @@
     ViewData["Title"] = "Index";
 }
 
-    <div class="text-center">
-        @if (User.Identity.IsAuthenticated)
-        {
-            <h5>You are logged in as @User.Identity.Name</h5>
-        }
-        else
-        {
-            <h5>Welcome to Cinemania , Please Login or Register</h5>
-        }
-    </div>
+<div class="text-center welcomeBanner">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h5>You are logged in as @User.Identity.Name</h5>
+    }
+    else
+    {
+        <h5>Welcome to Cinemania , Please Login or Register</h5>
+    }
+</div>
 
 
 <div class="container">
@@ -236,3 +236,13 @@
     <br />
     <br />
 </div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(function () { $(".welcomeBanner").slideUp(500); }, 3000);
+    })
+</script>
