@@ -449,9 +449,6 @@ C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.csproj.CoreCompileInputs.cache
-C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.AssemblyInfoInputs.cache
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.AssemblyInfo.cs
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.RazorTargetAssemblyInfo.cache
@@ -462,3 +459,11 @@ C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.pdb
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.genruntimeconfig.cache
 C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.csprojAssemblyReference.cache
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\X.PagedList.dll
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\X.PagedList.Mvc.Core.dll
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\bin\Debug\netcoreapp3.1\X.PagedList.Web.Common.dll
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.csproj.CoreCompileInputs.cache
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Petar\source\repos\CountriesApp\CountriesAppAPI\obj\Debug\netcoreapp3.1\CountriesAppAPI.MvcApplicationPartsAssemblyInfo.cache

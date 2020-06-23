@@ -80,25 +80,6 @@ namespace CountriesAppWEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                //var files = HttpContext.Request.Form.Files;
-                //if (files.Count > 0)
-                //{
-                //    byte[] p1 = null;
-                //    using (var fs1 = files[0].OpenReadStream())
-                //    {
-                //        using (var ms1 = new MemoryStream())
-                //        {
-                //            fs1.CopyTo(ms1);
-                //            p1 = ms1.ToArray();
-                //        }
-                //    }
-                //    obj.Flag = p1;
-                //}
-                //else
-                //{
-                //    var objFromDb = await _countryRepository.GetAsync(SD.CountriesAPIPath, obj.Id);
-                //    obj.Flag = objFromDb.Flag;
-                //}
                 if (obj.City.Id == 0)
                 {
                     await _cityRepository.CreateAsync(SD.CitiesAPIPath, obj.City);

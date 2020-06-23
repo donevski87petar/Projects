@@ -14,22 +14,17 @@ function loadDataTable() {
         },
         "columns":
             [
-                { "data": "name", "width": "20%" },
-                { "data": "capital", "width": "20%" },
-                { "data": "region", "width": "15%" },
-                { "data": "area", "width": "15%" },
-                { "data": "population", "width": "15%" },
+                { "data": "name", "width": "30%" },
+                { "data": "capital", "width": "30%" },
+                { "data": "region", "width": "30%" },
                 {
                     "data": "id",
                     "render": function (data) {
                         return `<div class="text-center">
-                                <a href="/countries/Upsert/${data}"
-                                    style='cursor:pointer;' class="text-dark"> <i class='far fa-edit'></i></a>
-
-                                <a onclick=Delete("/countries/Delete/${data}")
-                                    style='cursor:pointer;' class="text-dark"> <i class='far fa-trash-alt'></i></a>
+                                <a href="/countries/Upsert/${data}" style='cursor:pointer;' class="text-dark"> <i class='far fa-edit'></i></a>
+                                <a onclick=Delete("/countries/Delete/${data}") style='cursor:pointer;' class="text-dark"> <i class='far fa-trash-alt'></i></a>
                                 </div>`
-                    }, "width": "15%"
+                    }, "width": "10%"
                 }
             ]
     });

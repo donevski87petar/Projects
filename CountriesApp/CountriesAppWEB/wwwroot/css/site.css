@@ -32,6 +32,24 @@
     padding-right: 0px;
 }
 
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: white;
+    background-color: #343a40;
+    border: 1px solid #dee2e6;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
 .pb-4, .py-4 {
     padding-bottom: 1.5rem !important;
     /*margin-left: -15px;
@@ -39,8 +57,17 @@
 }
 
 .card-img-top {
-    width: 200px;
-    height: 120px;
+    width: 250px;
+    height: 150px;
+}
+
+.countryName {
+    padding-top: 20px;
+    padding-left: 22px;
+}
+
+.countryDetails{
+    padding-right:22px;
 }
 
 .p-2 {

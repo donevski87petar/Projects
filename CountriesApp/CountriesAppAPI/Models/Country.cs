@@ -15,8 +15,6 @@ namespace CountriesAppAPI.Models
         [Required]
         public string Capital { get; set; }
         public string Region { get; set; }
-        public double Area { get; set; }
-        public double Population { get; set; }
         public byte[] Flag { get; set; }
 
 

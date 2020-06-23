@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using CountriesAppWEB.Models;
 using CountriesAppWEB.Repository.IRepository;
 using CountriesAppWEB.Models.ViewModels;
+using X.PagedList;
 
 namespace CountriesAppWEB.Controllers
 {
@@ -24,14 +25,16 @@ namespace CountriesAppWEB.Controllers
             _logger = logger;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
-            IndexViewModel indexViewModel = new IndexViewModel()
-            {
-                CountryList = await _countryRepository.GetAllAsync(SD.CountriesAPIPath),
-                CityList = await _cityRepository.GetAllAsync(SD.CitiesAPIPath)
-            };
+            var pageNumber = page ?? 1;
+            int pageSize = 5;
 
+            var indexViewModel = new IndexViewModel()
+            {
+                CountryList = await _countryRepository.GetAllAsync(SD.CountriesAPIPath).Result.ToList().ToPagedListAsync(pageNumber, pageSize),
+                CityList = await _cityRepository.GetAllAsync(SD.CitiesAPIPath).Result.ToList().ToPagedListAsync(pageNumber, pageSize)
+            };
             return View(indexViewModel);
         }
 

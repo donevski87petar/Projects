@@ -1,7 +1,12 @@
 ﻿@model CountriesAppWEB.Models.ViewModels.IndexViewModel
+
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
 @{
     ViewData["Title"] = "Home Page";
 }
+
+
 
 @{
     double countries = @Model.CountryList.Count();
@@ -17,7 +22,22 @@
     <p class="text-white-50">Travel app helps you keep tracking of the places that you have visited.</p>
 </div>
 
-
+@*Pagination*@
+<div class="row">
+    <div class="col-5"></div>
+    <div class="col-1">
+        @Html.PagedListPager((IPagedList)Model.CountryList, page => Url.Action("Index", new { page = page }),
+        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+            {
+                DisplayItemSliceAndTotal = false,
+                ContainerDivClasses = new[] { "navigation" },
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" },
+            })
+    </div>
+    <div class="col-6"></div>
+</div>
+@*Pagination*@
 
 
 <div class="container">
@@ -31,12 +51,16 @@
 
                     @*Header*@
                     <div class="card-header bg-dark text-warning ml-0 row container">
+
                         <div class="col-12 col-md-6">
-                            <h3>@country.Name</h3>
+                            <h3 class="countryName">@country.Name</h3>
                         </div>
+
                         <div class="col-12 col-md-6 text-md-right">
-                            <h3 class="text-white-50">Region : @country.Region </h3>
+                            <p class="text-white-50 countryDetails">Region : @country.Region </p>
+                            <p class="text-white-50 countryDetails">Capital: @country.Capital</p>
                         </div>
+
                     </div>
 
                     <div class="card-body">
@@ -50,7 +74,7 @@
                                         var base64 = Convert.ToBase64String(country.Flag);
                                         var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
                                     }
-                                    <img src="@finalStr" class="card-img-top p-2 rounded"/>
+                                    <img src="@finalStr" class="card-img-top p-2 rounded" />
                                 </div>
 
 
@@ -60,17 +84,9 @@
                                     <div class="row">
                                         <div class="col-12">
 
-                                            <ul class="float-left">
-                                                <li><b>Country info:</b></li>
-                                                <li>Capital: @country.Capital</li>
-                                                <li>Area: @country.Area</li>
-                                                <li>Population: @country.Population</li>
-                                            </ul>
-
-
                                             @if (Model.CityList.Where(c => c.CountryId == country.Id).Count() > 0)
                                             {
-                                                <ul class="float-none" style="padding-left:250px;">
+                                                <ul class="float-none" style="padding-left:25px;">
                                                     <li><b>Cities visited :</b></li>
                                                     @foreach (var cities in Model.CityList.Where(c => c.CountryId == country.Id))
                                                     {
@@ -82,7 +98,7 @@
                                             }
                                             else
                                             {
-                                                <ul style="padding-left:250px;">
+                                                <ul style="padding-left:25px;">
                                                     <li>No City was added yet</li>
                                                 </ul>
                                             }
@@ -105,3 +121,19 @@
     </div>
 </div>
 
+@*Pagination*@
+<div class="row">
+    <div class="col-5"></div>
+    <div class="col-1">
+        @Html.PagedListPager((IPagedList)Model.CountryList, page => Url.Action("Index", new { page = page }),
+        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+            {
+                DisplayItemSliceAndTotal = false,
+                ContainerDivClasses = new[] { "navigation" },
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" },
+            })
+    </div>
+    <div class="col-6"></div>
+</div>
+@*Pagination*@
