@@ -32,6 +32,32 @@
     padding-right: 0px;
 }
 
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+    cursor: pointer;
+    height: 40px;
+    overflow: hidden;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 145%;
+    left: 20px;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 105px;
+    padding: -0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #343a40;
+    background-clip: padding-box;
+    border: 1px solid #ffc107;
+    border-radius: 0.25rem;
+}
+
 .page-link {
     position: relative;
     display: block;

@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CountriesAppWEB.Models.IdentityModels;
 using CountriesAppWEB.Repository;
 using CountriesAppWEB.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,15 @@ namespace CountriesAppWEB
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+            services.AddDbContext<MyIdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<MyIdentityUser, MyIdentityRole>()
+                .AddEntityFrameworkStores<MyIdentityDbContext>()
+                .AddDefaultTokenProviders();
+
 
 
 
@@ -68,9 +80,15 @@ namespace CountriesAppWEB
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
 
+
+
+
+            /////////////////////////////////////////////////////////////////
+            app.UseAuthentication();
+            app.UseAuthorization();
+            /////////////////////////////////////////////////////////////////
 
 
             ////Add Cors

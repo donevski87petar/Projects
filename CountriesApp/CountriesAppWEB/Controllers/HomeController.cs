@@ -9,6 +9,9 @@ using CountriesAppWEB.Models;
 using CountriesAppWEB.Repository.IRepository;
 using CountriesAppWEB.Models.ViewModels;
 using X.PagedList;
+using CountriesAppWEB.Models.IdentityModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CountriesAppWEB.Controllers
 {
@@ -17,13 +20,19 @@ namespace CountriesAppWEB.Controllers
         private readonly ICountryRepository _countryRepository;
         private readonly ICityRepository _cityRepository;
         private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<MyIdentityUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger, ICountryRepository countryRepository, ICityRepository cityRepository)
+        public HomeController(ILogger<HomeController> logger, 
+                              ICountryRepository countryRepository, 
+                              ICityRepository cityRepository,
+                              UserManager<MyIdentityUser> userManager)
         {
             _countryRepository = countryRepository;
             _cityRepository = cityRepository;
             _logger = logger;
+            _userManager = userManager;
         }
+
 
         public async Task<IActionResult> Index(int? page)
         {

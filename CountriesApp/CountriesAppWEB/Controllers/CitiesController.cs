@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using CountriesAppWEB.Models;
 using CountriesAppWEB.Models.ViewModels;
 using CountriesAppWEB.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CountriesAppWEB.Controllers
 {
+    [Authorize]
     public class CitiesController : Controller
     {
 

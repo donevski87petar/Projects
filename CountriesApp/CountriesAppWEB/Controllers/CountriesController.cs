@@ -5,10 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CountriesAppWEB.Models;
 using CountriesAppWEB.Repository.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CountriesAppWEB.Controllers
 {
+    [Authorize]
     public class CountriesController : Controller
     {
 
