@@ -14,8 +14,8 @@ function loadDataTable() {
         },
         "columns":
             [
-                { "data": "country.name", "width": "40%" },
                 { "data": "name", "width": "40%" },
+                { "data": "country.name", "width": "40%" },
                 {
                     "data": "id",
                     "render": function (data) {

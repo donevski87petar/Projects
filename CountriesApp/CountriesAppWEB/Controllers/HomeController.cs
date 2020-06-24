@@ -33,8 +33,17 @@ namespace CountriesAppWEB.Controllers
             var indexViewModel = new IndexViewModel()
             {
                 CountryList = await _countryRepository.GetAllAsync(SD.CountriesAPIPath).Result.ToList().ToPagedListAsync(pageNumber, pageSize),
-                CityList = await _cityRepository.GetAllAsync(SD.CitiesAPIPath).Result.ToList().ToPagedListAsync(pageNumber, pageSize)
+                CityList = await _cityRepository.GetAllAsync(SD.CitiesAPIPath)
             };
+
+            double countries = _countryRepository.GetAllAsync(SD.CountriesAPIPath).Result.Count();
+            double cities = _cityRepository.GetAllAsync(SD.CitiesAPIPath).Result.Count();
+            string total = (countries / 195 * 100).ToString("#.#");
+
+            ViewBag.CountriesVisited = countries;
+            ViewBag.CitiesVisited = cities;
+            ViewBag.TotalPercentage = total;
+
             return View(indexViewModel);
         }
 

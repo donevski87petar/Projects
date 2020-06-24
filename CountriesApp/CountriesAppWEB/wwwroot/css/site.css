@@ -50,6 +50,14 @@
     border-color: #ffc107;
 }
 
+.page-link:hover {
+    z-index: 2;
+    color: #343a40;
+    text-decoration: none;
+    background-color: gray;
+    border-color: #dee2e6;
+}
+
 .pb-4, .py-4 {
     padding-bottom: 1.5rem !important;
     /*margin-left: -15px;

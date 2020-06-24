@@ -11,13 +11,18 @@
 @{
     double countries = @Model.CountryList.Count();
     double total = countries / 195 * 100;
+
 }
+    
+    
+    
+
 
 <div class="jumbotron text-center bg-dark text-warning" style="width:100%;">
     <h1>Welcome to Travel App</h1>
     <br />
-    <h3>You have visited total of @Model.CountryList.Count() Countries and @Model.CityList.Count() Cities</h3>
-    <h3>That is total @total.ToString("#.##") % of the world</h3>
+    <h3>You have visited total of @ViewBag.CountriesVisited Countries and @ViewBag.CitiesVisited Cities</h3>
+    <h3>That is total @ViewBag.TotalPercentage % of the world</h3>
     <br />
     <p class="text-white-50">Travel app helps you keep tracking of the places that you have visited.</p>
 </div>
