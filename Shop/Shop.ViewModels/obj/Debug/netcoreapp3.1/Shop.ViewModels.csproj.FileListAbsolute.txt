@@ -1,0 +1,12 @@
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\bin\Debug\netcoreapp3.1\Shop.ViewModels.deps.json
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\bin\Debug\netcoreapp3.1\Shop.ViewModels.dll
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\bin\Debug\netcoreapp3.1\Shop.ViewModels.pdb
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.AssemblyInfoInputs.cache
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.AssemblyInfo.cs
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.dll
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.pdb
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.csprojAssemblyReference.cache
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\bin\Debug\netcoreapp3.1\Shop.DomainModels.dll
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\bin\Debug\netcoreapp3.1\Shop.DomainModels.pdb
+C:\Users\Petar\source\repos\Shop\Shop.ViewModels\obj\Debug\netcoreapp3.1\Shop.ViewModels.csproj.CopyComplete

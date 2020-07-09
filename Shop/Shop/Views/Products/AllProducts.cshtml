@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Shop.ViewModels.ProductViewModel>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+
+@{
+    ViewData["Title"] = "AllProducts";
+}
+
+<h1>AllProducts</h1>
+
+<p>
+    <a asp-controller="Products" asp-action="AddProduct">Add New Product</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @Html.HiddenFor(modelItem => item.ProductId)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Brand)
+                    </td>
+                    <td>
+                        <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ModelName)</a>
+                        <br />
+                        @{
+                            foreach (var img in item.Images)
+                            {
+                                if (img != null)
+                                {
+                                    var base64 = Convert.ToBase64String(img.Photo);
+                                    var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                                    <a href="~/Products/ProductImageDetails/@img.ImageId"><img src="@finalStr" width="75" height="75" /></a>
+                                }
+                                else
+                                {
+                                    <p>There is no image yet :(</p>
+                                }
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        <a asp-controller="Products" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit Product</a> <br />
+                        <a asp-controller="Products" asp-action="RemoveProduct" asp-route-id="@item.ProductId">Delete Product</a> <br />
+                        <a asp-controller="Products" asp-action="AddProductImage" asp-route-id="@item.ProductId">Add Images</a> <br />
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+
+<br />
+
+@*Pagination*@
+<div class="row">
+    <div class="col-5"></div>
+    <div class="col-1">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("AllProducts", new { page = page }),
+        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+            {
+                DisplayItemSliceAndTotal = false,
+                ContainerDivClasses = new[] { "navigation" },
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" },
+            })
+    </div>
+    <div class="col-6"></div>
+</div>
+@*Pagination*@

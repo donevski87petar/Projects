@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="text-center">
+        @{
+            if (TempData["WelcomeMessage"] != null)
+            {
+                <h3>@TempData["WelcomeMessage"]</h3>
+            }
+            else
+            {
+                <h3>Welcome guest , please login or register. </h3>
+            }
+        }
+    </div>

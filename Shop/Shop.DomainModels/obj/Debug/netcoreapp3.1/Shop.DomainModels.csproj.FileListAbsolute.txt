@@ -1,0 +1,9 @@
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\bin\Debug\netcoreapp3.1\Shop.DomainModels.deps.json
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\bin\Debug\netcoreapp3.1\Shop.DomainModels.dll
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\bin\Debug\netcoreapp3.1\Shop.DomainModels.pdb
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.AssemblyInfoInputs.cache
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.AssemblyInfo.cs
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.dll
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.pdb
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.csprojAssemblyReference.cache
