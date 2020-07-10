@@ -17,11 +17,11 @@ namespace Shop.DataAccess.Data.Initializer
         public static void SeedUsers(UserManager<AppUser> userManager)
         {
 
-            if (userManager.FindByNameAsync("user1").Result == null)
+            if (userManager.FindByNameAsync("user").Result == null)
             {
                 AppUser user = new AppUser();
-                user.UserName = "petarUser";
-                user.Email = "petar@user.com";
+                user.UserName = "user";
+                user.Email = "user@mail.com";
                 user.FullName = "Petar Donevski";
                 user.BirthDate = new DateTime(1987, 1, 1);
 
@@ -34,11 +34,11 @@ namespace Shop.DataAccess.Data.Initializer
             }
 
 
-            if (userManager.FindByNameAsync("user2").Result == null)
+            if (userManager.FindByNameAsync("admin").Result == null)
             {
                 AppUser user = new AppUser();
-                user.UserName = "petarAdmin";
-                user.Email = "petar@admin.com";
+                user.UserName = "admin";
+                user.Email = "admin@mail.com";
                 user.FullName = "Petar Donevski";
                 user.BirthDate = new DateTime(1987, 1, 1);
 

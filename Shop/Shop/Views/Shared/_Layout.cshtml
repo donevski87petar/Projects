@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,9 +21,6 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="AllProducts">All Products</a>
                         </li>
 
                         <li class="nav-item  text-dark">
@@ -46,9 +44,10 @@
                                     <a class="nav-link">Admin panel</a>
                                 </div>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="nav-link text-dark" asp-controller="Products" asp-action="AllProducts">All Products</a>
+                                    <a class="dropdown-item nav-link" asp-controller="Products" asp-action="AddProduct">Add Product</a>
                                     <a class="dropdown-item nav-link" asp-controller="Users" asp-action="AllUsers">All Users</a>
                                     <a class="dropdown-item nav-link" asp-controller="Users" asp-action="AddUser">Add User</a>
-                                    <a class="dropdown-item nav-link" asp-controller="Products" asp-action="AddProduct">Add Product</a>
                                 </div>
                             </div>
                         </li>

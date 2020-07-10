@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shop.DataAccess.Data.Repository.IRepository;
 using Shop.DomainModels.Models;
 using Shop.ViewModels;
+using X.PagedList;
 
 namespace Shop.Controllers
 {
@@ -17,6 +18,7 @@ namespace Shop.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IMapper _mapper;
+
         public UsersController(IUserRepository userRepository,
                                IMapper mapper,
                                UserManager<AppUser> userManager,
@@ -28,15 +30,20 @@ namespace Shop.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult AllUsers()
+        public IActionResult AllUsers(int? page)
         {
+            var pageNumber = page ?? 1;
+            int pageSize = 10;
+
             var modelList = _userRepository.GetAllUsers();
             var viewModelList = new List<AppUserViewModel>();
             foreach (var item in modelList)
             {
                 viewModelList.Add(_mapper.Map<AppUserViewModel>(item));
             }
-            return View(viewModelList);
+            ViewBag.UsersCount = _userRepository.GetAllUsers().Count();
+            var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+            return View(viewModelPagedList);
         }
 
         public IActionResult UserDetails(string id)
@@ -111,15 +118,16 @@ namespace Shop.Controllers
             return RedirectToAction("AllUsers");
         }
 
-        public IActionResult EditUser(string id)
-        {
-            AppUser appUser = _userRepository.GetUserById(id);
-            if (appUser == null)
-            {
-                return View("Error");
-            }
-            AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
-            return View(appUserViewModel);
-        }
+        //public IActionResult EditUser(string id)
+        //{
+        //    AppUser appUser = _userRepository.GetUserById(id);
+        //    if (appUser == null)
+        //    {
+        //        return View("Error");
+        //    }
+        //    AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
+        //    return View(appUserViewModel);
+        //}
+
     }
 }

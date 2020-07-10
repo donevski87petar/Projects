@@ -23,11 +23,10 @@ namespace Shop.Controllers
             _mapper = mapper;
         }
 
-
         public IActionResult AllProducts(int? page)
         {
             var pageNumber = page ?? 1;
-            int pageSize = 2;
+            int pageSize = 5;
 
             var modelList = _productRepository.GetAll();
             var viewModelList = new List<ProductViewModel>();
@@ -36,8 +35,10 @@ namespace Shop.Controllers
                 viewModelList.Add(_mapper.Map<ProductViewModel>(item));
             }
 
-            var model = viewModelList.ToPagedList(pageNumber, pageSize);
-            return View(model);
+            ViewBag.ProductsCount = _productRepository.GetAll().Count();
+
+            var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+            return View(viewModelPagedList);
         }
 
         public IActionResult ProductDetails(int id)
@@ -143,8 +144,9 @@ namespace Shop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddProductImage(ProductImageViewModel productImageViewModel)
+        public IActionResult AddProductImage(ProductImageViewModel productImageViewModel , int id)
         {
+            Product product = _productRepository.GetById(id);
             var productImage = _mapper.Map<ProductImage>(productImageViewModel);
 
             if (ModelState.IsValid)
@@ -164,7 +166,7 @@ namespace Shop.Controllers
                     productImage.Photo = p1;
                 }
                 _productRepository.AddProductImage(productImage);
-                return RedirectToAction("ProductImageDetails" , new { id = productImage.ImageId});
+                return RedirectToAction("AddProductImage" , new { id = product.ProductId});
             }
             return View(productImage);
         }

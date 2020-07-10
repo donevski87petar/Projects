@@ -6,3 +6,4 @@ C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.
 C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.dll
 C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.pdb
 C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.csproj.CoreCompileInputs.cache
+C:\Users\Petar\source\repos\Shop\Shop.DomainModels\obj\Debug\netcoreapp3.1\Shop.DomainModels.csprojAssemblyReference.cache

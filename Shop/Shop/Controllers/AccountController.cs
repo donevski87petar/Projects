@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shop.DomainModels.Models;
@@ -91,12 +92,12 @@ namespace Shop.Controllers
             }
             return View(obj);
         }
-
         public IActionResult Logout()
         {
             _signInManager.SignOutAsync().Wait();
             return RedirectToAction("Index", "Home");
         }
+
 
 
 

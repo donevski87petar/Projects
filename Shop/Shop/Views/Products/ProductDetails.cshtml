@@ -1,14 +1,14 @@
 ﻿@model Shop.ViewModels.ProductViewModel
 
 @{
-    ViewData["Title"] = "ProductDetails";
+    ViewData["Title"] = "Product Details";
 }
 
-<h1>Product Details</h1>
+<h1 class="text-center">Product Details</h1>
 
+<hr />
 
-<div>
-
+<div class="text-center">
     @{
         foreach (var img in Model.Images)
         {
@@ -20,30 +20,11 @@
             }
         }
     }
-
 </div>
 
-
-
-
-
-@*<div class="text-center">
-        @{
-            foreach (var img in Model.Images)
-            {
-                @if (img != null)
-                {
-                    var base64 = Convert.ToBase64String(img.Photo);
-                    var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                    <img src="@finalStr" width="200" height="200" />
-                }
-            }
-        }
-    </div>*@
+<br /><br />
 
 <div>
-    <h4>Product</h4>
-    <hr />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Category)
@@ -90,6 +71,7 @@
     </dl>
 </div>
 <div>
+    <a asp-controller="Products" asp-action="AddProductImage" asp-route-id="@Model.ProductId">Add Images</a> <br />
     <a asp-action="EditProduct" asp-route-id="@Model.ProductId">Edit Product</a> |
     <a asp-action="AllProducts">Back to Products</a>
 </div>
