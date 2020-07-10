@@ -193,3 +193,6 @@ C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.csproj.CoreCo
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Shop.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\AllUsers.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserDetails.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\RemoveUser.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\AddUser.cshtml.g.cs

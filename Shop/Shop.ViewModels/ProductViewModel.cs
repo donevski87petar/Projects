@@ -12,8 +12,10 @@ namespace Shop.ViewModels
         [Key]
         public int ProductId { get; set; }
         public Category Category { get; set; }
+        [Display(Name = "Product Type")]
         public ProductType ProductType { get; set; }
         public Brand Brand { get; set; }
+        [Display(Name = "Model Name")]
         public string ModelName { get; set; }
         public string Description { get; set; }
         public string Size { get; set; }

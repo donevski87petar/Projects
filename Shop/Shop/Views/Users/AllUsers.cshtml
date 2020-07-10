@@ -7,14 +7,11 @@
 <h1>AllUsers</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddUser">Add New User</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
             </th>
@@ -32,10 +29,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    @Html.HiddenFor(modelItem => item.Id)
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FullName)
             </td>
@@ -49,9 +44,8 @@
                 @Html.DisplayFor(modelItem => item.BirthDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Details", "UserDetails", new {  id=item.Id }) |
+                @Html.ActionLink("Delete", "RemoveUser", new {  id=item.Id })
             </td>
         </tr>
 }
