@@ -185,5 +185,10 @@ namespace Shop.Controllers
             _productRepository.DeleteProductImage(id);
             return RedirectToAction("AllProducts" , "Products");
         }
+
+
+
+
+
     }
 }

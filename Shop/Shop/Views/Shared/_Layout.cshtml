@@ -38,18 +38,15 @@
                             </div>
                         </li>
 
-                        <li class="nav-item  text-dark">
-                            <div class="dropdown">
-                                <div class="dropdown-toggle" type="button" id="dropdownMenuYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <a class="nav-link">Admin panel</a>
-                                </div>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="nav-link text-dark" asp-controller="Products" asp-action="AllProducts">All Products</a>
-                                    <a class="dropdown-item nav-link" asp-controller="Products" asp-action="AddProduct">Add Product</a>
-                                    <a class="dropdown-item nav-link" asp-controller="Users" asp-action="AllUsers">All Users</a>
-                                    <a class="dropdown-item nav-link" asp-controller="Users" asp-action="AddUser">Add User</a>
-                                </div>
-                            </div>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Order" asp-action="MyOrder">My Orders</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="ShoppingCart" asp-action="CartDetails">
+                                Cart @if (@ViewBag.TotalItemsCount > 0)
+                                {<span class="badge badge-warning">(@ViewBag.TotalItemsCount)</span>}
+                            </a>
                         </li>
 
                         <li class="nav-item  text-dark">
@@ -78,6 +75,27 @@
                             </div>
                         </li>
 
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="ContactUs">Contact Us</a>
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item  text-dark">
+                                <div class="dropdown">
+                                    <div class="dropdown-toggle" type="button" id="dropdownMenuYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link">Admin panel</a>
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="nav-link text-dark" asp-controller="Order" asp-action="GetAllOrders">All Orders</a>
+                                        <a class="nav-link text-dark" asp-controller="Products" asp-action="AllProducts">All Products</a>
+                                        <a class="dropdown-item nav-link" asp-controller="Products" asp-action="AddProduct">Add Product</a>
+                                        <a class="dropdown-item nav-link" asp-controller="Users" asp-action="AllUsers">All Users</a>
+                                        <a class="dropdown-item nav-link" asp-controller="Users" asp-action="AddUser">Add User</a>
+                                    </div>
+                                </div>
+                            </li>
+                        }
 
                     </ul>
                 </div>

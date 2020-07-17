@@ -196,3 +196,11 @@ C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\UserDetails.cshtml.g.cs
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\RemoveUser.cshtml.g.cs
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Users\AddUser.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Petar\source\repos\Shop\Shop\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\ShoppingCart\CartDetails.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\Checkout.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\CheckoutComplete.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\MyOrder.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\GetAllOrders.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs

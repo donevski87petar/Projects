@@ -84,11 +84,15 @@ namespace Shop.Controllers
             {
                 var result = _signInManager.PasswordSignInAsync(obj.UserName, obj.Password,obj.RememberMe, false).Result;
 
+
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                ModelState.AddModelError("", "Invalid login!");
+                else
+                {
+                    ModelState.AddModelError("", "Invalid login!");
+                }
             }
             return View(obj);
         }

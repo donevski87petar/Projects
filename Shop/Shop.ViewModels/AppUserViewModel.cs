@@ -18,5 +18,6 @@ namespace Shop.ViewModels
         [Display(Name = "Birth Date")]
         public DateTime BirthDate { get; set; }
 
+
     }
 }

@@ -56,7 +56,7 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Brand)
                     </td>
-                    <td>
+                    <td class="text-center">
                         <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ModelName)</a>
                         <br />
                         @{
@@ -70,6 +70,15 @@
                                 }
                             }
                         }
+                        
+                        <form asp-action="AddToShoppingCart"
+                              asp-controller="ShoppingCart"
+                              asp-route-id="@item.ProductId"
+                              method="post">
+
+                            <button class="btn">Add to Cart</button>
+                        </form>
+
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Description)

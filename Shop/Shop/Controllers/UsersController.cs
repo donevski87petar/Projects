@@ -53,6 +53,7 @@ namespace Shop.Controllers
             {
                 return View("Error");
             }
+
             AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
 
             ViewBag.userRole = _userManager.GetRolesAsync(appUser).Result;
@@ -117,17 +118,6 @@ namespace Shop.Controllers
             _userRepository.DeleteUser(id);
             return RedirectToAction("AllUsers");
         }
-
-        //public IActionResult EditUser(string id)
-        //{
-        //    AppUser appUser = _userRepository.GetUserById(id);
-        //    if (appUser == null)
-        //    {
-        //        return View("Error");
-        //    }
-        //    AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
-        //    return View(appUserViewModel);
-        //}
 
     }
 }

@@ -10,5 +10,5 @@ C:\Users\Petar\source\repos\Shop\Shop.Services\bin\Debug\netcoreapp3.1\Shop.Doma
 C:\Users\Petar\source\repos\Shop\Shop.Services\bin\Debug\netcoreapp3.1\Shop.ViewModels.dll
 C:\Users\Petar\source\repos\Shop\Shop.Services\bin\Debug\netcoreapp3.1\Shop.DomainModels.pdb
 C:\Users\Petar\source\repos\Shop\Shop.Services\bin\Debug\netcoreapp3.1\Shop.ViewModels.pdb
-C:\Users\Petar\source\repos\Shop\Shop.Services\obj\Debug\netcoreapp3.1\Shop.Services.csproj.CoreCompileInputs.cache
 C:\Users\Petar\source\repos\Shop\Shop.Services\obj\Debug\netcoreapp3.1\Shop.Services.csproj.CopyComplete
+C:\Users\Petar\source\repos\Shop\Shop.Services\obj\Debug\netcoreapp3.1\Shop.Services.csproj.CoreCompileInputs.cache

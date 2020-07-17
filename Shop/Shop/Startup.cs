@@ -16,6 +16,7 @@ using Shop.DataAccess.Data.Repository.IRepository;
 using Shop.DomainModels.Models;
 using Shop.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 
 namespace Shop
 {
@@ -47,10 +48,18 @@ namespace Shop
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
 
+            services.AddScoped<IShoppingCartRepository>(sp => ShoppingCartRepository.GetCart(sp));////////////////
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();///////////////////////////////////
+
+            services.AddScoped<IOrderRepository, OrderRepository>();
+
+
 
             services.AddAutoMapper(typeof(Mappings));
 
 
+
+            services.AddMemoryCache();//////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -72,16 +81,15 @@ namespace Shop
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
             app.UseRouting();
-
 
 
 
             app.UseAuthentication(); 
             app.UseAuthorization(); 
 
-            IdentityDataInitializer.SeedData(userManager, roleManager); 
+
+            IdentityDataInitializer.SeedData(userManager, roleManager);
 
 
             app.UseEndpoints(endpoints =>

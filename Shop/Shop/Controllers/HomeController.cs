@@ -32,9 +32,14 @@ namespace Shop.Controllers
             AppUser user = _userManager.GetUserAsync(HttpContext.User).Result;
             if(user != null)
             {
-                TempData["WelcomeMessage"] = $"Welcome {user.UserName} !";
+                TempData["WelcomeMessage"] = $"You are logged in as {user.UserName} !";
             }
 
+            return View();
+        }
+
+        public IActionResult ContactUs()
+        {
             return View();
         }
 
