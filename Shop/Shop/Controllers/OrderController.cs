@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shop.DataAccess.Data.Repository.IRepository;
 using Shop.DomainModels.Models;
@@ -30,7 +31,7 @@ namespace Shop.Controllers
         }
 
 
-
+        [Authorize]
         public async Task<IActionResult> Checkout()
         {
             var cartItems = await _shoppingCartRepository.GetShoppingCartItemsAsync();
@@ -41,6 +42,7 @@ namespace Shop.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Checkout([FromForm]OrderViewModel orderVM)
         {
@@ -65,7 +67,7 @@ namespace Shop.Controllers
             return View("CheckoutComplete");
         }
 
-
+        [Authorize]
         public async Task<IActionResult> MyOrder(int? page)
         {
             var pageNumber = page ?? 1;
@@ -74,13 +76,21 @@ namespace Shop.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var orders = await _orderRepository.GetAllOrdersAsync(userId);
             orders.OrderBy(o => o.OrderPlacedTime);
-            var ordersPagedList = orders.ToPagedList(pageNumber, pageSize);
+
+            List<OrderViewModel> orderViewModels = new List<OrderViewModel>();
+            foreach (var item in orders)
+            {
+                orderViewModels.Add(_mapper.Map<OrderViewModel>(item));
+            }
+            
+            var orderViewModelsPagedList = orderViewModels.ToPagedList(pageNumber, pageSize);
 
             @ViewBag.OrdersCount = orders.Count();
 
-            return View(ordersPagedList);
+            return View(orderViewModelsPagedList);
         }
 
+        [Authorize(Roles="Administrator")]
         public async Task<IActionResult> GetAllOrders(int? page)
         {
             var pageNumber = page ?? 1;

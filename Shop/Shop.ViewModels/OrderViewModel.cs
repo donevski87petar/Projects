@@ -42,5 +42,7 @@ namespace Shop.ViewModels
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
+        public double OrderTotal { get; set; }
+
     }
 }

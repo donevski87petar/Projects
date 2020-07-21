@@ -1,25 +1,34 @@
-﻿@model Shop.ViewModels.ProductViewModel
+﻿@model Shop.ViewModels.HomeViewModel
 
 @{
     ViewData["Title"] = "Product Details";
 }
 
+    <h1 class="text-center">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.ModelName)</h1>
+
+<hr />
+
+<br />
 
 <div class="text-center">
     @{
-        foreach (var img in Model.Images)
+        if (Model.Images.Count > 0)
         {
-            @if (img != null)
+            foreach (var img in Model.Images)
             {
                 var base64 = Convert.ToBase64String(img.Photo);
                 var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
                 <img src="@finalStr" width="200" height="200" />
             }
         }
+        else
+        {
+            <img src="~/Images/no_image.png" width="300" height="300" />
+        }
     }
 </div>
 
-<br /><br />
+<br />
 
 <div>
     <dl class="row">
@@ -80,14 +89,5 @@
     </dl>
 </div>
 <div>
-    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
-    {
-        <a asp-controller="Products" asp-action="AddProductImage" asp-route-id="@Model.ProductId"><i class="fa fa-plus" aria-hidden="true"></i> Add Images</a>
-        <br />
-        <a asp-action="EditProduct" asp-route-id="@Model.ProductId"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Product</a>
-        <br />
-    }
-<a asp-controller="Products" asp-action="AllProducts"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+    <a asp-action="Index"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
 </div>
-
-

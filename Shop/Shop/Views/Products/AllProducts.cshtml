@@ -29,12 +29,6 @@
                 @Html.DisplayNameFor(model => model.ModelName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th></th>
@@ -60,39 +54,30 @@
                         <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ModelName)</a>
                         <br />
                         @{
-                            foreach (var img in item.Images)
+                            @if (item.Images.Count > 0)
                             {
-                                if (img != null)
+                                foreach (var img in item.Images)
                                 {
+
                                     var base64 = Convert.ToBase64String(img.Photo);
                                     var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
                                     <a href="~/Products/ProductImageDetails/@img.ImageId"><img src="@finalStr" width="75" height="75" /></a>
+
                                 }
                             }
-                        }
-                        
-                        <form asp-action="AddToShoppingCart"
-                              asp-controller="ShoppingCart"
-                              asp-route-id="@item.ProductId"
-                              method="post">
-
-                            <button class="btn">Add to Cart</button>
-                        </form>
-
+                            else
+                            {
+                                <img src="~/Images/no_image.png" width="75" height="75" />
+                            }
+                          }
+                        </td>
+                    <td>
+                        $ @Html.DisplayFor(modelItem => item.Price)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Size)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        <a asp-controller="Products" asp-action="EditProduct" asp-route-id="@item.ProductId">Edit Product</a> <br />
-                        <a asp-controller="Products" asp-action="RemoveProduct" asp-route-id="@item.ProductId">Delete Product</a> <br />
-                        <a asp-controller="Products" asp-action="AddProductImage" asp-route-id="@item.ProductId">Add Images</a> <br />
+                        <a asp-controller="Products" asp-action="EditProduct" asp-route-id="@item.ProductId"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a> <br />
+                        <a asp-controller="Products" asp-action="RemoveProduct" asp-route-id="@item.ProductId"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a> <br />
+                        <a asp-controller="Products" asp-action="AddProductImage" asp-route-id="@item.ProductId"><i class="fa fa-picture-o" aria-hidden="true"></i> Add Images</a> <br />
                     </td>
                 </tr>
             }

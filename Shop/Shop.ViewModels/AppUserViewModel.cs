@@ -17,7 +17,8 @@ namespace Shop.ViewModels
         public string Email { get; set; }
         [Display(Name = "Birth Date")]
         public DateTime BirthDate { get; set; }
-
+        [Display(Name = "Role")]
+        public string AppRole { get; set; }
 
     }
 }

@@ -44,9 +44,5 @@ namespace Shop.DomainModels.Models
         public string UserId { get; set; }
         public AppUser User { get; set; }
 
-        [Required]
-        [ForeignKey("OrderDetail")]
-        public List<OrderDetail> OrderDetails { get; set; }
-
     }
 }

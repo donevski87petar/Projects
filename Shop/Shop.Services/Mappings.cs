@@ -15,6 +15,7 @@ namespace Shop.Services
             CreateMap<ProductImage, ProductImageViewModel>().ReverseMap();
             CreateMap<AppUser, AppUserViewModel>().ReverseMap();
             CreateMap<Order, OrderViewModel>().ReverseMap();
+            CreateMap<Product, HomeViewModel>().ReverseMap();
         }
     }
 }

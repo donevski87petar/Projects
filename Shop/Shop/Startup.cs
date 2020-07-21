@@ -47,11 +47,10 @@ namespace Shop
 
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
-
-            services.AddScoped<IShoppingCartRepository>(sp => ShoppingCartRepository.GetCart(sp));////////////////
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IShoppingCartRepository>(sp => ShoppingCartRepository.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();///////////////////////////////////
 
-            services.AddScoped<IOrderRepository, OrderRepository>();
 
 
 
@@ -70,7 +69,8 @@ namespace Shop
         public void Configure(IApplicationBuilder app, 
                               IWebHostEnvironment env, 
                               UserManager<AppUser> userManager,
-                              RoleManager<AppRole> roleManager)
+                              RoleManager<AppRole> roleManager,
+                              ApplicationDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -89,7 +89,7 @@ namespace Shop
             app.UseAuthorization(); 
 
 
-            IdentityDataInitializer.SeedData(userManager, roleManager);
+            IdentityDataInitializer.SeedData(userManager, roleManager, dbContext);
 
 
             app.UseEndpoints(endpoints =>

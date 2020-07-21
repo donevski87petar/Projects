@@ -204,3 +204,4 @@ C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\MyOrder.cshtml.g.cs
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Order\GetAllOrders.cshtml.g.cs
 C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
+C:\Users\Petar\source\repos\Shop\Shop\obj\Debug\netcoreapp3.1\Razor\Views\Home\ProductDetails.cshtml.g.cs

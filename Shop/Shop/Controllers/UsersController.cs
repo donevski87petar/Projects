@@ -55,8 +55,13 @@ namespace Shop.Controllers
             }
 
             AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
-
-            ViewBag.userRole = _userManager.GetRolesAsync(appUser).Result;
+            //appUserViewModel.AppRole = 
+            var roles = _userManager.GetRolesAsync(appUser).Result;
+            foreach (var role in roles)
+            {
+                appUserViewModel.AppRole = role;
+            }
+            //ViewBag.userRole = _userManager.GetRolesAsync(appUser).Result;
 
             return View(appUserViewModel);
         }

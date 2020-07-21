@@ -14,9 +14,11 @@
 
           <div class="col-4"></div>
 
-          <div class="col-4">
+          <div class="col-4 border border-dark">
 
-              <h1 class="text-center">Register</h1>
+              <br />
+
+              <h1 class="text-center"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</h1>
 
               <br />
 
@@ -47,11 +49,14 @@
                           <td><input asp-for="BirthDate" /></td>
                       </tr>
                       <tr>
-                          <td colspan="2"><br /><input class="float-right" type="submit"value="Register" /></td>
+                          <td colspan="2"><br /><input class="btn btn-primary" type="submit"value="Register" /></td>
                       </tr>
                   </table>
                   <div asp-validation-summary="All"></div>
               </form>
+
+              <br />
+
           </div>
 
           <div class="col-4"></div>

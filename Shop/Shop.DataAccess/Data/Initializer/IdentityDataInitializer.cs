@@ -3,15 +3,160 @@ using Shop.DomainModels.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Shop.DomainModels.Enums;
+using Microsoft.EntityFrameworkCore.Internal;
+using System.Linq;
 
 namespace Shop.DataAccess.Data.Initializer
 {
     public static class IdentityDataInitializer
     {
-        public static void SeedData(UserManager<AppUser> userManager,RoleManager<AppRole> roleManager)
+        public static void SeedData(UserManager<AppUser> userManager,
+                                    RoleManager<AppRole> roleManager,
+                                    ApplicationDbContext dbContext)
         {
             SeedRoles(roleManager);
             SeedUsers(userManager);
+            SeedProducts(dbContext);
+        }
+
+        public static void SeedProducts(ApplicationDbContext dbContext)
+        {
+            var products = new List<Product>
+            {
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Nike Air Max 97",
+                    Price = 180
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Cortez",
+                    Price = 70
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Air VaporMax Plus",
+                    Price = 170
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Air Max ExoSense",
+                    Price = 150
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Air Max Tail Wind",
+                    Price = 120
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Air Zoom Pegasus",
+                    Price = 130
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "React Infinity",
+                    Price = 150
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Pegasus Trail 2",
+                    Price = 130
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "React Phantom Run",
+                    Price = 140
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Shoes,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Juniper Trail",
+                    Price = 120
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Hoodies,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Tech Fleece",
+                    Price = 100
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Hoodies,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "New York City Pullover",
+                    Price = 120
+                },
+                new Product
+                                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Hoodies,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "SB",
+                    Price = 80
+                },
+                new Product
+                                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Hoodies,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "React Phantom Run",
+                    Price = 140
+                }
+            };
+
+            if (!dbContext.Products.Any())
+            {
+                dbContext.Products.AddRange(products);
+                dbContext.SaveChanges();
+            }
         }
 
         public static void SeedUsers(UserManager<AppUser> userManager)
