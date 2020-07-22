@@ -43,7 +43,10 @@ namespace Shop.Controllers
         public IActionResult Index(int? page, string productType = null, string category = null, string searchTerm = null)
         {
             AppUser user = _userManager.GetUserAsync(HttpContext.User).Result;
-            ViewBag.queryString = HttpContext.Request.Query["searchTerm"];
+            ViewBag.productType = HttpContext.Request.Query["productType"];
+            ViewBag.category = HttpContext.Request.Query["category"];
+            ViewBag.searchTerm = HttpContext.Request.Query["searchTerm"];
+
             if (user != null)
             {
                 TempData["WelcomeMessage"] = $"You are logged in as {user.UserName}";
