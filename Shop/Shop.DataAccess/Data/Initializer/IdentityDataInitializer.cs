@@ -30,7 +30,7 @@ namespace Shop.DataAccess.Data.Initializer
                     ProductType = ProductType.Shoes,
                     Brand = Brand.Nike,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Nike Air Max 97",
+                    ModelName = "Pegasus",
                     Price = 180
                 },
                 new Product
@@ -44,56 +44,11 @@ namespace Shop.DataAccess.Data.Initializer
                 },
                 new Product
                 {
-                    Category = Category.Male,
-                    ProductType = ProductType.Shoes,
-                    Brand = Brand.Nike,
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Air VaporMax Plus",
-                    Price = 170
-                },
-                new Product
-                {
-                    Category = Category.Male,
-                    ProductType = ProductType.Shoes,
-                    Brand = Brand.Nike,
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Air Max ExoSense",
-                    Price = 150
-                },
-                new Product
-                {
-                    Category = Category.Male,
-                    ProductType = ProductType.Shoes,
-                    Brand = Brand.Nike,
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Air Max Tail Wind",
-                    Price = 120
-                },
-                new Product
-                {
-                    Category = Category.Female,
-                    ProductType = ProductType.Shoes,
-                    Brand = Brand.Nike,
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Air Zoom Pegasus",
-                    Price = 130
-                },
-                new Product
-                {
                     Category = Category.Female,
                     ProductType = ProductType.Shoes,
                     Brand = Brand.Nike,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
                     ModelName = "React Infinity",
-                    Price = 150
-                },
-                new Product
-                {
-                    Category = Category.Female,
-                    ProductType = ProductType.Shoes,
-                    Brand = Brand.Nike,
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Pegasus Trail 2",
                     Price = 130
                 },
                 new Product
@@ -102,17 +57,8 @@ namespace Shop.DataAccess.Data.Initializer
                     ProductType = ProductType.Shoes,
                     Brand = Brand.Nike,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "React Phantom Run",
-                    Price = 140
-                },
-                new Product
-                {
-                    Category = Category.Female,
-                    ProductType = ProductType.Shoes,
-                    Brand = Brand.Nike,
-                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "Juniper Trail",
-                    Price = 120
+                    ModelName = "Pegasus 36",
+                    Price = 150
                 },
                 new Product
                 {
@@ -129,27 +75,119 @@ namespace Shop.DataAccess.Data.Initializer
                     ProductType = ProductType.Hoodies,
                     Brand = Brand.Nike,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "New York City Pullover",
+                    ModelName = "Swoosh",
+                    Price = 120
+                },
+
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Hoodies,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Element",
+                    Price = 100
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Hoodies,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Essential",
+                    Price = 120
+                },
+
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.TShirts,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Futura",
+                    Price = 100
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.TShirts,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "Element",
                     Price = 120
                 },
                 new Product
-                                {
-                    Category = Category.Male,
-                    ProductType = ProductType.Hoodies,
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.TShirts,
                     Brand = Brand.Nike,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "SB",
-                    Price = 80
+                    ModelName = "Victory",
+                    Price = 100
                 },
                 new Product
-                                {
-                    Category = Category.Male,
-                    ProductType = ProductType.Hoodies,
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.TShirts,
                     Brand = Brand.Nike,
                     Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                    ModelName = "React Phantom Run",
-                    Price = 140
-                }
+                    ModelName = "Infinite",
+                    Price = 120
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Trousers,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "xxx",
+                    Price = 100
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Trousers,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "xxx",
+                    Price = 120
+                },
+                                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Trousers,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "xxx",
+                    Price = 100
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Trousers,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "xxx",
+                    Price = 120
+                },
+                new Product
+                {
+                    Category = Category.Male,
+                    ProductType = ProductType.Tights,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "xxx",
+                    Price = 100
+                },
+                new Product
+                {
+                    Category = Category.Female,
+                    ProductType = ProductType.Tights,
+                    Brand = Brand.Nike,
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                    ModelName = "xxx",
+                    Price = 120
+                },
             };
 
             if (!dbContext.Products.Any())

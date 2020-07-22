@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Shop.DataAccess.Data.Repository.IRepository;
+using Shop.DomainModels.Enums;
 using Shop.DomainModels.Models;
 using Shop.Models;
 using Shop.ViewModels;
@@ -38,31 +39,81 @@ namespace Shop.Controllers
     }
 
 
-        public IActionResult Index(int? page, string searchTerm = null)
+
+        public IActionResult Index(int? page, string productType = null, string category = null, string searchTerm = null)
         {
             AppUser user = _userManager.GetUserAsync(HttpContext.User).Result;
             ViewBag.queryString = HttpContext.Request.Query["searchTerm"];
             if (user != null)
             {
-                TempData["WelcomeMessage"] = $"You are logged in as {user.UserName} !";
+                TempData["WelcomeMessage"] = $"You are logged in as {user.UserName}";
             }
 
             ViewBag.TotalItemsCount = _shoppingCart.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
 
             var pageNumber = page ?? 1;
-            int pageSize = 8;
+            int pageSize = 6;
 
             if (string.IsNullOrEmpty(searchTerm))
             {
-                var modelList = _productRepository.GetAll();
-                var viewModelList = new List<HomeViewModel>();
-                foreach (var item in modelList)
+                if(productType == null && category == null)
                 {
-                    viewModelList.Add(_mapper.Map<HomeViewModel>(item));
-                }
+                    var modelList = _productRepository.GetAll();
+                    var viewModelList = new List<HomeViewModel>();
+                    foreach (var item in modelList)
+                    {
+                        viewModelList.Add(_mapper.Map<HomeViewModel>(item));
+                    }
 
-                var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
-                return View(viewModelPagedList);
+                    var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+                    return View(viewModelPagedList);
+                }
+                else
+                {
+                    if(category != null && productType != null)
+                    {
+                        var modelList = _productRepository.GetAll()
+                            .Where(p => p.ProductType.ToString() == productType && p.Category.ToString() == category);
+                        var viewModelList = new List<HomeViewModel>();
+                        foreach (var item in modelList)
+                        {
+                            viewModelList.Add(_mapper.Map<HomeViewModel>(item));
+                        }
+
+                        var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+                        return View(viewModelPagedList);
+                    }
+                    else if(category == null && productType != null)
+                    {
+                        var modelList = _productRepository.GetAll()
+                            .Where(p => p.ProductType.ToString() == productType);
+                        var viewModelList = new List<HomeViewModel>();
+                        foreach (var item in modelList)
+                        {
+                            viewModelList.Add(_mapper.Map<HomeViewModel>(item));
+                        }
+
+                        var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+                        return View(viewModelPagedList);
+                    }
+                    else if (category != null && productType == null)
+                    {
+                        var modelList = _productRepository.GetAll()
+                              .Where(p => p.Category.ToString() == category);
+                        var viewModelList = new List<HomeViewModel>();
+                        foreach (var item in modelList)
+                        {
+                            viewModelList.Add(_mapper.Map<HomeViewModel>(item));
+                        }
+
+                        var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+                        return View(viewModelPagedList);
+                    }
+                    else
+                    {
+                        return View("Error");
+                    }
+                }
             }
             else
             {
@@ -71,7 +122,7 @@ namespace Shop.Controllers
                     p.Brand.ToString().ToLower().Contains(searchTerm.ToLower()) ||
                     p.Category.ToString().ToLower().Contains(searchTerm.ToLower()) ||
                     p.ProductType.ToString().ToLower().Contains(searchTerm.ToLower()));
-                
+
                 var viewModelList = new List<HomeViewModel>();
                 foreach (var item in modelList)
                 {
@@ -81,34 +132,7 @@ namespace Shop.Controllers
                 var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
                 return View(viewModelPagedList);
             }
-
-
         }
-
-
-        //public IActionResult Index(int? page , string searchTerm)
-        //{
-        //    AppUser user = _userManager.GetUserAsync(HttpContext.User).Result;
-        //    if(user != null)
-        //    {
-        //        TempData["WelcomeMessage"] = $"You are logged in as {user.UserName} !";
-        //    }
-
-        //    ViewBag.TotalItemsCount = _shoppingCart.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
-
-        //    var pageNumber = page ?? 1;
-        //    int pageSize = 8;
-
-        //    var modelList = _productRepository.GetAll();
-        //    var viewModelList = new List<HomeViewModel>();
-        //    foreach (var item in modelList)
-        //    {
-        //        viewModelList.Add(_mapper.Map<HomeViewModel>(item));
-        //    }
-
-        //    var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
-        //    return View(viewModelPagedList);
-        //}
 
         public IActionResult ProductDetails(int id)
         {
@@ -127,8 +151,6 @@ namespace Shop.Controllers
 
             return View();
         }
-
-
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
