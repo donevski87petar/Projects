@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Shop.DataAccess.Data.Repository.IRepository;
+using Shop.DomainModels.Enums;
 using Shop.DomainModels.Models;
 using Shop.ViewModels;
 
@@ -20,9 +21,13 @@ namespace Shop.Controllers
             _shoppingCart = shoppingCart;
         }
 
+
+
+
         public async Task<IActionResult> CartDetails()
         {
-            var items = await _shoppingCart.GetShoppingCartItemsAsync();
+            IEnumerable<ShoppingCartItem> items = await _shoppingCart.GetShoppingCartItemsAsync();
+
             var shoppingCartCountTotal = await _shoppingCart.GetCartCountAndTotalAmmountAsync();
 
             var shoppingCartViewModel = new ShoppingCartViewModel
@@ -37,8 +42,11 @@ namespace Shop.Controllers
             return View(shoppingCartViewModel);
         }
 
+
+
+
         [HttpPost]
-        public async Task<IActionResult> AddToShoppingCart(int id)
+        public async Task<IActionResult> AddToShoppingCart(int id )
         {
             Product selectedProduct =  _productRepository.GetById(id);
 

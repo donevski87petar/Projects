@@ -7,146 +7,179 @@
 }
 
 
-    <div class="container text-center">
+<div class="container text-center">
 
-        <div class="row text-dark">
-            <div class="col-sm-12">
-                <div class="float-right">
+    @*<div class="row">
+            <div class="col-sm-4">
+
                     @{
                         if (TempData["WelcomeMessage"] != null)
                         {
-                            <h5>@TempData["WelcomeMessage"]</h5>
+                            <div class="alert-success">
+                                <p>@TempData["WelcomeMessage"]</p>
+                            </div>
                         }
                         else
                         {
-                            <h5>Welcome guest , please login or register. </h5>
-                        }
-                    }
-                </div>
-            </div>
-        </div>
-
-        <br />
-
-
-
-        <div class="row">
-            <div class="col-sm-3 card" style="height:512px; background-color:whitesmoke;">
-                <div class="col-sm-12">
-
-                    <br />
-
-                    <h4 class="text-center"><b>Filters</b></h4>
-
-                    <br /><br />
-
-                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-                    {
-                        <div>
-                            <h5>Select Gender</h5>
-
-                            @Html.DropDownList("category",
-                            new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.Category))), "All",
-                            new { @class = "inpField" })
-
-
-                            <br /><br />
-
-
-                            <h5>Select Product Type</h5>
-
-                            @Html.DropDownList("productType",
-                            new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.ProductType))), "All",
-                            new { @class = "inpField" })
-
-                            <br /><br /><br /><br />
-
-                            <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="btn btn-primary" />
-
-
-                            <br /><br /><br /><br /><br />
-
-                            <small class="text-muted">&copy; Petar Donevski - 2020 - </small>
-
-                        </div>
-                    }
-
-
-
-                </div>
-            </div>
-
-            <div class="col-sm-9">
-                <div class="row">
-                    @if (Model != null)
-                    {
-                        foreach (var product in Model)
-                        {
-                            <div class="col-sm-4">
-                                <div class="card cardProduct">
-                                    @if (product.Images.Count > 0)
-                                    {
-
-                                        var base64 = Convert.ToBase64String(product.Images[0].Photo);
-                                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-
-                                        <a href="~/Home/ProductDetails/@product.ProductId">
-                                            <img src="@finalStr" class="responsiveImg" />
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        <img src="~/Images/no_image.png" />
-                                    }
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <a href="~/Home/ProductDetails/@product.ProductId">@product.ModelName</a>
-                                        </h5>
-                                        <hr />
-                                        <b>@product.Brand</b>
-                                        <br />
-                                        <b>@product.Price $</b>
-                                        <p class="card-text">
-                                        </p>
-                                        <p class="card-text"><small class="text-muted">@product.Category @product.ProductType</small></p>
-                                    </div>
-                                </div>
+                            <div class="alert-info">
+                                <p>Welcome guest , please login or register. </p>
                             </div>
                         }
                     }
-                </div>
+
+            </div>
+        </div>*@
+
+    <br />
+
+
+
+    <div class="row">
+        <div class="col-sm-3 card" style="height:515px;">
+            <div class="col-sm-12">
+
+                <br />
+
+                <h4 class="text-center"><b>Filters</b></h4>
+
+                <br /><br />
+
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                {
+                    <div>
+                        <h5>Select Gender</h5>
+
+                        @Html.DropDownList("category",
+                        new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.Category))), "All",
+                        new { @class = "inpField box-shadow" })
+
+
+                        <br /><br />
+
+
+                        <h5>Select Product Type</h5>
+
+                        @Html.DropDownList("productType",
+                        new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.ProductType))), "All",
+                        new { @class = "inpField box-shadow" })
+
+                        <br /><br /><br /><br />
+
+                        <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="btn btn-primary box-shadow" />
+
+
+                        <br /><br /><br /><br /><br />
+
+                        <small class="text-muted">&copy; Petar Donevski - 2020 - </small>
+
+                    </div>
+                }
+
+
 
             </div>
         </div>
 
-        <br />
+        <div class="col-sm-9" id="loadingDiv">
+            <br /><br /><br /><br /><br /><br /><br />
+            <div class="row" style="justify-content: center">
+                 <img src="~/Images/loading-gif.gif" width="100" id="loadingGif"/>
+            </div>
+        </div>
 
+        <div class="col-sm-9" id="productsDiv">
 
-        @*Pagination*@
-        <div class="row">
-            <div class="col-sm-5"></div>
-            <div class="col-sm-2">
-                @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new
-           {
-               page = page,
-               productType = @ViewBag.productType,
-               category = @ViewBag.category,
-               searchTerm = @ViewBag.searchTerm
-           }),
-        new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
-        {
-            LiElementClasses = new string[] { "page-item" },
-            PageClasses = new string[] { "page-link" }
-        })
+            <div class="row">
+
+                @if (Model.Count() > 0)
+                {
+                    foreach (var product in Model)
+                    {
+                        <div class="col-sm-3">
+                            <div class="card cardProduct">
+                                @if (product.Images.Count > 0)
+                                {
+
+                                    var base64 = Convert.ToBase64String(product.Images[0].Photo);
+                                    var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+
+                                    <a href="~/Home/ProductDetails/@product.ProductId">
+                                        <img src="@finalStr" class="responsiveImg" />
+                                    </a>
+                                }
+                                else
+                                {
+                                    <img src="~/Images/no_image.png" />
+                                }
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="~/Home/ProductDetails/@product.ProductId">@product.ModelName</a>
+                                    </h5>
+                                    <hr />
+                                    <b>$ @product.Price</b>
+                                    <p><b>@product.Brand</b></p>
+                                    <p class="card-text">
+                                    </p>
+                                    <p class="card-text"><small class="text-muted">@product.Category @product.ProductType</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-sm-12">
+                        <br /><br /><br /><br /><br /><br /><br />
+                        <div class="row" style="justify-content: center">
+                            <h2>Oops! No products to display!</h2>
+                        </div>
+                    </div>
+                }
 
             </div>
-            <div class="col-sm-5"></div>
+
         </div>
-        @*Pagination*@
     </div>
 
+    <br />
+
+
+    @*Pagination*@
+    <div class="row" style="justify-content:center">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new
+       {
+           page = page,
+           productType = @ViewBag.productType,
+           category = @ViewBag.category,
+           searchTerm = @ViewBag.searchTerm
+       }),
+    new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
+    {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    })
+    </div>
+    @*Pagination*@
+</div>
 
 
 
 
 
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#productsDiv").hide();
+
+
+        setTimeout(function () {
+            $("#loadingDiv").hide();
+            $("#productsDiv").show();
+        }, 750);
+
+
+    })
+
+</script>

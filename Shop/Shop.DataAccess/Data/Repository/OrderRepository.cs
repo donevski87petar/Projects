@@ -33,21 +33,12 @@ namespace Shop.DataAccess.Data.Repository
             var shoppingCartItems = await _shoppingCartRepository.GetShoppingCartItemsAsync();
             order.OrderTotal = (await _shoppingCartRepository.GetCartCountAndTotalAmmountAsync()).TotalAmmount;
 
-            //await _context.OrderDetails.AddRangeAsync(shoppingCartItems.Select(e => new OrderDetail
-            //{
-            //    Qty = e.Qty,
-            //    ProductName = e.Product.ModelName,
-            //    OrderId = order.Id,
-            //    Price = e.Product.Price
-            //}));
-
             await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Order>> GetAllOrdersAsync()
         {
             return await _context.Orders
-                //.Include(e => e.OrderDetails)
                 .Select(e => new Order
                 {
                     OrderPlacedTime = e.OrderPlacedTime,
@@ -70,7 +61,6 @@ namespace Shop.DataAccess.Data.Repository
                    .Select(e => new Order
                    {
                        OrderPlacedTime = e.OrderPlacedTime,
-
                        FullName = e.FullName,
                        Address = e.Address,
                        City = e.City,

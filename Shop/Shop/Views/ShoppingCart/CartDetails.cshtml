@@ -8,77 +8,93 @@
 @if (Model.ShoppingCartItems?.Count() <= 0)
 {
 <br />
-                <h3 class="text-center">Opps! Your Cart is empty!</h3> }
-                            else
-                            {
-                <br />
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Model</th>
-                                            <th>Brand</th>
-                                            <th>Quantity</th>
-                                            <th>Price</th>
-                                            <th>Subtotal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.ShoppingCartItems)
-                                        {
+<h2 class="text-center">Oops! Your Cart is empty!</h2>
+ }
+            else
+            {
+<br />
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>@item.Product.ModelName</td>
-                            <td>@item.Product.Brand</td>
+                            <th></th>
+                            <th>Model</th>
+                            <th>Brand</th>
+                            <th>Product Type</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.ShoppingCartItems)
+                        {
+        <tr>
+            <td>
+                @if (item.Product.Images.Count > 0)
+                {
+
+                    var base64 = Convert.ToBase64String(@item.Product.Images[0].Photo);
+                    var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+<img src="@finalStr" width="60" /> }
+                    else
+                    {
+<img src="~/Images/no_image.png" width="60" />}
+            </td>
+            <td>@item.Product.ModelName</td>
+            <td>@item.Product.Brand</td>
+            <td>@item.Product.ProductType</td>
+            <td>
+                <div class="row">
+                    <form asp-action="RemoveFromShoppingCart"
+                          asp-controller="ShoppingCart"
+                          asp-route-Id="@item.ProductId"
+                          method="post">
+                        <button class="btn btn-link" style="width:25px;" aria-hidden="true"><b>-</b></button>
+                    </form>
+
+                    <span style="padding:1px 10px">@item.Qty</span>
+
+                    <form asp-action="AddToShoppingCart"
+                          asp-controller="ShoppingCart"
+                          asp-route-Id="@item.ProductId"
+                          method="post">
+                        <button class="btn btn-link" style="width:25px;" aria-hidden="true"><b>+</b></button>
+                    </form>
+                </div>
+
+            </td>
+            <td>@item.Product.Price.ToString("c")</td>
+            <td>@((item.Product.Price * item.Qty).ToString("c"))</td>
+        </tr>
+}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"></td>
+                            <td><b>Grand Total:</b></td>
+                            <td><b>@Model.ShoppingCartTotal.ToString("c")</b></td>
+                        </tr>
+
+                        <tr style="border:0">
                             <td>
-
-                                <div class="row">
-                                    <form asp-action="RemoveFromShoppingCart"
-                                          asp-controller="ShoppingCart"
-                                          asp-route-Id="@item.ProductId"
-                                          method="post">
-                                        <button class="btn btn-link" style="width:25px;" aria-hidden="true"><b>-</b>@*<i class="fa fa-minus" aria-hidden="true"></i>*@</button>
-                                    </form>
-
-                                    <span style="padding:1px 10px">@item.Qty</span>
-
-                                    <form asp-action="AddToShoppingCart"
-                                          asp-controller="ShoppingCart"
-                                          asp-route-Id="@item.ProductId"
-                                          method="post">
-                                        <button class="btn btn-link" style="width:25px;" aria-hidden="true"><b>+</b>@*<i class="fa fa-plus" aria-hidden="true"></i>*@</button>
-                                    </form>
-                                </div>
+                                <form asp-action="RemoveAllCart" method="post">
+                                    <button class="btn btn-link text-dark" asp-action="RemoveAllCart">
+                                        <i class="fa fa-times" aria-hidden="true"></i>
+                                        Clear Cart
+                                    </button>
+                                </form>
 
                             </td>
-                            <td>@item.Product.Price.ToString("c")</td>
-                            <td>@((item.Product.Price * item.Qty).ToString("c"))</td>
-                        </tr>}
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="4"><b>Grand Total: </b></td>
-                                            <td><b>@Model.ShoppingCartTotal.ToString("c")</b></td>
-                                        </tr>
+                            <td colspan="4"></td>
+                            <td class="text-center">
+                                <a class="float-right" asp-controller="Order" asp-action="Checkout">
+                                    <i class="fa fa-check" aria-hidden="true"></i> Checkout
+                                </a>
+                            </td>
+                        </tr>
 
-                                        <tr style="border:0">
-                                            <td>
-                                                <form asp-action="RemoveAllCart" method="post">
-                                                    <button class="btn btn-link text-dark" asp-action="RemoveAllCart">
-                                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                                        Clear Cart
-                                                    </button>
-                                                </form>
-
-                                            </td>
-                                            <td colspan="2"></td>
-                                            <td class="text-center">
-                                                <a class="float-right" asp-controller="Order" asp-action="Checkout">
-                                                    <i class="fa fa-check" aria-hidden="true"></i> Checkout
-                                                </a>
-                                            </td>
-                                        </tr>
-
-                                    </tfoot>
-                                </table>
+                    </tfoot>
+                </table>
 }
 
 
@@ -87,3 +103,5 @@
 <a asp-controller="Home" asp-action="Index"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
 
 <br />
+
+

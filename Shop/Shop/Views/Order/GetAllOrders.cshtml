@@ -6,7 +6,7 @@
     ViewData["Title"] = "All Orders";
 }
 
-<h1 class="text-center">All Orders</h1>
+<h1 class="text-center"><i class="fa fa-lock" aria-hidden="true"></i> All Orders</h1>
 
 
 <table class="table">
@@ -74,9 +74,7 @@
 <br />
 
 @*Pagination*@
-<div class="row">
-    <div class="col-5"></div>
-    <div class="col-1">
+<div class="row" style="justify-content:center">
         @Html.PagedListPager((IPagedList)Model, page => Url.Action("AllOrders", new { page = page }),
         new X.PagedList.Mvc.Core.Common.PagedListRenderOptions
             {
@@ -85,7 +83,5 @@
                 LiElementClasses = new[] { "page-item" },
                 PageClasses = new[] { "page-link" },
             })
-    </div>
-    <div class="col-6"></div>
 </div>
 @*Pagination*@

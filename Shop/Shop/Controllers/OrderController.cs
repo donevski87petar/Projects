@@ -54,6 +54,7 @@ namespace Shop.Controllers
 
             var cartItems = await _shoppingCartRepository.GetShoppingCartItemsAsync();
 
+
             if (cartItems?.Count() <= 0)
             {
                 ModelState.AddModelError("", "Your Cart is empty. Please add products before checkout");
@@ -75,6 +76,7 @@ namespace Shop.Controllers
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var orders = await _orderRepository.GetAllOrdersAsync(userId);
+
             orders.OrderBy(o => o.OrderPlacedTime);
 
             List<OrderViewModel> orderViewModels = new List<OrderViewModel>();

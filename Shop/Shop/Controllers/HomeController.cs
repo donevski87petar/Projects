@@ -55,7 +55,7 @@ namespace Shop.Controllers
             ViewBag.TotalItemsCount = _shoppingCart.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
 
             var pageNumber = page ?? 1;
-            int pageSize = 6;
+            int pageSize = 8;
 
             if (string.IsNullOrEmpty(searchTerm))
             {

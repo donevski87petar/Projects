@@ -1,63 +1,83 @@
 ﻿@model Shop.ViewModels.AppUserViewModel
 
 @{
-    ViewData["Title"] = "UserDetails";
+    ViewData["Title"] = "User Details";
 }
 
-<h1 class="text-center">User Details</h1>
+<h1 class="text-center"><i class="fa fa-lock" aria-hidden="true"></i> User Details</h1>
 
-<hr />
-
-<div class="row">
-
-    <div class="col-sm-4"></div>
-
-    <div class="col-sm-4">
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Id)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Id)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.FullName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.FullName)
-            </dd>
-            <dt class="col-sm-2">
+<table class="table">
+    <thead>
+        @Html.HiddenFor(model => model.Id)
+        <tr>
+            <th>
                 @Html.DisplayNameFor(model => model.UserName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.UserName)
-            </dd>
-            <dt class="col-sm-2">
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Email)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Email)
-            </dd>
-            <dt class="col-sm-2">
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.BirthDate)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.BirthDate)
-            </dd>
-            <dt class="col-sm-2">
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AppRole)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.AppRole)
-            </dd>
-        </dl>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AppRole)
+                </td>
+            </tr>
+    </tbody>
+</table>
 
-        <div>
-            <a asp-action="AllUsers"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
-        </div>
-    </div>
+<br />
 
-    <div class="col-sm-4"></div>
 
-</div>
+
+<br />
+
+<a asp-controller="Home" asp-action="Index"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

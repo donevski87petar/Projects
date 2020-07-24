@@ -34,6 +34,13 @@
                             </a>
                         </li>
 
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Order" asp-action="MyOrder"><i class="fa fa-truck" aria-hidden="true"></i> My Orders</a>
+                            </li>
+                        }
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="ContactUs"><i class="fa fa-envelope" aria-hidden="true"></i> Contact Us</a>
                         </li>
@@ -56,22 +63,22 @@
                             </li>
                         }
 
-                    <li class="nav-item text-dark">
-                        <form method="get">
-                            <div class="container h-100">
-                                <div class="d-flex justify-content-center h-100">
-                                    <div class="searchbar">
+                        <li class="nav-item text-dark">
+                            <form method="get">
+                                <div class="container h-100">
+                                    <div class="d-flex justify-content-center h-100">
+                                        <div class="searchbar">
 
-                                        <input class="search_input" type="text" name="searchTerm" placeholder="Search...">
-                                        <button type="submit" class="search_icon" style="height:40px;"><i class="fas fa-search"></i></button>
+                                            <input class="search_input" type="text" name="searchTerm" placeholder="Search...">
+                                            <button type="submit" class="search_icon" style="height:40px;"><i class="fas fa-search"></i></button>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </li>
+                            </form>
+                        </li>
 
-                        <li class="nav-item  text-dark">
+                        <li class="nav-item text-dark">
                             <div class="dropdown">
                                 <div class="dropdown-toggle" type="button" id="dropdownMenuYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if (User.Identity.IsAuthenticated)
@@ -91,7 +98,6 @@
                                     }
                                     else
                                     {
-                                        <a class="nav-link" asp-controller="Order" asp-action="MyOrder">My Orders</a>
                                         <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
                                     }
                                 </div>
@@ -110,7 +116,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-dark bg-warning box-shadow">
+    <footer class="border-top footer text-dark box-shadow">
         <div class="container text-center">
             &copy;Petar Donevski - 2020 - Shop
         </div>

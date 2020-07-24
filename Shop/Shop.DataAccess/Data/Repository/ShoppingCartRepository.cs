@@ -50,7 +50,6 @@ namespace Shop.DataAccess.Data.Repository
         public async Task<int> AddToCartAsync(Product product, int qty = 1)
         {
             return await AddOrRemoveCart(product, qty);
-
         }
 
         public async Task<int> RemoveFromCartAsync(Product product)
@@ -63,6 +62,7 @@ namespace Shop.DataAccess.Data.Repository
             ShoppingCartItems = ShoppingCartItems ?? await _context.ShoppingCartItems
                 .Where(e => e.ShoppingCartId == Id)
                 .Include(e => e.Product)
+                .Include(e => e.Product.Images)
                 .ToListAsync();
 
             return ShoppingCartItems;
