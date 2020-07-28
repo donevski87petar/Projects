@@ -4,77 +4,89 @@
     ViewData["Title"] = "Product Details";
 }
 
-<h1 class="text-center">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.ModelName)</h1>
 
-<hr />
 
-<br />
 
-<div id="loadingDiv">
-    <div class="row" style="justify-content: center">
-        <img src="~/Images/loading-gif.gif" width="100" id="loadingGif" />
-    </div>
-</div>
 
-<div class="text-center" id="imagesDiv">
-    @{
-        if (Model.Images.Count > 0)
-        {
-            foreach (var img in Model.Images)
-            {
-                var base64 = Convert.ToBase64String(img.Photo);
-                var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                <img src="@finalStr" width="350" class="magniflier" />
+    <div class="card">
+
+        <br />
+
+        <h1 class="text-center">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.ModelName)</h1>
+
+        <hr />
+
+        <br />
+        <div id="loadingDiv">
+            <div class="row" style="justify-content: center">
+                <img src="~/Images/loading-gif.gif" width="100" id="loadingGif" />
+            </div>
+        </div>
+
+        <div class="text-center" id="imagesDiv">
+            @{
+                if (Model.Images.Count > 0)
+                {
+                    foreach (var img in Model.Images)
+                    {
+                        var base64 = Convert.ToBase64String(img.Photo);
+                        var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
+                        <img src="@finalStr" width="350" class="magniflier" />
+                    }
+                }
+                else
+                {
+                    <img src="~/Images/no_image.png" width="350" />
+                }
             }
-        }
-        else
-        {
-            <img src="~/Images/no_image.png" width="350" />
-        }
-    }
-</div>
+        </div>
 
-<br />
+        <br />
 
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ProductType)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ProductType)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ModelName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ModelName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            $ @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
+        <div>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ProductType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ProductType)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Brand)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Brand)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ModelName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ModelName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    $ @Html.DisplayFor(model => model.Price)
+                </dd>
+
+            </dl>
+        </div>
+
+
+        @*<dt class="col-sm-2">
             Add to cart
         </dt>
         <dd class="col-sm-10">
@@ -85,12 +97,22 @@
 
                 <button class="cartButton"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
             </form>
-        </dd>
-    </dl>
-</div>
+        </dd>*@
+    <div class="text-center">
+        <form asp-action="AddToShoppingCart"
+              asp-controller="ShoppingCart"
+              asp-route-id="@Model.ProductId"
+              method="post">
 
-<div>
-    <a asp-action="Index"><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</a>
+            <button class="btn btn-primary" style="width:200px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to Cart</button>
+        </form>
+        <br />
+    </div>
+
+    </div>
+
+<div class="text-center"> 
+    <a asp-controller="Home" asp-action="Index"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
 </div>
 
 

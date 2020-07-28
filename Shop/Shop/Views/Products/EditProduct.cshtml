@@ -5,15 +5,20 @@
     ViewData["Title"] = "EditProduct";
 }
 
-<h1 class="text-center">Edit Product</h1>
 
-<hr />
 
 <div class="row">
 
     <div class="col-md-3"></div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 card">
+
+        <br />
+
+        <h1 class="text-center">Edit Product</h1>
+
+        <hr />
+
         <form asp-action="EditProduct">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ProductId" />
@@ -52,7 +57,7 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group text-center">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -62,7 +67,7 @@
 
 </div>
 
-    <div>
-        <a asp-controller="Products" asp-action="AllProducts">Back</a>
-    </div>
+<div class="text-center">
+    <a asp-controller="Products" asp-action="AllProducts"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back  </a>
+</div>
 
