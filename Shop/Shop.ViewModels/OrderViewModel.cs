@@ -9,15 +9,15 @@ namespace Shop.ViewModels
 {
     public class OrderViewModel
     {
-        public int Id { get; set; }
+        public int OrderId { get; set; }
 
         [Required]
-        [Display(Name = "Order placed")]
+        [Display(Name = "Date/Time")]
         public DateTime OrderPlacedTime { get; set; }
 
         [StringLength(255)]
         [Required]
-        [Display(Name = "Full Name")]
+        [Display(Name = "Customer Name")]
         public string FullName { get; set; }
 
         [StringLength(255)]
@@ -42,7 +42,12 @@ namespace Shop.ViewModels
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
+        [Display(Name = "Order Total")]
         public double OrderTotal { get; set; }
 
+        [Display(Name = "Ordered Items")]
+        public ICollection<OrderItem> OrderItems { get; set; }
+
     }
+
 }

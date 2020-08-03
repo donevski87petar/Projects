@@ -71,8 +71,8 @@ namespace Shop.DataAccess.Data.Repository
         public async Task ClearCartAsync()
         {
             var shoppingCartItems = _context
-                .ShoppingCartItems
-                .Where(s => s.ShoppingCartId == Id);
+                .ShoppingCartItems;
+                //.Where(s => s.ShoppingCartId == Id);
 
             _context.ShoppingCartItems.RemoveRange(shoppingCartItems);
 

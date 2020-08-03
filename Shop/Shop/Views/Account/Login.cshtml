@@ -11,56 +11,21 @@
 <br />
 <br />
 
-@*<div class="row">
-
-    <div class="col-4"></div>
-
-    <div class="col-4 card">
-
-        <br />
-
-        <h1 class="text-center"><i class="fa fa-user" aria-hidden="true"></i> Login</h1>
-        <hr />
-        <br />
-
-        <form asp-controller="Account" asp-action="Login" method="post">
-            <table style="width:100%">
-                <tr>
-                    <td><label asp-for="UserName" style="width:100%;"></label></td>
-                    <td><input asp-for="UserName" style="width:100%;"/></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="Password" style="width:100%;"></label></td>
-                    <td><input asp-for="Password" style="width:100%;"/></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="RememberMe" style="width:100%;"></label></td>
-                    <td><input asp-for="RememberMe" style="width:100%;"/></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><br /><input class="btn btn-primary" type="submit" value="Login" /></td>
-                </tr>
-            </table>
-
-            <br /><br />
-
-            <div asp-validation-summary="All"></div>
-        </form>
-
-        <br />
-
-    </div>
-
-    <div class="col-4"></div>
-</div>*@
-
-
 
 <div class="row">
 
-    <div class="col-4"></div>
+    <div class="col-lg-4 col-md-2 col-sm-1"></div>
 
-    <div class="col-4 card">
+
+    <div class="col-12 text-center" id="loadingDiv">
+        <div>
+            <br /><br /><br />
+            <img src="~/Images/loading-gif.gif" width="100" id="loadingGif" />
+        </div>
+    </div>
+
+
+    <div class="col-lg-4 col-md-8 col-sm-10 card">
 
         <br />
 
@@ -70,33 +35,52 @@
 
         <form asp-controller="Account" asp-action="Login" method="post">
 
-                <div class="form-group">
-                    <label asp-for="UserName"></label>
-                    <input asp-for="UserName" class="form-control" />
-                </div>
+            <div class="form-group">
+                <label asp-for="UserName"></label>
+                <input asp-for="UserName" class="form-control" />
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="Password"></label>
-                    <input asp-for="Password" class="form-control"/>
-                </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+            </div>
 
-                <div class="form-group">
-                    <label asp-for="RememberMe" class="form-check-label" ></label>
-                    <input asp-for="RememberMe" class="form-check-input" />
-                </div>
+            <div class="form-group text-center">
+                <label asp-for="RememberMe" class="form-check-label"></label>
+                <input asp-for="RememberMe" class="form-check-input" />
+            </div>
 
-                <div class="form-group">
-                    <input class="btn btn-primary form-control" type="submit" value="Login" style="width:100%" />
-                </div>
-
-                <br />
+            <div class="form-group">
+                <input class="btn btn-primary form-control" type="submit" value="Login" style="width:100%" />
+            </div>
 
             <div asp-validation-summary="All"></div>
         </form>
+
+        <small class="text-center"><a asp-controller="Account" asp-action="Register" class="text-center">Dont have account yet ?</a></small>
 
         <br />
 
     </div>
 
-    <div class="col-4"></div>
+    <div class="col-lg-4 col-md-2 col-sm-1"></div>
 </div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(".card").hide();
+
+        setTimeout(function () {
+            $("#loadingDiv").hide();
+            $(".card").show();
+        }, 750);
+
+
+    })
+
+</script>

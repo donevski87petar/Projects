@@ -22,9 +22,10 @@
 
             <br />
 
-            <table class="table table-striped">
+            <table class="table table-striped table-responsive-lg table-responsive-md table-responsive-sm">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>
                             @Html.DisplayNameFor(model => model.Category)
                         </th>
@@ -51,17 +52,6 @@
                             <tr>
                                 @Html.HiddenFor(modelItem => item.ProductId)
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Category)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ProductType)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Brand)
-                                </td>
-                                <td class="text-center">
-                                    <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ModelName)</a>
-                                    <br />
                                     @{
                                         @if (item.Images.Count > 0)
                                         {
@@ -79,6 +69,19 @@
                                             <img src="~/Images/no_image.png" width="75" height="75" />
                                         }
                                     }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Brand)
+                                </td>
+                                <td class="text-center">
+                                    <a asp-controller="Products" asp-action="ProductDetails" asp-route-id="@item.ProductId">@Html.DisplayFor(modelItem => item.ModelName)</a>
+                                    <br />
                                 </td>
                                 <td>
                                     $ @Html.DisplayFor(modelItem => item.Price)

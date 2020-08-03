@@ -12,7 +12,6 @@ namespace Shop.DomainModels.Models
         public int Qty { get; set; }
 
         public int ProductId { get; set; }
-
         public Product Product { get; set; }
 
         public string ProductSize { get; set; }
@@ -20,5 +19,6 @@ namespace Shop.DomainModels.Models
         [Required]
         [StringLength(255)]
         public string ShoppingCartId { get; set; }
+
     }
 }

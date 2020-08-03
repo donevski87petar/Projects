@@ -9,7 +9,7 @@ namespace Shop.DomainModels.Models
 {
     public class Order
     {
-        public int Id { get; set; }
+        public int OrderId { get; set; }
 
         [Required]
         public DateTime OrderPlacedTime { get; set; }
@@ -42,7 +42,7 @@ namespace Shop.DomainModels.Models
 
         [Required]
         public string UserId { get; set; }
-        public AppUser User { get; set; }
 
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }

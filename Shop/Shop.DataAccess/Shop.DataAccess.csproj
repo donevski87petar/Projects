@@ -9,6 +9,14 @@
     <Compile Remove="Migrations\20200716090754_AddedOrders.Designer.cs" />
     <Compile Remove="Migrations\20200718085403_aaa.cs" />
     <Compile Remove="Migrations\20200718085403_aaa.Designer.cs" />
+    <Compile Remove="Migrations\20200728144012_order.cs" />
+    <Compile Remove="Migrations\20200728144012_order.Designer.cs" />
+    <Compile Remove="Migrations\20200728144158_ord.cs" />
+    <Compile Remove="Migrations\20200728144158_ord.Designer.cs" />
+    <Compile Remove="Migrations\20200730084600_abc.cs" />
+    <Compile Remove="Migrations\20200730084600_abc.Designer.cs" />
+    <Compile Remove="Migrations\20200730102832_orderDetails.cs" />
+    <Compile Remove="Migrations\20200730102832_orderDetails.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

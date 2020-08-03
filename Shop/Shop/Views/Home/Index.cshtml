@@ -35,59 +35,61 @@
 
 
     <div class="row">
-        <div class="col-sm-3 card" id="filterDiv" style="height:515px;">
-            <div class="col-sm-12">
+
+        <div class="col-md-3 col-sm-12 card" id="filterDiv" style="height:512px;">
+            <div>
 
                 <br />
 
                 <h4 class="text-center"><b>Filters</b></h4>
 
-                <br /><br />
+                <br />
 
                 @using (Html.BeginForm("Index", "Home", FormMethod.Get))
                 {
-                    <div>
-                        <h5>Select Gender</h5>
+            <div>
+                <h5>Select Gender</h5>
 
-                        @Html.DropDownList("category",
-                        new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.Category))), "All",
-                        new { @class = "inpField box-shadow" })
-
-
-                        <br /><br />
+                @Html.DropDownList("category",
+                new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.Category))), "All",
+                new { @class = "inpField box-shadow" })
 
 
-                        <h5>Select Product Type</h5>
-
-                        @Html.DropDownList("productType",
-                        new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.ProductType))), "All",
-                        new { @class = "inpField box-shadow" })
-
-                        <br /><br /><br /><br />
-
-                        <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="btn btn-primary box-shadow" />
+                <br /><br />
 
 
-                        <br /><br /><br /><br /><br />
+                <h5>Select Product Type</h5>
 
-                        <small class="text-muted">&copy; Petar Donevski - 2020 - </small>
+                @Html.DropDownList("productType",
+                new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.ProductType))), "All",
+                new { @class = "inpField box-shadow" })
 
-                    </div>
+                <br /><br /><br /><br />
+
+                <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="btn btn-primary box-shadow" />
+
+
+                <br /><br /><br /><br /><br />
+
+                <small class="text-muted">&copy; Petar Donevski - 2020 - </small>
+
+            </div>
                 }
 
-
+                <br />
 
             </div>
         </div>
 
-        <div class="col-sm-9" id="loadingDiv">
+        <div class="col-md-9 col-sm-12" id="loadingDiv">
             <br /><br /><br /><br /><br /><br /><br />
             <div class="row" style="justify-content: center">
                  <img src="~/Images/loading-gif.gif" width="100" id="loadingGif"/>
             </div>
         </div>
 
-        <div class="col-sm-9" id="productsDiv">
+
+        <div class="col-md-9 col-sm-12" id="productsDiv">
 
             <div class="row">
 
@@ -95,7 +97,7 @@
                 {
                     foreach (var product in Model)
                     {
-                        <div class="col-sm-3">
+                        <div class="col-md-4 col-sm-12">
                             <div class="card cardProduct">
                                 @if (product.Images.Count > 0)
                                 {
@@ -128,7 +130,7 @@
                 }
                 else
                 {
-                    <div class="col-sm-12">
+                    <div class="col-md-12 col-sm-12">
                         <br /><br /><br /><br /><br /><br /><br />
                         <div class="row" style="justify-content: center">
                             <h2>Oops! No products to display!</h2>

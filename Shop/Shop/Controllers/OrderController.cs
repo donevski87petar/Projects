@@ -20,6 +20,7 @@ namespace Shop.Controllers
         private readonly IMapper _mapper;
         private readonly IOrderRepository _orderRepository;
 
+
         public OrderController(
             IShoppingCartRepository shoppingCartRepository,
             IMapper mapper,
@@ -34,57 +35,62 @@ namespace Shop.Controllers
         [Authorize]
         public async Task<IActionResult> Checkout()
         {
+            ViewBag.TotalItemsCount = _shoppingCartRepository.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
+
             var cartItems = await _shoppingCartRepository.GetShoppingCartItemsAsync();
             if (cartItems?.Count() <= 0)
             {
-                return RedirectToAction("CartDetails" , "ShoppingCart");
+                return RedirectToAction("CartDetails", "ShoppingCart");
             }
             return View();
         }
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> Checkout([FromForm]OrderViewModel orderVM)
+        public async Task<IActionResult> Checkout(OrderViewModel orderViewModel)
         {
-            if (!ModelState.IsValid)
+
+            Order order = _mapper.Map<Order>(orderViewModel);
+            if (ModelState.IsValid)
             {
-                return View(orderVM);
+                try
+                {
+                    await _orderRepository.CreateOrderAsync(order);
+                }
+                catch (Exception e)
+                {
+                    throw new Exception(e.Message);
+                }
             }
-            var order = _mapper.Map<Order>(orderVM);
-
-            var cartItems = await _shoppingCartRepository.GetShoppingCartItemsAsync();
-
-
-            if (cartItems?.Count() <= 0)
+            else
             {
-                ModelState.AddModelError("", "Your Cart is empty. Please add products before checkout");
                 return View("Error");
             }
 
-            order.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            await _orderRepository.CreateOrderAsync(order);
+
             await _shoppingCartRepository.ClearCartAsync();
 
-            return View("CheckoutComplete");
+            return View("CheckOutComplete");
         }
 
         [Authorize]
-        public async Task<IActionResult> MyOrder(int? page)
+        public async Task<IActionResult> MyOrders(int? page)
         {
+            ViewBag.TotalItemsCount = _shoppingCartRepository.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
+
+
             var pageNumber = page ?? 1;
             int pageSize = 5;
 
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var orders = await _orderRepository.GetAllOrdersAsync(userId);
-
-            orders.OrderBy(o => o.OrderPlacedTime);
-
+            
             List<OrderViewModel> orderViewModels = new List<OrderViewModel>();
             foreach (var item in orders)
             {
                 orderViewModels.Add(_mapper.Map<OrderViewModel>(item));
             }
-            
+            orderViewModels.Reverse();
             var orderViewModelsPagedList = orderViewModels.ToPagedList(pageNumber, pageSize);
 
             @ViewBag.OrdersCount = orders.Count();
@@ -92,7 +98,7 @@ namespace Shop.Controllers
             return View(orderViewModelsPagedList);
         }
 
-        [Authorize(Roles="Administrator")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAllOrders(int? page)
         {
             var pageNumber = page ?? 1;
@@ -105,7 +111,7 @@ namespace Shop.Controllers
             {
                 viewModelList.Add(_mapper.Map<OrderViewModel>(item));
             }
-
+            viewModelList.Reverse();
             var viewModelListPaged = viewModelList.ToPagedList(pageNumber, pageSize);
 
             return View(viewModelListPaged);

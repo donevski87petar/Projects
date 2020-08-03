@@ -195,6 +195,7 @@ namespace Shop.DataAccess.Data.Initializer
                 dbContext.Products.AddRange(products);
                 dbContext.SaveChanges();
             }
+
         }
 
         public static void SeedUsers(UserManager<AppUser> userManager)

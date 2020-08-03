@@ -55,7 +55,7 @@ namespace Shop.Controllers
             ViewBag.TotalItemsCount = _shoppingCart.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
 
             var pageNumber = page ?? 1;
-            int pageSize = 8;
+            int pageSize = 9;
 
             if (string.IsNullOrEmpty(searchTerm))
             {
@@ -139,6 +139,9 @@ namespace Shop.Controllers
 
         public IActionResult ProductDetails(int id)
         {
+            ViewBag.TotalItemsCount = _shoppingCart.GetCartCountAndTotalAmmountAsync().Result.ItemCount;
+
+
             Product product = _productRepository.GetById(id);
             HomeViewModel productHomeViewModel = _mapper.Map<HomeViewModel>(product);
             if (productHomeViewModel == null)
