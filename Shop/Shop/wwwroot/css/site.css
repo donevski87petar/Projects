@@ -81,6 +81,7 @@ img {
 
 .navbar-light .navbar-nav .nav-link {
     color: #343a40;
+    font-weight:600;
 }
 
 button, input {
@@ -276,7 +277,7 @@ body {
     margin: 0;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 17px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.5;
     color: #212529;
     text-align: left;
@@ -345,12 +346,28 @@ dl{
 #filterDiv {
     position: sticky;
     top: 37px;
+    height: 514px;
 }
+
+.orderInfo {
+    font-size: 1.25rem;
+    padding: 10px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color:whitesmoke;
+}
+
 
 @media (max-width: 768px) {
     #filterDiv {
         position: sticky;
         overflow:visible;
+    }
+}
+
+@media (max-width: 767px) {
+    #filterDiv {
+        height:365px;
     }
 }
 
@@ -379,7 +396,7 @@ dl{
         color: #343a40;
         text-align: left;
         list-style: none;
-        background-color: /*#ffc107*/ #fff;
+        background-color: #fff;
         background-clip: border-box;
         box-shadow: 2px 2px 10px 0px lightgray;
         border: 1px solid lightgray;
@@ -397,10 +414,7 @@ dl{
     }
 }
 
-
 @media (max-width: 1200px) {
-
-
     span{
         display:none;
     }
@@ -411,9 +425,31 @@ dl{
         font-size:16px;
     }
 
-html{
-    font-size:16px;
+    html{
+        font-size:16px;
+    }
 }
 
+@media (max-width: 767px) {
+    #filterDiv {
+        position: inherit;
+        overflow: hidden;
+    }
 }
 
+@media only screen and (max-width: 991px) and (min-width: 767px) {
+    #filterDiv {
+        height: 378px;
+    }
+}
+@media only screen and (max-width: 1199px) and (min-width: 992px) {
+    #filterDiv {
+        height: 446px;
+    }
+}
+
+@media (max-width: 575px) {
+    span {
+        display: contents;
+    }
+}

@@ -114,6 +114,11 @@ namespace Shop.Controllers
             viewModelList.Reverse();
             var viewModelListPaged = viewModelList.ToPagedList(pageNumber, pageSize);
 
+            //Orders info
+            @ViewBag.TotalOrdersCount = orderlist.Count();
+            @ViewBag.TodaysOrdersCount = orderlist.Where(o =>
+                o.OrderPlacedTime.ToString("MM/dd/yyyy") == DateTime.Now.ToString("MM/dd/yyyy")).Count();
+
             return View(viewModelListPaged);
         }
 

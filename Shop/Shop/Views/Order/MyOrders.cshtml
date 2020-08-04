@@ -31,16 +31,16 @@
             {
                 <br />
 
-                <h2 class="text-center">Oops! Your Orders list is empty!</h2>
+                <h2 class="text-center" style="padding-top:100px;padding-bottom:200px;">Oops! Your Orders list is empty!</h2>
 
                 <br />
-                <br />
+
             }
             else
             {
             <div>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="width:200px;"><i class="fa fa-plus" aria-hidden="true"></i> Add New Order</a>
-                <h4 class="float-right">Total orders : @ViewBag.OrdersCount</h4>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-primary" style="width:200px;">Add New Order</a>
+                <h4 class="float-right orderInfo">Total orders : @ViewBag.OrdersCount</h4>
             </div>
 
             <br />
@@ -74,9 +74,9 @@
                         
                         <tr>
                             <td>
-                                @item.OrderPlacedTime.ToString("dd MMMM yyyy")
+                                Date : @item.OrderPlacedTime.ToString("dd MMMM yyyy")
                                 <br />
-                                @item.OrderPlacedTime.ToString("hh:mm tt")
+                                Time : @item.OrderPlacedTime.ToString("hh:mm tt")
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FullName)

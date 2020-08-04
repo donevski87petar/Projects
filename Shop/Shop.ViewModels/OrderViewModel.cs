@@ -12,16 +12,17 @@ namespace Shop.ViewModels
         public int OrderId { get; set; }
 
         [Required]
-        [Display(Name = "Date/Time")]
+        [Display(Name = "Order Date")]
         public DateTime OrderPlacedTime { get; set; }
 
         [StringLength(255)]
         [Required]
-        [Display(Name = "Customer Name")]
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
         [StringLength(255)]
         [Required]
+        [Display(Name = "Delivery Address")]
         public string Address { get; set; }
 
         [StringLength(255)]
