@@ -33,8 +33,6 @@ namespace Shop
         public void ConfigureServices(IServiceCollection services)
         {
 
-
-
             services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -44,22 +42,15 @@ namespace Shop
                 .AddDefaultTokenProviders();
 
 
-
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IShoppingCartRepository>(sp => ShoppingCartRepository.GetCart(sp));
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();///////////////////////////////////
-
-
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddAutoMapper(typeof(Mappings));
 
-
-
-            services.AddMemoryCache();//////////////////////////////////////////////////////////////////////////////
-
+            services.AddMemoryCache();
 
 
             services.AddControllersWithViews();

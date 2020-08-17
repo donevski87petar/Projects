@@ -10,13 +10,13 @@
 
     <div class="col-2"></div>
 
-    <div class="col-8 card">
+    <div class="col-8 card" style="padding:0px;margin-top:15px;overflow:hidden;">
+
+        <div class="card-header box-shadow bg-warning">
+            <h1 class="text-center">Add Product Image</h1>
+        </div>
 
         <br />
-
-        <h1 class="text-center">Add Product Image</h1>
-
-        <hr />
 
         <div class="text-center">
             @{
@@ -26,7 +26,7 @@
                     {
                         var base64 = Convert.ToBase64String(img.Photo);
                         var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        <a href="~/Products/ProductImageDetails/@img.ImageId"><img src="@finalStr" width="200" /></a>
+                        <a href="~/Products/ProductImageDetails/@img.ImageId"><img src="@finalStr" width="220" /></a>
                     }
                 }
                 else
@@ -38,18 +38,21 @@
 
         <br /><br />
 
-        <form asp-action="AddProductImage" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input hidden asp-for="@Model.ProductId" class="form-control" />
+              <div style="margin-left:25px;margin-right:25px;">
+                  <form asp-action="AddProductImage" method="post" enctype="multipart/form-data">
+                      <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                      <input hidden asp-for="@Model.ProductId" class="form-control" />
 
-            <div class="form-group">
-                <input type="file" asp-for="@Model.Images" name="files" class="form-control" />
-            </div>
+                      <div class="form-group">
+                          <input type="file" asp-for="@Model.Images" name="files" class="form-control" />
+                      </div>
 
-            <div class="form-group">
-                <input type="submit" value="Add Image" class="btn btn-primary" style="width:100%;" />
-            </div>
-        </form>
+                      <div class="form-group">
+                          <input type="submit" value="Add Image" class="btn btn-primary" style="width:100%;" />
+                      </div>
+                  </form>
+              </div>
+
     </div>
 
     <div class="col-2"></div>

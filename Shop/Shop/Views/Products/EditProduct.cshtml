@@ -11,51 +11,54 @@
 
     <div class="col-2"></div>
 
-    <div class="col-8 card">
+    <div class="col-8 card" style="padding:0px;margin-top:15px;overflow:hidden;">
+
+        <div class="card-header box-shadow bg-warning">
+            <h1 class="text-center">Edit Product</h1>
+        </div>
 
         <br />
 
-        <h1 class="text-center">Edit Product</h1>
+        <div style="margin-left:25px;margin-right:25px;">
+            <form asp-action="EditProduct">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ProductId" />
+                <div class="form-group">
+                    <label asp-for="Category" class="control-label"></label>
+                    <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control"></select>
+                    <span asp-validation-for="Category" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ProductType" class="control-label"></label>
+                    <select asp-for="ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control"></select>
+                    <span asp-validation-for="ProductType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Brand" class="control-label"></label>
+                    <select asp-for="Brand" asp-items="Html.GetEnumSelectList<Brand>()" class="form-control"></select>
+                    <span asp-validation-for="Brand" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ModelName" class="control-label"></label>
+                    <input asp-for="ModelName" class="form-control" />
+                    <span asp-validation-for="ModelName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <textarea rows="3" asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
 
-        <hr />
-
-        <form asp-action="EditProduct">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="ProductId" />
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category>()" class="form-control"></select>
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ProductType" class="control-label"></label>
-                <select asp-for="ProductType" asp-items="Html.GetEnumSelectList<ProductType>()" class="form-control"></select>
-                <span asp-validation-for="ProductType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Brand" class="control-label"></label>
-                <select asp-for="Brand" asp-items="Html.GetEnumSelectList<Brand>()" class="form-control"></select>
-                <span asp-validation-for="Brand" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModelName" class="control-label"></label>
-                <input asp-for="ModelName" class="form-control" />
-                <span asp-validation-for="ModelName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea rows="3" asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group text-center">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
     </div>
 
     <div class="col-2"></div>

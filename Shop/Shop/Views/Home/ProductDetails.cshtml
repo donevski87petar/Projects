@@ -8,15 +8,12 @@
 
 
 
-    <div class="card">
+    <div class="card" style="padding:0px;margin-top:15px;overflow:hidden;">
 
-        <br />
+        <div class="card-header box-shadow bg-warning">
+            <h1 class="text-center">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.ModelName)</h1>
+        </div>
 
-        <h1 class="text-center">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.ModelName)</h1>
-
-        <hr />
-
-        <br />
         <div id="loadingDiv">
             <div class="row" style="justify-content: center">
                 <img src="~/Images/loading-gif.gif" width="100" id="loadingGif" />
@@ -31,7 +28,7 @@
                     {
                         var base64 = Convert.ToBase64String(img.Photo);
                         var finalStr = string.Format("data:image/jpg;base64,{0}", base64);
-                        <img src="@finalStr" width="350" class="magniflier" />
+                        <img src="@finalStr" width="350" class="magniflier imgDetails" style="border-radius:0px;" />
                     }
                 }
                 else
@@ -45,40 +42,40 @@
 
         <div>
             <dl class="row">
-                <dt class="col-sm-2">
+                <dt class="col-4">
                     @Html.DisplayNameFor(model => model.Category)
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-8">
                     @Html.DisplayFor(model => model.Category)
                 </dd>
-                <dt class="col-sm-2">
+                <dt class="col-4">
                     @Html.DisplayNameFor(model => model.ProductType)
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-8">
                     @Html.DisplayFor(model => model.ProductType)
                 </dd>
-                <dt class="col-sm-2">
+                <dt class="col-4">
                     @Html.DisplayNameFor(model => model.Brand)
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-8">
                     @Html.DisplayFor(model => model.Brand)
                 </dd>
-                <dt class="col-sm-2">
+                <dt class="col-4">
                     @Html.DisplayNameFor(model => model.ModelName)
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-8">
                     @Html.DisplayFor(model => model.ModelName)
                 </dd>
-                <dt class="col-sm-2">
+                <dt class="col-4">
                     @Html.DisplayNameFor(model => model.Description)
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-8">
                     @Html.DisplayFor(model => model.Description)
                 </dd>
-                <dt class="col-sm-2">
+                <dt class="col-4">
                     @Html.DisplayNameFor(model => model.Price)
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-8">
                     $ @Html.DisplayFor(model => model.Price)
                 </dd>
 

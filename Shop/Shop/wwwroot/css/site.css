@@ -91,8 +91,12 @@ button, input {
 
 nav .show > .nav-link {
     color: rgba(0,0,0,.9);
-    padding-top: 5px;
-    padding-bottom: 5px;
+padding:5px;
+}
+
+.nav-link {
+    display: block;
+    padding: 5px;
 }
 
 a .navbar-brand {
@@ -101,14 +105,24 @@ a .navbar-brand {
   word-break: break-all;
 }
 
+.navbar-light .navbar-nav .show > .nav-link {
+    color: rgba(0,0,0,.9);
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+
+
+
 .dropdown-menu {
     position: absolute;
     top: 110%;
-    left: 8px;
+    left: 0px;
     z-index: 1000;
     display: none;
     float: left;
-    min-width: 100px;
+    min-width: 150px;
     padding: .5rem 0;
     margin: .125rem 0 0;
     font-size: 1rem;
@@ -120,6 +134,10 @@ a .navbar-brand {
     border: 1px solid lightgray;
     border-radius: .25rem;
 }
+    .dropdown-menu.show {
+        display: block;
+        font-size: 16px;
+    }
 
 .page-link {
     position: relative;
@@ -140,12 +158,6 @@ a .navbar-brand {
         background-color: #ffc107;
         border-color: lightgray;
     }
-
-nav .show > .nav-link {
-    color: rgba(0,0,0,.9);
-    padding-top: 0px;
-    padding-bottom: 0px;
-}
 
 .card {
     position: relative;
@@ -191,6 +203,25 @@ nav .show > .nav-link {
     font-weight: 500;
 }
 
+.badge-primary {
+    color: #fff;
+    background-color: #007bff;
+    font-size: medium;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 85%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 5px;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
 a {
     color: #343a40;
 }
@@ -205,6 +236,7 @@ a {
     border-color: #343a40;
     font-weight: 600;
     box-shadow: 2px 2px 10px 0px lightgray;
+    height: 38px;
 }
 
     .btn-primary:hover {
@@ -220,7 +252,6 @@ a {
         border-color: #343a40;
     }
 
-
 .btn-danger {
     color: whitesmoke;
     background-color: #dc3545;
@@ -229,13 +260,13 @@ a {
 }
 
 .btn {
-  width:100%;
-  height:38px;
+    width: 100%;
+    height: 38px;
 }
 
 .inpField {
-    width: 100%;
-    height: 38px;
+    width: 85%;
+    height: 33px;
     border-radius: 5px;
 }
 
@@ -254,6 +285,7 @@ a {
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -345,35 +377,33 @@ dl{
 
 #filterDiv {
     position: sticky;
-    top: 37px;
-    height: 514px;
+    top: 81px;
+    height: 463px;
 }
 
 .orderInfo {
-    font-size: 1.25rem;
-    padding: 10px;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-    background-color:whitesmoke;
+    padding: 7px;
 }
 
 
 @media (max-width: 768px) {
-    #filterDiv {
-        position: sticky;
+        #filterDiv {
+        position: initial;
         overflow:visible;
     }
 }
 
-@media (max-width: 767px) {
-    #filterDiv {
-        height:365px;
-    }
-}
-
 @media (min-width: 768px) {
-    html {
-        font-size: 16px;
+    #hideBtn {
+        display: none;
+    }
+
+    #showBtn {
+        display: none;
+    }
+
+    #filterDiv {
+        display:flex;
     }
 }
 
@@ -415,8 +445,8 @@ dl{
 }
 
 @media (max-width: 1200px) {
-    span{
-        display:none;
+    .navMenuItem {
+        display: none;
     }
     .card{
         height:96%;
@@ -434,6 +464,26 @@ dl{
     #filterDiv {
         position: inherit;
         overflow: hidden;
+        height: 365px;
+        top: -25px;
+    }
+    .imgDetails {
+        width: 100%;
+    }
+    dl {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    body{
+        background-color:whitesmoke;
+    }
+    #hideBtn {
+        margin-top:-30px;
+    }
+    #showBtn{
+        width:99%;
+        margin-bottom:10px;
+        margin-top:-40px;
     }
 }
 
@@ -442,14 +492,34 @@ dl{
         height: 378px;
     }
 }
+
 @media only screen and (max-width: 1199px) and (min-width: 992px) {
     #filterDiv {
-        height: 446px;
+        height: 390px;
     }
 }
 
 @media (max-width: 575px) {
-    span {
+    .navMenuItem {
         display: contents;
+    }
+    .search_input {
+        padding: 0px 0px;
+    }
+    .d-flex {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 604px) {
+    #hideBtn {
+        margin-top: -45px;
+        width: 84%;
+    }
+
+    #showBtn {
+        width: 84%;
+        margin-bottom: 10px;
+        margin-top: -40px;
     }
 }

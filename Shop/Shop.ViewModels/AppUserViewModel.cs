@@ -10,15 +10,23 @@ namespace Shop.ViewModels
     {
         [Key]
         public string Id { get; set; }
+        [Required]
         [Display(Name = "Full Name")]
         public string FullName { get; set; }
+        [Required]
         [Display(Name = "User Name")]
         public string UserName { get; set; }
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+        [Required]
         [Display(Name = "Birth Date")]
         public DateTime BirthDate { get; set; }
         [Display(Name = "Role")]
         public string AppRole { get; set; }
+        [Required]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
 
     }
 }

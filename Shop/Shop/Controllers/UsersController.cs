@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Shop.DataAccess.Data.Repository.IRepository;
@@ -12,22 +13,26 @@ using X.PagedList;
 
 namespace Shop.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class UsersController : Controller
     {
         private readonly IUserRepository _userRepository;
         private readonly UserManager<AppUser> _userManager;
         private readonly RoleManager<AppRole> _roleManager;
         private readonly IMapper _mapper;
+        private readonly IPasswordHasher<AppUser> _passwordHasher;
 
         public UsersController(IUserRepository userRepository,
                                IMapper mapper,
                                UserManager<AppUser> userManager,
-                               RoleManager<AppRole> roleManager)
+                               RoleManager<AppRole> roleManager,
+                               IPasswordHasher<AppUser> passwordHasher)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _userManager = userManager;
             _roleManager = roleManager;
+            _passwordHasher = passwordHasher;
         }
 
         public IActionResult AllUsers(int? page)
@@ -41,7 +46,7 @@ namespace Shop.Controllers
             {
                 viewModelList.Add(_mapper.Map<AppUserViewModel>(item));
             }
-            ViewBag.UsersCount = _userRepository.GetAllUsers().Count();
+            ViewBag.UsersCount = viewModelList.Count();
             var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
             return View(viewModelPagedList);
         }
@@ -55,14 +60,11 @@ namespace Shop.Controllers
             }
 
             AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
-            //appUserViewModel.AppRole = 
             var roles = _userManager.GetRolesAsync(appUser).Result;
             foreach (var role in roles)
             {
                 appUserViewModel.AppRole = role;
             }
-            //ViewBag.userRole = _userManager.GetRolesAsync(appUser).Result;
-
             return View(appUserViewModel);
         }
 
@@ -122,6 +124,52 @@ namespace Shop.Controllers
         {
             _userRepository.DeleteUser(id);
             return RedirectToAction("AllUsers");
+        }
+
+        [HttpGet]
+        public IActionResult UpdateUser(string id)
+        {
+            AppUser appUser = _userManager.Users.FirstOrDefault(u => u.Id == id);
+            if (appUser == null)
+            {
+                return View("Error");
+            }
+
+            AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
+            return View(appUserViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateUser(AppUserViewModel appUserViewModel)
+        {
+            AppUser appUser = await _userManager.FindByIdAsync(appUserViewModel.Id);
+
+            if (appUser == null)
+            {
+                return View("Not Found");
+            }
+
+            appUser.FullName = appUserViewModel.FullName;
+            appUser.Email = appUserViewModel.Email;
+            appUser.BirthDate = appUserViewModel.BirthDate;
+            appUser.UserName = appUserViewModel.UserName;
+            appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
+
+            IdentityResult result = await _userManager.UpdateAsync(appUser);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("AllUsers", "Users");
+            }
+            else
+            {
+                foreach (IdentityError error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(appUserViewModel);
+            }
         }
 
     }

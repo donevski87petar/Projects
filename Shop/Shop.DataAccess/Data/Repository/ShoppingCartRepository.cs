@@ -38,7 +38,7 @@ namespace Shop.DataAccess.Data.Repository
 
             response.Cookies.Append("CartId-cookie", cardId, new CookieOptions
             {
-                Expires = DateTime.Now.AddMonths(2)
+                Expires = DateTime.Now.AddHours(1)
             });
 
             return new ShoppingCartRepository(context)
@@ -71,8 +71,8 @@ namespace Shop.DataAccess.Data.Repository
         public async Task ClearCartAsync()
         {
             var shoppingCartItems = _context
-                .ShoppingCartItems;
-                //.Where(s => s.ShoppingCartId == Id);
+                .ShoppingCartItems
+                .Where(s => s.ShoppingCartId == Id);
 
             _context.ShoppingCartItems.RemoveRange(shoppingCartItems);
 

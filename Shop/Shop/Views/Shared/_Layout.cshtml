@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] My Online Shop</title>
+    <title>@ViewData["Title"] MyOnlineShop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="https://kit.fontawesome.com/4a0dd74e2f.js" crossorigin="anonymous"></script>
@@ -14,7 +14,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-warning border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <b>My Online Shop</b>
+                <b>MyOnlineShop</b>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -28,13 +28,13 @@
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="fa fa-home" aria-hidden="true"></i> <span>Home</span>
+                                <i class="fa fa-home" aria-hidden="true"></i> <span class="navMenuItem">Home</span>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="ShoppingCart" asp-action="CartDetails">
-                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Cart</span>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i> <span class="navMenuItem">Cart</span>
                                 @if (@ViewBag.TotalItemsCount > 0)
                                 {<span class="badge badge-primary">(@ViewBag.TotalItemsCount)</span>}
                             </a>
@@ -42,16 +42,16 @@
 
                         @if (User.Identity.IsAuthenticated)
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Order" asp-action="MyOrders">
-                                    <i class="fa fa-truck" aria-hidden="true"></i> <span>My Orders</span>
-                                </a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Order" asp-action="MyOrders">
+                                        <i class="fa fa-truck" aria-hidden="true"></i> <span class="navMenuItem">My Orders</span>
+                                    </a>
+                                </li>
                         }
 
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="ContactUs">
-                                <i class="fa fa-envelope" aria-hidden="true"></i> <span>Contact Us</span>
+                                <i class="fa fa-envelope" aria-hidden="true"></i> <span class="navMenuItem">Contact Us</span>
                             </a>
                         </li>
 
@@ -60,14 +60,14 @@
                             <li class="nav-item  text-dark">
                                 <div class="dropdown">
                                     <div class="dropdown-toggle" type="button" id="dropdownMenuYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <a class="nav-link text-dark"><i class="fa fa-lock" aria-hidden="true"></i> <span>Admin panel</span></a>
+                                        <a class="nav-link text-dark"><i class="fa fa-lock" aria-hidden="true"></i> <span class="navMenuItem">Admin panel</span></a>
                                     </div>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="nav-link text-dark" asp-controller="Order" asp-action="GetAllOrders">All Orders</a>
-                                        <a class="nav-link text-dark" asp-controller="Products" asp-action="AllProducts">All Products</a>
-                                        <a class="nav-link text-dark" asp-controller="Products" asp-action="AddProduct">Add Product</a>
-                                        <a class="nav-link text-dark" asp-controller="Users" asp-action="AllUsers">All Users</a>
-                                        <a class="nav-link text-dark" asp-controller="Users" asp-action="AddUser">Add User</a>
+                                        <a class="nav-link text-dark" asp-controller="Order" asp-action="GetAllOrders">Manage Orders</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="nav-link text-dark" asp-controller="Products" asp-action="AllProducts">Manage Products</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="nav-link text-dark" asp-controller="Users" asp-action="AllUsers">Manage Users</a>
                                     </div>
                                 </div>
                             </li>
@@ -78,21 +78,24 @@
                                 <div class="dropdown-toggle" type="button" id="dropdownMenuYear" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if (User.Identity.IsAuthenticated)
                                     {
-                                        <a class="nav-link text-dark"><i class="fa fa-user" aria-hidden="true"></i> <span>@User.Identity.Name</span></a>
+                                        <a class="nav-link text-dark"><i class="fa fa-user" aria-hidden="true"></i> <span class="navMenuItem">@User.Identity.Name</span></a>
                                     }
                                     else
                                     {
-                                        <a class="nav-link text-dark"><i class="fa fa-user" aria-hidden="true"></i> <span>Login/Register</span></a>
+                                        <a class="nav-link text-dark"><i class="fa fa-user" aria-hidden="true"></i> <span class="navMenuItem">Login</span></a>
                                     }
                                 </div>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     @if (!User.Identity.IsAuthenticated)
                                     {
                                         <a class="nav-link text-dark" asp-controller="Account" asp-action="Register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+                                        <div class="dropdown-divider"></div>
                                         <a class="nav-link text-dark" asp-controller="Account" asp-action="Login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
                                     }
                                     else
                                     {
+                                        <a class="nav-link text-dark" asp-controller="Account" asp-action="Profile">My Profile</a>
+                                        <div class="dropdown-divider"></div>
                                         <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
                                     }
                                 </div>
@@ -102,7 +105,7 @@
                         <li class="nav-item text-dark">
                             <form method="get">
                                 <div class="container h-100">
-                                    <div class="d-flex float-right h-100">
+                                    <div class="d-flex h-100">
                                         <div class="searchbar">
 
                                             <input class="search_input" type="text" name="searchTerm" placeholder="Search...">
@@ -127,7 +130,7 @@
 
     <footer class="border-top footer text-dark box-shadow">
         <div class="container text-muted text-center">
-            &copy;Petar Donevski - My Online Shop - 2020
+            <small>&copy; Petar Donevski - MyOnlineShop - 2020</small>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -10,13 +10,13 @@
 
     <div class="col-2"></div>
 
-    <div class="col-8 card">
+    <div class="col-8 card" style="padding:0px;margin-top:15px;overflow:hidden;">
+
+        <div class="card-header box-shadow bg-warning">
+            <h1 class="text-center">Delete Product Image ?</h1>
+        </div>
 
         <br />
-
-        <h1 class="text-center">Delete Product Image ?</h1>
-
-        <hr />
 
         <div class="text-center">
             @Html.HiddenFor(model => model.Product.ProductId)
@@ -33,7 +33,7 @@
         <div class="text-center">
             <form asp-action="DeleteProductImage">
                 <input type="hidden" asp-for="ImageId" />
-                <input type="submit" value="Delete" class="btn btn-danger" style="width:35%;" />
+                <input type="submit" value="Delete" class="btn btn-danger" style="width:200px;" />
             </form>
         </div>
 

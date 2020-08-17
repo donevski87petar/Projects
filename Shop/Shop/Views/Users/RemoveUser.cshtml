@@ -6,13 +6,13 @@
 
     <div class="row">
 
-        <div class="col-12 card">
+        <div class="col-12 card" style="padding:0px;margin-top:15px;overflow:hidden;">
 
-            <br />
+            <div class="card-header box-shadow bg-warning">
+                <h1 class="text-center"><i class="fa fa-lock" aria-hidden="true"></i> Remove User</h1>
+            </div>
 
-            <h1 class="text-center"><i class="fa fa-lock" aria-hidden="true"></i> Remove User</h1>
-
-            <br />
+            <br /><br />
 
             <table class="table table-striped">
                 <thead>
@@ -30,7 +30,6 @@
                         <th>
                             @Html.DisplayNameFor(model => model.BirthDate)
                         </th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +54,7 @@
 
             <div class="text-center">
                 <form asp-action="RemoveUser">
-                    <input type="submit" value="Delete" class="btn btn-outline-danger" style="width:35%;" />
+                    <input type="submit" value="Delete" class="btn btn-danger" style="width:200px;" />
                 </form>
 
                 <br />

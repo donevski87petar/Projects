@@ -11,46 +11,54 @@
     <br />
     <div class="row">
 
-        <div class="col-md-3 col-sm-12 card" id="filterDiv">
-            <br />
+        <div class="col-md-3 col-sm-12">
 
-            <h4 class="text-center"><b>Filters</b></h4>
+            <div class="card" id="filterDiv">
+                <br />
 
-            <br />
+                <div class="divInputs">
+                    <h4 class="text-center filterHeading"><b>Filters</b></h4>
 
-            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
-            {
-                <h5>Select Gender</h5>
+                    <br />
 
-                @Html.DropDownList("category",
-                new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.Category))), "All",
-                new { @class = "inpField box-shadow" })
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+                    {
+                        <h5>Select Gender</h5>
 
-
-                <br /><br />
-
-
-                <h5>Select Product Type</h5>
-
-                @Html.DropDownList("productType",
-                new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.ProductType))), "All",
-                new { @class = "inpField box-shadow" })
-
-                <br /><br /><br />
+                        @Html.DropDownList("category",
+                        new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.Category))), "All",
+                        new { @class = "inpField box-shadow" })
 
 
-                <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="btn btn-primary box-shadow" />
+                        <br /><br />
 
 
-                <br /><br />
+                        <h5>Select Product Type</h5>
 
-            }
+                        @Html.DropDownList("productType",
+                        new SelectList(Enum.GetValues(typeof(Shop.DomainModels.Enums.ProductType))), "All",
+                        new { @class = "inpField box-shadow" })
+
+                        <br /><br /><br />
+
+
+                        <input type="submit" id="btnSearch" name="Search" value="Apply Filters" class="btn btn-primary box-shadow" style="width:85%;" />
+                    }
+                    <br />
+                    <input type="button" class="btn btn-link text-decoration-none text-dark" value="Hide filters" id="hideBtn" />
+                    <br />
+                </div>
+
+            </div>
+
+            <input type="button" class="btn btn-primary" value="Show filters" id="showBtn" />
+
         </div>
 
         <div class="col-md-9 col-sm-12" id="loadingDiv">
             <br /><br /><br /><br /><br /><br /><br />
             <div class="row" style="justify-content: center">
-                 <img src="~/Images/loading-gif.gif" width="100" id="loadingGif"/>
+                <img src="~/Images/loading-gif.gif" width="100" id="loadingGif" />
             </div>
         </div>
 
@@ -79,17 +87,11 @@
                                 {
                                     <img src="~/Images/no_image.png" />
                                 }
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a href="~/Home/ProductDetails/@product.ProductId">@product.ModelName</a>
-                                    </h5>
-                                    <hr />
-                                    <b>$ @product.Price</b>
-                                    <p><b>@product.Brand</b></p>
-                                    <p class="card-text">
-                                    </p>
-                                    <p class="card-text"><small class="text-muted">@product.Category @product.ProductType</small></p>
-                                </div>
+                            <div class="card-body">
+                                <h5><a href="~/Home/ProductDetails/@product.ProductId"><b>@product.Brand @product.ModelName</b></a></h5>
+                                <h6>@product.Price $ </h6>
+                                <p class="card-text"><small class="text-muted">@product.Category @product.ProductType</small></p>
+                            </div>
                             </div>
                         </div>
                     }
@@ -140,12 +142,29 @@
     $(document).ready(function () {
 
         $("#productsDiv").hide();
+        $("#showBtn").hide();
 
         setTimeout(function () {
             $("#loadingDiv").hide();
             $("#productsDiv").show();
         }, 750);
 
+
+
+
+        $("#hideBtn").click(function () {
+            $(".divInputs").slideUp();
+            $("#filterDiv").slideUp();
+            $("#hideBtn").slideUp();
+            $("#showBtn").slideDown();
+        });
+
+        $("#showBtn").click(function () {
+            $(".divInputs").slideDown();
+            $("#filterDiv").slideDown();/*css({ "height": "365px" });*/
+            $("#showBtn").slideUp();
+            $("#hideBtn").slideDown();
+        });
 
     })
 
