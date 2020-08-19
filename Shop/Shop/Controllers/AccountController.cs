@@ -42,23 +42,27 @@ namespace Shop.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Register(RegisterViewModel obj)
+        public IActionResult Register(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (_userManager.Users.Any(u => u.UserName.ToLower() == obj.UserName.ToLower()))
+                if (_userManager.Users.Any(u => u.UserName.ToLower() == registerViewModel.UserName.ToLower()))
                 {
                     ModelState.AddModelError("", "The User Name is already taken!");
+                }
+                else if(registerViewModel.Password != registerViewModel.ConfirmPassword)
+                {
+                    ModelState.AddModelError("", "The Passwords didnt match!");
                 }
                 else
                 {
                     AppUser user = new AppUser();
-                    user.UserName = obj.UserName;
-                    user.Email = obj.Email;
-                    user.FullName = obj.FullName;
-                    user.BirthDate = obj.BirthDate;
+                    user.UserName = registerViewModel.UserName;
+                    user.Email = registerViewModel.Email;
+                    user.FullName = registerViewModel.FullName;
+                    user.BirthDate = registerViewModel.BirthDate;
 
-                    IdentityResult result = _userManager.CreateAsync(user, obj.Password).Result;
+                    IdentityResult result = _userManager.CreateAsync(user, registerViewModel.Password).Result;
 
                     if (result.Succeeded)
                     {
@@ -72,16 +76,24 @@ namespace Shop.Controllers
                             if (!roleResult.Succeeded)
                             {
                                 ModelState.AddModelError("", "Error while creating role!");
-                                return View(obj);
+                                return View(registerViewModel);
                             }
                         }
 
                         _userManager.AddToRoleAsync(user, "User").Wait();
+                        return RedirectToAction("Login", "Account");
                     }
-                    return RedirectToAction("Login", "Account");
+                    else
+                    {
+                        foreach (IdentityError error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        return View(registerViewModel);
+                    }
                 }
             }
-            return View(obj);
+            return View(registerViewModel);
         }
 
         [AllowAnonymous]
@@ -94,11 +106,11 @@ namespace Shop.Controllers
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginViewModel obj)
+        public IActionResult Login(LoginViewModel loginViewModel)
         {
             if (ModelState.IsValid)
             {
-                var result = _signInManager.PasswordSignInAsync(obj.UserName, obj.Password, obj.RememberMe, false).Result;
+                var result = _signInManager.PasswordSignInAsync(loginViewModel.UserName, loginViewModel.Password, loginViewModel.RememberMe, false).Result;
 
 
                 if (result.Succeeded)
@@ -110,7 +122,7 @@ namespace Shop.Controllers
                     ModelState.AddModelError("", "Invalid login!");
                 }
             }
-            return View(obj);
+            return View(loginViewModel);
         }
         public IActionResult Logout()
         {
@@ -149,6 +161,7 @@ namespace Shop.Controllers
 
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateUser(AppUserViewModel appUserViewModel)
         {
             AppUser appUser = await _userManager.FindByIdAsync(appUserViewModel.Id);
@@ -158,26 +171,37 @@ namespace Shop.Controllers
                 return View("Not Found");
             }
 
-            appUser.FullName = appUserViewModel.FullName;
-            appUser.Email = appUserViewModel.Email;
-            appUser.BirthDate = appUserViewModel.BirthDate;
-            appUser.UserName = appUserViewModel.UserName;
-            appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
-
-            IdentityResult result = await _userManager.UpdateAsync(appUser);
-
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Profile", "Account");
-            }
-            else
-            {
-                foreach (IdentityError error in result.Errors)
+                if (appUserViewModel.Password != appUserViewModel.ConfirmPassword)
                 {
-                    ModelState.AddModelError("", error.Description);
+                    ModelState.AddModelError("", "The Passwords didnt match!");
                 }
-                return View(appUserViewModel);
+                else
+                {
+                    appUser.FullName = appUserViewModel.FullName;
+                    appUser.Email = appUserViewModel.Email;
+                    appUser.BirthDate = appUserViewModel.BirthDate;
+                    appUser.UserName = appUserViewModel.UserName;
+                    appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
+
+                    IdentityResult result = await _userManager.UpdateAsync(appUser);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Profile", "Account");
+                    }
+                    else
+                    {
+                        foreach (IdentityError error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        return View(appUserViewModel);
+                    }
+                }
             }
+            return View(appUserViewModel);
         }
 
 

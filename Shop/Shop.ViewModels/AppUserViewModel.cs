@@ -26,7 +26,11 @@ namespace Shop.ViewModels
         public string AppRole { get; set; }
         [Required]
         [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        public string ConfirmPassword { get; set; }
 
     }
 }

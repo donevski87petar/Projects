@@ -47,7 +47,7 @@ namespace Shop.Controllers
                 viewModelList.Add(_mapper.Map<AppUserViewModel>(item));
             }
             ViewBag.UsersCount = viewModelList.Count();
-            var viewModelPagedList = viewModelList.ToPagedList(pageNumber, pageSize);
+            var viewModelPagedList = viewModelList.OrderBy(u => u.UserName).ToPagedList(pageNumber, pageSize);
             return View(viewModelPagedList);
         }
 
@@ -75,17 +75,17 @@ namespace Shop.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddUser(RegisterViewModel obj)
+        public IActionResult AddUser(RegisterViewModel registerViewModel)
         {
             if (ModelState.IsValid)
             {
                 AppUser user = new AppUser();
-                user.UserName = obj.UserName;
-                user.Email = obj.Email;
-                user.FullName = obj.FullName;
-                user.BirthDate = obj.BirthDate;
+                user.UserName = registerViewModel.UserName;
+                user.Email = registerViewModel.Email;
+                user.FullName = registerViewModel.FullName;
+                user.BirthDate = registerViewModel.BirthDate;
 
-                IdentityResult result = _userManager.CreateAsync(user, obj.Password).Result;
+                IdentityResult result = _userManager.CreateAsync(user, registerViewModel.Password).Result;
 
                 if (result.Succeeded)
                 {
@@ -99,7 +99,7 @@ namespace Shop.Controllers
                         if (!roleResult.Succeeded)
                         {
                             ModelState.AddModelError("", "Error while creating role!");
-                            return View(obj);
+                            return View(registerViewModel);
                         }
                     }
 
@@ -107,8 +107,16 @@ namespace Shop.Controllers
 
                     return RedirectToAction("UserDetails", new { id = user.Id});
                 }
+                else
+                {
+                    foreach (IdentityError error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(registerViewModel);
+                }
             }
-            return View(obj);
+            return View(registerViewModel);
         }
 
         [HttpGet]
@@ -150,26 +158,37 @@ namespace Shop.Controllers
                 return View("Not Found");
             }
 
-            appUser.FullName = appUserViewModel.FullName;
-            appUser.Email = appUserViewModel.Email;
-            appUser.BirthDate = appUserViewModel.BirthDate;
-            appUser.UserName = appUserViewModel.UserName;
-            appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
-
-            IdentityResult result = await _userManager.UpdateAsync(appUser);
-
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("AllUsers", "Users");
-            }
-            else
-            {
-                foreach (IdentityError error in result.Errors)
+                if (appUserViewModel.Password != appUserViewModel.ConfirmPassword)
                 {
-                    ModelState.AddModelError("", error.Description);
+                    ModelState.AddModelError("", "The Passwords didnt match!");
                 }
-                return View(appUserViewModel);
+                else
+                {
+                    appUser.FullName = appUserViewModel.FullName;
+                    appUser.Email = appUserViewModel.Email;
+                    appUser.BirthDate = appUserViewModel.BirthDate;
+                    appUser.UserName = appUserViewModel.UserName;
+                    appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
+
+                    IdentityResult result = await _userManager.UpdateAsync(appUser);
+
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("AllUsers", "Users");
+                    }
+                    else
+                    {
+                        foreach (IdentityError error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                        return View(appUserViewModel);
+                    }
+                }
             }
+            return View(appUserViewModel);
         }
 
     }

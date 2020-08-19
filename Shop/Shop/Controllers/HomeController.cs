@@ -169,24 +169,24 @@ namespace Shop.Controllers
         [HttpPost]
         public IActionResult ContactUs(EmailSender emailSender)
         {
-            //emailSender.EmailTo = new MailAddress("contact.myonlineshop@gmail.com");
+            emailSender.EmailTo = new MailAddress("contact.myonlineshop@gmail.com");
 
-            //    MailMessage mailMessage = new MailMessage();
-            //    mailMessage.To.Add(new MailAddress("contact.myonlineshop@gmail.com"));
-            //    //mailMessage.From = new MailAddress(_userManager.GetUserAsync(User).Result.Email);
-            //    mailMessage.From = new MailAddress("contact.myonlineshop@gmail.com");
-            //    mailMessage.Subject = emailSender.Subject;
-            //    mailMessage.Body = emailSender.Body;
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.To.Add(new MailAddress("contact.myonlineshop@gmail.com"));
+            //mailMessage.From = new MailAddress(_userManager.GetUserAsync(User).Result.Email);
+            mailMessage.From = new MailAddress("contact.myonlineshop@gmail.com");
+            mailMessage.Subject = emailSender.Subject;
+            mailMessage.Body = emailSender.Body;
 
-            //mailMessage.IsBodyHtml = false;
-            //SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-            //smtpClient.Port = 587;
-            //smtpClient.UseDefaultCredentials = true;
-            //smtpClient.EnableSsl = true;
-            //smtpClient.Credentials = new System.Net.NetworkCredential("contact.myonlineshop@gmail.com" , "Password123.");
-            //smtpClient.Send(mailMessage);
+            mailMessage.IsBodyHtml = false;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.UseDefaultCredentials = true;
+            smtpClient.EnableSsl = true;
+            smtpClient.Credentials = new System.Net.NetworkCredential("contact.myonlineshop@gmail.com", "Password123.");
+            smtpClient.Send(mailMessage);
 
-            //ViewBag.message = "The message has been sent !";
+            ViewBag.message = "The message has been sent !";
 
 
             return View();

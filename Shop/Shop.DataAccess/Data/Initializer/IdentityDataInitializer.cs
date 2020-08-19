@@ -201,13 +201,13 @@ namespace Shop.DataAccess.Data.Initializer
         public static void SeedUsers(UserManager<AppUser> userManager)
         {
 
-            if (userManager.FindByNameAsync("user").Result == null)
+            if (userManager.FindByNameAsync("User").Result == null)
             {
                 AppUser user = new AppUser();
-                user.UserName = "user";
+                user.UserName = "User";
                 user.Email = "user@mail.com";
                 user.FullName = "Petar Donevski";
-                user.BirthDate = new DateTime(1987, 1, 1);
+                user.BirthDate = new DateTime(1987, 5, 29);
 
                 IdentityResult result = userManager.CreateAsync(user, "Password123.").Result;
 
@@ -218,19 +218,19 @@ namespace Shop.DataAccess.Data.Initializer
             }
 
 
-            if (userManager.FindByNameAsync("admin").Result == null)
+            if (userManager.FindByNameAsync("Admin").Result == null)
             {
                 AppUser user = new AppUser();
-                user.UserName = "admin";
+                user.UserName = "Admin";
                 user.Email = "admin@mail.com";
                 user.FullName = "Petar Donevski";
-                user.BirthDate = new DateTime(1987, 1, 1);
+                user.BirthDate = new DateTime(1987, 5, 29);
 
                 IdentityResult result = userManager.CreateAsync(user, "Password123.").Result;
 
                 if (result.Succeeded)
                 {
-                    userManager.AddToRoleAsync(user,"Administrator").Wait();
+                    userManager.AddToRoleAsync(user, "Administrator").Wait();
                 }
             }
 
@@ -241,10 +241,9 @@ namespace Shop.DataAccess.Data.Initializer
             if (!roleManager.RoleExistsAsync("User").Result)
             {
                 AppRole role = new AppRole();
-                role.Name = "NormalUser";
+                role.Name = "User";
                 role.RoleDescription = "Perform normal operations.";
-                IdentityResult roleResult = roleManager.
-                CreateAsync(role).Result;
+                IdentityResult roleResult = roleManager.CreateAsync(role).Result;
             }
 
 
@@ -253,8 +252,7 @@ namespace Shop.DataAccess.Data.Initializer
                 AppRole role = new AppRole();
                 role.Name = "Administrator";
                 role.RoleDescription = "Perform all the operations.";
-                IdentityResult roleResult = roleManager.
-                CreateAsync(role).Result;
+                IdentityResult roleResult = roleManager.CreateAsync(role).Result;
             }
         }
     }

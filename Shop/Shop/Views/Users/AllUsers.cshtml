@@ -56,12 +56,12 @@
                             @Html.DisplayFor(modelItem => item.Email)
                         </td>
                         <td>
-                            @item.BirthDate.ToShortDateString()
+                            @item.BirthDate.ToString("dd/MMM/yyyy")
                         </td>
                         <td>
                             <a asp-controller="Users" asp-action="UserDetails" asp-route-id="@item.Id"><i class="fas fa-user"></i> Details</a>
                             <br />
-                            <a asp-controller="Users" asp-action="UpdateUser" asp-route-id="@item.Id"><i class="fas fa-user-edit"></i> Edit</a>
+                            <a asp-controller="Users" asp-action="UpdateUser" asp-route-id="@item.Id"><i class="fas fa-user-edit"></i> Update</a>
                             <br />
                             <a asp-controller="Users" asp-action="RemoveUser" asp-route-id="@item.Id"><i class="fas fa-user-minus"></i> Delete</a>
                         </td>

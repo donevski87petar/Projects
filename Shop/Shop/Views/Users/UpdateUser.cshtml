@@ -12,12 +12,12 @@
 
 <div class="row">
 
-    <div class="col-2"></div>
+    <div class="col-3"></div>
 
-    <div class="col-8 card" style="padding:0px;margin-top:15px;overflow:hidden;">
+    <div class="col-6 card" style="padding:0px;margin-top:15px;overflow:hidden;">
 
         <div class="card-header box-shadow bg-warning">
-            <h1 class="text-center"><i class="fa fa-user" aria-hidden="true"></i> Update Profile</h1>
+            <h1 class="text-center"><i class="fas fa-user-edit"></i> Update User</h1>
         </div>
 
         <br />
@@ -56,6 +56,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="control-label"></label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </form>
@@ -63,7 +69,7 @@
 
     </div>
 
-    <div class="col-2"></div>
+    <div class="col-3"></div>
 
 </div>
 

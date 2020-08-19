@@ -48,7 +48,7 @@
                             @Html.DisplayFor(model => model.Email)
                         </td>
                         <td>
-                            @Model.BirthDate.ToShortDateString()
+                            @Model.BirthDate.ToString("dd/MMM/yyyy")
                         </td>
                         <td>
                             @Html.DisplayFor(model => model.AppRole)
