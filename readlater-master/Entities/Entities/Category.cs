@@ -14,6 +14,7 @@ namespace ReadLater.Entities
 
         [StringLength(maximumLength: 50)]
         [Required]
+        [Display(Name = "Category Name")]
         public string Name { get; set; }
 
         public virtual ICollection<Bookmark> Bookmarks { get; set; }

@@ -1,4 +1,7 @@
 ﻿
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MVC.Models;
 using Owin;
 using ReadLater.Data;
 using ReadLater.Repository;

@@ -19,24 +19,6 @@ namespace MVC.Controllers
             _categoryService = categoryService;
         }
 
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate")] Bookmark bookmark)
-        {
-
-            if (ModelState.IsValid)
-            {
-                _bookmarkService.CreateBookmark(bookmark);
-                return RedirectToAction("Index", "Categories");
-            }
-
-            var categories = _categoryService.GetCategories();
-            ViewBag.CategoryId = new SelectList(categories, "ID", "Name", bookmark.CategoryId);
-            return View(bookmark);
-        }
-
         public ActionResult Index()
         {
             var categories = _categoryService.GetCategories();

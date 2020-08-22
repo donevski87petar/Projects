@@ -18,6 +18,7 @@ namespace MVC.Controllers
     {
         ICategoryService _categoryService;
         IBookmarkService _bookmarkService;
+        
         public CategoriesController(ICategoryService categoryService , IBookmarkService bookmarkService)
         {
             _categoryService = categoryService;

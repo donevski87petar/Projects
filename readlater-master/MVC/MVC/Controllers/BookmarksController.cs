@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using MVC.Models;
 using ReadLater.Data;
 using ReadLater.Entities;
 using ReadLater.Services;
@@ -15,12 +17,30 @@ namespace MVC.Controllers
     [Authorize]
     public class BookmarksController : Controller
     {
-        IBookmarkService _bookmarkService { get; set; }
-        ICategoryService _categoryService { get; set; }
-        public BookmarksController(IBookmarkService bookmarkService, ICategoryService categoryService)
+        IBookmarkService _bookmarkService;
+        ICategoryService _categoryService;
+
+        public BookmarksController(IBookmarkService bookmarkService, 
+                                   ICategoryService categoryService)
         {
             _bookmarkService = bookmarkService;
             _categoryService = categoryService;
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate")] Bookmark bookmark)
+        {
+
+            if (ModelState.IsValid)
+            {
+                _bookmarkService.CreateBookmark(bookmark);
+                return RedirectToAction("Index", "Categories");
+            }
+
+            var categories = _categoryService.GetCategories();
+            ViewBag.CategoryId = new SelectList(categories, "ID", "Name", bookmark.CategoryId);
+            return View(bookmark);
         }
 
         // GET: Bookmarks/Details/5
@@ -40,33 +60,6 @@ namespace MVC.Controllers
             }
             return View(bookmark);
         }
-
-        //// GET: Bookmarks/Create
-        //public ActionResult Create()
-        //{
-        //    var categories = _categoryService.GetCategories();
-        //    ViewBag.CategoryId = new SelectList(categories , "ID", "Name");
-        //    return View();
-        //}
-
-        //// POST: Bookmarks/Create
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate")] Bookmark bookmark )
-        //{
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        _bookmarkService.CreateBookmark(bookmark);
-        //        return RedirectToAction("Index", "Categories");
-        //    }
-
-        //    var categories = _categoryService.GetCategories();
-        //    ViewBag.CategoryId = new SelectList(categories , "ID", "Name", bookmark.CategoryId);
-        //    return View(bookmark);
-        //}
 
         // GET: Bookmarks/Edit/5
         public ActionResult Edit(int? id)
@@ -88,8 +81,6 @@ namespace MVC.Controllers
         }
 
         // POST: Bookmarks/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate")] Bookmark bookmark)
@@ -146,13 +137,38 @@ namespace MVC.Controllers
         {
             List<Bookmark> bookmarks = _bookmarkService.GetAllBookmarks();
 
-            if(bookmarks == null)
+            if (bookmarks == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+
             return View(bookmarks);
         }
+
+        //[HttpGet]
+        //public ActionResult LinkStats()
+        //{
+        //    List<Bookmark> bookmarks = _bookmarkService.GetAllBookmarks();
+        //    if (bookmarks == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+        //    }
+        //    UserStatsViewModel userStatsViewModel = new UserStatsViewModel();
+        //    ApplicationUser applicationUser = new ApplicationUser();
+        //    foreach (var item in bookmarks)
+        //    {
+        //        userStatsViewModel.URL = item.URL;
+        //        userStatsViewModel.ClickCounter = item.ClickCounter;
+        //        userStatsViewModel.CreateDate = item.CreateDate;
+        //        userStatsViewModel.ShortDescription = item.ShortDescription;
+        //        userStatsViewModel.CategoryName = item.Category.Name;
+        //        //userStatsViewModel.PostedByUser = User.Identity.GetUserName().Where(u => u.);
+
+        //    }
+
+        //    return View(bookmarks);
+        //}
 
     }
 }
