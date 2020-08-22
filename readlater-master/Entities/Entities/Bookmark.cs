@@ -20,6 +20,8 @@ namespace ReadLater.Entities
 
         public DateTime CreateDate { get; set; }
 
+        public int ClickCounter { get; set; }
+
         public int? CategoryId { get; set; }
 
         public virtual Category Category { get; set; }

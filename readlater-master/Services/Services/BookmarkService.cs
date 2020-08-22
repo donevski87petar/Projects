@@ -49,6 +49,14 @@ namespace ReadLater.Services
             }
         }
 
+        public List<Bookmark> GetAllBookmarks()
+        {
+            return _unitOfWork.Repository<Bookmark>().Query()
+                                        .OrderBy(l => l.OrderByDescending(b => b.ClickCounter))
+                                        .Get()
+                                        .ToList();
+        }
+
         public Bookmark GetBookmark(int Id)
         {
             return _unitOfWork.Repository<Bookmark>().Query()

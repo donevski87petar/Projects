@@ -71,24 +71,31 @@
             foreach (var bookmark in item.Bookmarks)
             {
 <p>
-    Url: <a href="@bookmark.URL" target="_blank" id="@bookmark.ID" onclick=Delete("/Bookmarks/LinkClicked/@bookmark.ID")>@bookmark.URL</a>
+    Url: <a href="@bookmark.URL" target="_blank" id="@bookmark.ID" onclick=LinkClick("/Bookmarks/LinkClickCounter/@bookmark.ID")>@bookmark.URL</a>
 </p>
 
                             <p>
                                 Description: @bookmark.ShortDescription
                             </p>
+                            <small>
+                                Total clicks: @bookmark.ClickCounter
+                            </small>
 
-                                                        <p>
-                                                            <a href="/Bookmarks/Details/@bookmark.ID">Details</a> |
-                                                            <a href="/Bookmarks/Edit/@bookmark.ID">Edit</a> |
-                                                            <a href="/Bookmarks/Delete/@bookmark.ID">Delete</a>
-                                                        </p>
+                            <br />
 
-                                                                                    <br /> }
-                                                                            }
-                                                                            else
-                                                                            {
-                                                        <p>No bookmarks added.</p>}
+                            <p>
+                                <a href="/Bookmarks/Details/@bookmark.ID">Details</a> |
+                                <a href="/Bookmarks/Edit/@bookmark.ID">Edit</a> |
+                                <a href="/Bookmarks/Delete/@bookmark.ID">Delete</a>
+                            </p>
+
+                            <br /> 
+            }
+            }
+            else
+            {
+            <p>No bookmarks added.</p>
+            }
     </td>
     <td>
         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
@@ -111,37 +118,26 @@ else
 <script>
 
     $(document).ready(function () {
+        LinkClick(url);
+    });
+
+        function LinkClick(url) {
+            $.ajax({
+                type: 'POST',
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        console.log("success");
+                    }
+                    else {
+                        console.log("fail")
+                    }
+                }
+            });
+        }
 
 
-    });  
 
-    function clickCounter(id) {
-        $.ajax({
-            type: 'POST',
-            url: 'Categories/Clicked/${id}',
-            dataType: 'json',
-            data: { id: '' },
-            success: function (data) {
-                var items = '';
-                $.each(data, function (i, item) {
-                    var rows = "<tr>"
-                    + "<td class='prtoducttd'>" + item.studentID + "</td>"
-                    + "<td class='prtoducttd'>" + item.studentName + "</td>"
-                    + "<td class='prtoducttd'>" + item.studentAddress + "</td>"
-                    + "</tr>";
-                    $('#tblStudent tbody').append(rows);
-                });
-            },
-            error: function (ex) {
-                var r = jQuery.parseJSON(response.responseText);
-                alert("Message: " + r.Message);
-                alert("StackTrace: " + r.StackTrace);
-                alert("ExceptionType: " + r.ExceptionType);
-            }
-        });
-
-
-    }
 
 
 </script>

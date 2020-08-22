@@ -127,7 +127,7 @@ namespace MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult LinkClicked(int id)
+        public ActionResult LinkClickCounter(int id)
         {
             Bookmark bookmark = _bookmarkService.GetBookmark(id);
 
@@ -135,9 +135,23 @@ namespace MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            bookmark.ClickCounter = bookmark.ClickCounter + 1;
+            _bookmarkService.UpdateBookmark(bookmark);
 
+            return View("Index");
+        }
 
-            return View("");
+        [HttpGet]
+        public ActionResult LinkStats()
+        {
+            List<Bookmark> bookmarks = _bookmarkService.GetAllBookmarks();
+
+            if(bookmarks == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return View(bookmarks);
         }
 
     }

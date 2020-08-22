@@ -6,6 +6,7 @@ namespace ReadLater.Services
     public interface IBookmarkService
     {
         Bookmark CreateBookmark(Bookmark bookmark);
+        List<Bookmark> GetAllBookmarks();
         List<Bookmark> GetBookmarks(string category);
         Bookmark GetBookmark(int Id);
         void UpdateBookmark(Bookmark bookmark);
