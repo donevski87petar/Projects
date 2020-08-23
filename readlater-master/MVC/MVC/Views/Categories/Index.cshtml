@@ -7,8 +7,7 @@
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
-
-<h1 class="text-center">Index Categories</h1>
+<br />
 
 <div class="inputsDiv">
 
@@ -33,17 +32,17 @@
         <div class="inputBookmarkDiv text-center">
     <h3 class="text-center">Enter New Bookmark</h3>
         <form action="/Bookmarks/Create" method="post">
-            <div class="form-group" style="margin-left:14%;">
+            <div class="form-group">
                 @Html.AntiForgeryToken()
+                <div style="margin-left:15%;">
                     <input type="text" required name="URL" placeholder="Enter URL" class="form-control col-lg-6" />
                     <input type="text" required name="ShortDescription" placeholder="Short Description" class="form-control col-lg-6" />
                     <select name="CategoryId" class="form-control col-lg-6">
                         @foreach (var item in Model)
                         {
-                            <option value="@item.ID">@item.Name</option>
-                        }
+                <option value="@item.ID">@item.Name</option>}
                     </select>
-
+                </div>
                     <br /><br />
 
                     <label>Share bookmark ?</label>
