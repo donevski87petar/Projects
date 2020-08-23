@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using MVC.Models;
+using NLog;
+using NLog.Fluent;
 using ReadLater.Data;
 using ReadLater.Entities;
 using ReadLater.Services;
@@ -19,6 +21,7 @@ namespace MVC.Controllers
     {
         IBookmarkService _bookmarkService;
         ICategoryService _categoryService;
+        private static Logger logger = LogManager.GetLogger("ReadLaterLogerRules");
 
         public BookmarksController(IBookmarkService bookmarkService, 
                                    ICategoryService categoryService)
@@ -139,6 +142,8 @@ namespace MVC.Controllers
             bookmark.ClickCounter = bookmark.ClickCounter + 1;
             _bookmarkService.UpdateBookmark(bookmark);
 
+            logger.Info($"The User {User.Identity.Name} clicked {bookmark.URL} " + DateTime.Now );
+            
             return View("Index");
         }
 

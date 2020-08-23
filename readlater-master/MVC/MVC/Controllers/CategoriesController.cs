@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using NLog;
 using ReadLater.Data;
 using ReadLater.Entities;
 using ReadLater.Services;
@@ -18,7 +19,8 @@ namespace MVC.Controllers
     {
         ICategoryService _categoryService;
         IBookmarkService _bookmarkService;
-        
+        private static Logger logger = LogManager.GetLogger("ReadLaterLogerRules");
+
         public CategoriesController(ICategoryService categoryService , IBookmarkService bookmarkService)
         {
             _categoryService = categoryService;
