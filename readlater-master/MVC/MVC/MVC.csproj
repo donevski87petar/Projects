@@ -207,7 +207,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\UserStatsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +274,7 @@
     <Content Include="Views\Bookmarks\Details.cshtml" />
     <Content Include="Views\Bookmarks\Edit.cshtml" />
     <Content Include="Views\Bookmarks\LinkStats.cshtml" />
+    <Content Include="Views\Bookmarks\SharedLinks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

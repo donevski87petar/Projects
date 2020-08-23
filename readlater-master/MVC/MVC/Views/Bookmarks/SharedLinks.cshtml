@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ReadLater.Entities.Bookmark>
+
+@{
+    ViewBag.Title = "Shared Link";
+}
+
+<h1>Shared Links</h1>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.URL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClickCounter)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="@item.URL" target="_blank" id="@item.ID" onclick=LinkClick("/Bookmarks/LinkClickCounter/@item.ID")>@item.URL</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClickCounter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+
+    $(document).ready(function () {
+        LinkClick(url);
+    });
+
+    function LinkClick(url) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    console.log("success");
+                }
+                else {
+                    console.log("fail")
+                }
+            }
+        });
+    }
+
+
+</script>

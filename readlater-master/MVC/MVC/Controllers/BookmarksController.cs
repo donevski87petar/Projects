@@ -29,11 +29,16 @@ namespace MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate")] Bookmark bookmark)
+        public ActionResult Create([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate,isShared")] Bookmark bookmark)
         {
+            if(bookmark.CategoryId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest); 
+            }
 
             if (ModelState.IsValid)
             {
+                bookmark.PostedBy = User.Identity.Name;
                 _bookmarkService.CreateBookmark(bookmark);
                 return RedirectToAction("Index", "Categories");
             }
@@ -83,8 +88,13 @@ namespace MVC.Controllers
         // POST: Bookmarks/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate")] Bookmark bookmark)
+        public ActionResult Edit([Bind(Include = "ID,URL,ShortDescription,CategoryId,CreateDate,ClickCounter,isShared")] Bookmark bookmark , int id)
         {
+            if(bookmark == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
             if (ModelState.IsValid)
             {
                 _bookmarkService.UpdateBookmark(bookmark);
@@ -136,39 +146,39 @@ namespace MVC.Controllers
         public ActionResult LinkStats()
         {
             List<Bookmark> bookmarks = _bookmarkService.GetAllBookmarks();
-
             if (bookmarks == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
 
+            var currentUserId = User.Identity.GetUserId();
+            IEnumerable<Bookmark> userBookmarks = bookmarks.Where(b => b.Category.UserId == currentUserId);
 
+            ViewBag.userEmail = User.Identity.GetUserName();
+            ViewBag.totalCategories = _categoryService.GetCategories().Count();
+            ViewBag.totalLinks = userBookmarks.Count();
+
+            int totalClicks = 0;
+            foreach (var item in userBookmarks)
+            {
+                totalClicks += item.ClickCounter;
+            }
+            ViewBag.totalClicks = totalClicks;
+
+            return View(userBookmarks);
+        }
+
+        [HttpGet]
+        public ActionResult SharedLinks()
+        {
+            IEnumerable<Bookmark> bookmarks = _bookmarkService.GetAllBookmarks().Where(b => b.isShared == true);
+            if(bookmarks == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
             return View(bookmarks);
         }
 
-        //[HttpGet]
-        //public ActionResult LinkStats()
-        //{
-        //    List<Bookmark> bookmarks = _bookmarkService.GetAllBookmarks();
-        //    if (bookmarks == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-        //    }
-        //    UserStatsViewModel userStatsViewModel = new UserStatsViewModel();
-        //    ApplicationUser applicationUser = new ApplicationUser();
-        //    foreach (var item in bookmarks)
-        //    {
-        //        userStatsViewModel.URL = item.URL;
-        //        userStatsViewModel.ClickCounter = item.ClickCounter;
-        //        userStatsViewModel.CreateDate = item.CreateDate;
-        //        userStatsViewModel.ShortDescription = item.ShortDescription;
-        //        userStatsViewModel.CategoryName = item.Category.Name;
-        //        //userStatsViewModel.PostedByUser = User.Identity.GetUserName().Where(u => u.);
-
-        //    }
-
-        //    return View(bookmarks);
-        //}
 
     }
 }

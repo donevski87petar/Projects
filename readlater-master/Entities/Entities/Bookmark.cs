@@ -22,6 +22,9 @@ namespace ReadLater.Entities
         public DateTime CreateDate { get; set; }
         [Display(Name = "Numbers Clicked")]
         public int ClickCounter { get; set; }
+        [Display(Name = "Posted By")]
+        public string PostedBy { get; set; }
+        public bool isShared { get; set; }
 
         public int? CategoryId { get; set; }
 
