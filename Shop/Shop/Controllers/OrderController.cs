@@ -51,6 +51,11 @@ namespace Shop.Controllers
         {
 
             Order order = _mapper.Map<Order>(orderViewModel);
+            if(order == null)
+            {
+                return View("Error");
+            }
+
             if (ModelState.IsValid)
             {
                 try

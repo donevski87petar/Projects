@@ -1,4 +1,4 @@
-﻿@model Shop.Services.EmailSender
+﻿@model Shop.Services.EmailService
 
 @{
     ViewData["Title"] = "Contact Us";
@@ -25,35 +25,32 @@
 
             <br /><br />
 
-                  <div style="margin-left:25px;margin-right:25px;">
-                      <form asp-action="ContactUs">
-                          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                          <div class="form-group">
-                              <label asp-for="Subject" class="control-label"></label>
-                              <input asp-for="Subject" class="form-control" />
-                              <span asp-validation-for="Subject" class="text-danger"></span>
-                          </div>
-                          <div class="form-group">
-                              <label asp-for="Body" class="control-label"></label>
-                              <textarea rows="5" asp-for="Body" class="form-control"></textarea>
-                              <span asp-validation-for="Body" class="text-danger"></span>
-                          </div>
-
-                          <br />
-
-                          <div class="form-group">
-                              <input type="submit" value="Send" class="btn btn-primary" />
-                          </div>
-                      </form>
-                  </div>
-
-            <br />
-
-            @if(ViewBag.message != null)
+            @if (ViewBag.MessageSent != null)
             {
-        <h3 class="text-center">@ViewBag.message</h3>
+                <h2 class="text-center">@ViewBag.MessageSent</h2>
             }
 
+            <div style="margin-left:25px;margin-right:25px;">
+                <form asp-controller="Home" asp-action="ContactUs" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">Subject</label>
+                        <input type="text" required name="subject" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Message</label>
+                        <textarea rows="5" required name="message" class="form-control"></textarea>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <input type="submit" value="Send" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+            <br />
 
         </div>
 

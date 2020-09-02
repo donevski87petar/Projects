@@ -18,9 +18,6 @@ namespace Shop.DataAccess.Data.Repository
             _db = db;
         }
 
-
-
-
         public ICollection<Product> GetAll()
         {
             return _db.Products.Include(p => p.Images).ToList();

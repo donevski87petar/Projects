@@ -28,9 +28,13 @@ namespace Shop.ViewModels
         [Display(Name = "Password")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
+
+
+        public DateTimeOffset? LockoutEnd { get; set; }
 
     }
 }

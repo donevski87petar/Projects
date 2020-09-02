@@ -117,6 +117,10 @@ namespace Shop.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
+                else if (result.IsLockedOut)
+                {
+                    ModelState.AddModelError("", "Your account is locked.");
+                }
                 else
                 {
                     ModelState.AddModelError("", "Invalid login!");
@@ -173,12 +177,6 @@ namespace Shop.Controllers
 
             if (ModelState.IsValid)
             {
-                if (appUserViewModel.Password != appUserViewModel.ConfirmPassword)
-                {
-                    ModelState.AddModelError("", "The Passwords didnt match!");
-                }
-                else
-                {
                     appUser.FullName = appUserViewModel.FullName;
                     appUser.Email = appUserViewModel.Email;
                     appUser.BirthDate = appUserViewModel.BirthDate;
@@ -197,14 +195,17 @@ namespace Shop.Controllers
                         {
                             ModelState.AddModelError("", error.Description);
                         }
+
+                        if (appUserViewModel.Password != appUserViewModel.ConfirmPassword)
+                        {
+                        ModelState.AddModelError("", "The Passwords didnt match!");
+                        }
+
                         return View(appUserViewModel);
                     }
-                }
             }
             return View(appUserViewModel);
         }
 
-
-        
     }
 }

@@ -10,6 +10,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 using Shop.DataAccess.Data.Repository.IRepository;
 using Shop.DomainModels.Enums;
 using Shop.DomainModels.Models;
@@ -17,6 +19,7 @@ using Shop.Models;
 using Shop.Services;
 using Shop.ViewModels;
 using X.PagedList;
+using Microsoft.Extensions.Configuration;
 
 namespace Shop.Controllers
 {
@@ -28,18 +31,21 @@ namespace Shop.Controllers
         private readonly IProductRepository _productRepository;
         private readonly IShoppingCartRepository _shoppingCart;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
 
         public HomeController(ILogger<HomeController> logger, 
                               UserManager<AppUser> userManager,
                               IProductRepository productRepository,
                               IShoppingCartRepository shoppingCart,
-                              IMapper mapper)
+                              IMapper mapper,
+                              IConfiguration configuration)
         {
             _userManager = userManager;
             _logger = logger;
             _productRepository = productRepository;
             _shoppingCart = shoppingCart;
             _mapper = mapper;
+            _configuration = configuration;
     }
 
 
@@ -157,7 +163,6 @@ namespace Shop.Controllers
 
 
 
-
         [HttpGet]
         public IActionResult ContactUs()
         {
@@ -167,34 +172,33 @@ namespace Shop.Controllers
         }
 
         [HttpPost]
-        public IActionResult ContactUs(EmailSender emailSender)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ContactUs(string subject , string message)
         {
-            emailSender.EmailTo = new MailAddress("contact.myonlineshop@gmail.com");
+            var apiKey = _configuration.GetSection("SENDGRID_API_KEY").Value;
+            var client = new SendGridClient(apiKey);
 
-            MailMessage mailMessage = new MailMessage();
-            mailMessage.To.Add(new MailAddress("contact.myonlineshop@gmail.com"));
-            //mailMessage.From = new MailAddress(_userManager.GetUserAsync(User).Result.Email);
-            mailMessage.From = new MailAddress("contact.myonlineshop@gmail.com");
-            mailMessage.Subject = emailSender.Subject;
-            mailMessage.Body = emailSender.Body;
+            var userEmail = _userManager.GetUserAsync(HttpContext.User).Result.Email;
+            var userFullName = _userManager.GetUserAsync(HttpContext.User).Result.FullName;
+            var from = new EmailAddress(userEmail, userFullName);
 
-            mailMessage.IsBodyHtml = false;
-            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
-            smtpClient.Port = 587;
-            smtpClient.UseDefaultCredentials = true;
-            smtpClient.EnableSsl = true;
-            smtpClient.Credentials = new System.Net.NetworkCredential("contact.myonlineshop@gmail.com", "Password123.");
-            smtpClient.Send(mailMessage);
+            List<EmailAddress> to = new List<EmailAddress>
+            {
+              new EmailAddress("donevskipetar@gmail.com", "Petar")
+            };
 
-            ViewBag.message = "The message has been sent !";
+            var htmlContent = $"<p>{message}</p>";
+            var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
+            var msg = MailHelper.CreateSingleEmailToMultipleRecipients(from, to, subject, "", htmlContent, false);
+            var response = await client.SendEmailAsync(msg);
 
-
-            return View();
+            ViewBag.MessageSent = "Message sent.";
+            return View("ContactUs");
         }
 
 
 
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

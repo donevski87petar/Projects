@@ -102,9 +102,7 @@ namespace Shop.Controllers
                             return View(registerViewModel);
                         }
                     }
-
                     _userManager.AddToRoleAsync(user, "User").Wait();
-
                     return RedirectToAction("UserDetails", new { id = user.Id});
                 }
                 else
@@ -124,6 +122,11 @@ namespace Shop.Controllers
         {
             AppUser appUser = _userRepository.GetUserById(id);
             AppUserViewModel appUserViewModel = _mapper.Map<AppUserViewModel>(appUser);
+            var roles = _userManager.GetRolesAsync(appUser).Result;
+            foreach (var role in roles)
+            {
+                appUserViewModel.AppRole = role;
+            }
             return View(appUserViewModel);
         }
 
@@ -160,36 +163,55 @@ namespace Shop.Controllers
 
             if (ModelState.IsValid)
             {
-                if (appUserViewModel.Password != appUserViewModel.ConfirmPassword)
+                appUser.FullName = appUserViewModel.FullName;
+                appUser.Email = appUserViewModel.Email;
+                appUser.BirthDate = appUserViewModel.BirthDate;
+                appUser.UserName = appUserViewModel.UserName;
+                appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
+
+                IdentityResult result = await _userManager.UpdateAsync(appUser);
+
+                if (result.Succeeded)
                 {
-                    ModelState.AddModelError("", "The Passwords didnt match!");
+                    return RedirectToAction("AllUsers", "Users");
                 }
                 else
                 {
-                    appUser.FullName = appUserViewModel.FullName;
-                    appUser.Email = appUserViewModel.Email;
-                    appUser.BirthDate = appUserViewModel.BirthDate;
-                    appUser.UserName = appUserViewModel.UserName;
-                    appUser.PasswordHash = _passwordHasher.HashPassword(appUser, appUserViewModel.Password);
-
-                    IdentityResult result = await _userManager.UpdateAsync(appUser);
-
-                    if (result.Succeeded)
+                    foreach (IdentityError error in result.Errors)
                     {
-                        return RedirectToAction("AllUsers", "Users");
+                        ModelState.AddModelError("", error.Description);
                     }
-                    else
+
+                    if (appUserViewModel.Password != appUserViewModel.ConfirmPassword)
                     {
-                        foreach (IdentityError error in result.Errors)
-                        {
-                            ModelState.AddModelError("", error.Description);
-                        }
-                        return View(appUserViewModel);
+                        ModelState.AddModelError("", "The Passwords didnt match!");
                     }
+
+                    return View(appUserViewModel);
                 }
             }
             return View(appUserViewModel);
         }
 
+        public IActionResult Lock(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            _userRepository.LockUser(id);
+            return RedirectToAction("AllUsers");
+        }
+
+        public IActionResult UnLock(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            _userRepository.UnLockUser(id);
+            return RedirectToAction("AllUsers");
+        }
     }
 }

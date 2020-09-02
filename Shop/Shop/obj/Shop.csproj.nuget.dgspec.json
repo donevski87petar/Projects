@@ -206,6 +206,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[10.0.0, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.21.0, )"
             }
           },
           "imports": [
@@ -366,6 +370,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.21.0, )"
             },
             "X.PagedList.Mvc.Core": {
               "target": "Package",

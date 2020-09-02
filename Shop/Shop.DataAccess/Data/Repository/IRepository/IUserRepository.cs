@@ -13,6 +13,8 @@ namespace Shop.DataAccess.Data.Repository.IRepository
         bool AddUser(AppUser appUserVM);
         bool UpdateUser(AppUser appUserVM);
         bool DeleteUser(string id);
+        bool LockUser(string id);
+        bool UnLockUser(string id);
         bool Save();
     }
 }

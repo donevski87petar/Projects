@@ -27,6 +27,9 @@
                 <thead>
                     <tr>
                         <th>
+                            Lock User
+                        </th>
+                        <th>
                             @Html.DisplayNameFor(model => model.UserName)
                         </th>
                         <th>
@@ -46,6 +49,19 @@
                     {
                         @Html.HiddenFor(modelItem => item.Id)
                     <tr>
+                        <td>
+                            @if (item.LockoutEnd == null || item.LockoutEnd < DateTime.Now)
+                            {
+                                <a class="btn btn-success text-white" asp-action="Lock" style="width:35px;padding: 5px;" asp-route-id="@item.Id">
+                                    <i class="fas fa-lock-open"></i>
+                                </a> }
+                            else
+                            {
+                                <a class="btn btn-danger text-white" asp-action="UnLock" style="width:35px;padding: 5px;" asp-route-id="@item.Id">
+                                    <i class="fas fa-lock"></i>
+                                </a>
+                            }
+                        </td>
                         <td>
                             <a asp-controller="Users" asp-action="UserDetails" asp-route-id="@item.Id"> @item.UserName</a>
                         </td>

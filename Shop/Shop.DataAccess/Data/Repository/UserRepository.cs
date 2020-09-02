@@ -46,9 +46,24 @@ namespace Shop.DataAccess.Data.Repository
             return Save();
         }
 
+        public bool LockUser(string id)
+        {
+            AppUser appUser = _db.Users.FirstOrDefault(u => u.Id == id);
+            appUser.LockoutEnd = DateTime.Now.AddYears(1000);
+            return Save();
+        }
+
+        public bool UnLockUser(string id)
+        {
+            AppUser appUser = _db.Users.FirstOrDefault(u => u.Id == id);
+            appUser.LockoutEnd = DateTime.Now;
+            return Save();
+        }
+
         public bool Save()
         {
             return _db.SaveChanges() >= 0 ? true : false;
         }
+
     }
 }

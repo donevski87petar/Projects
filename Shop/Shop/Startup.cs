@@ -36,8 +36,13 @@ namespace Shop
             services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-
-            services.AddIdentity<AppUser, AppRole>()
+            services.AddIdentity<AppUser, AppRole>(options => {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 5;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = true;
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -48,7 +53,9 @@ namespace Shop
             services.AddScoped<IShoppingCartRepository>(sp => ShoppingCartRepository.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+
             services.AddAutoMapper(typeof(Mappings));
+
 
             services.AddMemoryCache();
 
@@ -62,6 +69,9 @@ namespace Shop
                 options.AccessDeniedPath = "/Account/UnAuthorized";
             });
 
+            services.AddRouting(options => options.LowercaseUrls = true);
+
+            services.AddSingleton<IConfiguration>(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
