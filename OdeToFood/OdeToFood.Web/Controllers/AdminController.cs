@@ -58,8 +58,22 @@ namespace OdeToFood.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Add image logic
+                string fileName = Path.GetFileNameWithoutExtension(cuisine.ImageFile.FileName);
+                string extension = Path.GetExtension(cuisine.ImageFile.FileName);
+
+                //add date time now to make unique names always
+                fileName = DateTime.Now.ToString("yymmssfff") + extension;
+
+                cuisine.ImagePath = "~/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+
+                //save in folder images
+                cuisine.ImageFile.SaveAs(fileName);
+
                 _cuisineRepository.UpdateCuisine(cuisine);
-                return RedirectToAction("Details", new { id = cuisine.CuisineId });
+                ModelState.Clear();
+                return RedirectToAction("DetailsCuisine", new { id = cuisine.CuisineId });
             }
             return View("Error");
         }

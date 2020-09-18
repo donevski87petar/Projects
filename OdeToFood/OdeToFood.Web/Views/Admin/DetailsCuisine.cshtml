@@ -4,31 +4,31 @@
     ViewBag.Title = "DetailsCuisine";
 }
 
-<h2>DetailsCuisine</h2>
+    <h1 class="text-center">@Html.DisplayFor(modelItem => Model.CuisineName)</h1>
 
-<div>
-    <h4>Cuisine</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CuisineName)
-        </dt>
+    <h3 class="text-center">Cuisine Details</h3>
 
-        <dd>
-            @Html.DisplayFor(model => model.CuisineName)
-        </dd>
+<br />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
-        </dt>
+    <div class="row">
+        <div style="margin:auto;">
 
-        <dd>
-            @Html.DisplayFor(model => model.ImagePath)
-        </dd>
+            @if (Model.ImagePath != null)
+            {
+                <img style="width:400px;" src="@Url.Content(Model.ImagePath)" alt="Cuisine logo">
+            }
+            else
+            {
+                <img style="width:400px;" src="~/Images/NoPhoto.jpg" alt="Cuisine logo">
+            }
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit Cuisine", "EditCuisine", new { id = Model.CuisineId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <br />
+
+            <div class="text-center">
+                @Html.ActionLink("Edit Cuisine", "EditCuisine", new { id = Model.CuisineId }) |
+                @Html.ActionLink("Back to List", "IndexCuisine")
+            </div>
+
+        </div>
+    </div>
+
