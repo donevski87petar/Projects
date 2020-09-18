@@ -1,0 +1,40 @@
+﻿@model IEnumerable<OdeToFood.Domain.Models.Cuisine>
+
+@{
+    ViewBag.Title = "Cuisines index";
+}
+
+<h2 class="text-center">Cuisines</h2>
+
+<div>
+    <a href="~/Cuisines/Create" class="btn btn-outline-primary float-right">+ Add Cuisine</a>
+</div>
+
+<br />
+<br />
+
+<table class="table table-striped">
+    <tr  class="bg-primary text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.CuisineName)
+        </th>
+        <th class="float-right">
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuisineName)
+            </td>
+            <td class="float-right">
+                @Html.ActionLink("Edit", "Edit", new { id = item.CuisineId }) 
+                @Html.ActionLink("Details", "Details", new { id = item.CuisineId }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.CuisineId })
+            </td>
+        </tr>
+    }
+
+</table>

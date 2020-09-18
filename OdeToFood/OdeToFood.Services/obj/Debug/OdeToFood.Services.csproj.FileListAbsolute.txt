@@ -1,0 +1,17 @@
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Services.dll.config
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Services.dll
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Services.pdb
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\EntityFramework.dll
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Data.dll
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Domain.dll
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Data.pdb
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Data.dll.config
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\OdeToFood.Domain.pdb
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\EntityFramework.xml
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\obj\Debug\OdeToFood.Services.csprojAssemblyReference.cache
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\obj\Debug\OdeToFood.Services.csproj.CoreCompileInputs.cache
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\obj\Debug\OdeToFood.Services.csproj.CopyComplete
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\obj\Debug\OdeToFood.Services.dll
+C:\Users\Petar\source\repos\OdeToFood\OdeToFood.Services\obj\Debug\OdeToFood.Services.pdb

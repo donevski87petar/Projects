@@ -1,0 +1,86 @@
+﻿@model OdeToFood.Domain.ViewModels.HomeViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1 class="text-center">Cuisines</h1>
+<div class="row">
+    @foreach (var item in Model.Cuisines)
+    {
+        <div class="card" style="width: 14rem;height:20rem; margin:auto;">
+            @if (item.ImagePath != null)
+            {
+                <img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Card image cap">
+            }
+            else
+            {
+                <img class="card-img-top" src="~/Images/NoPhoto.jpg" alt="Card image cap">
+            }
+            <div class="card-body text-center">
+                <h5 class="card-text"><a href="~/Cuisines/Details/@item.CuisineId">@item.CuisineName</a></h5>
+            </div>
+        </div>
+    }
+</div>
+
+<br />
+
+<h1 class="text-center">Promoted Restaurants</h1>
+<div class="row">
+    @foreach (var item in Model.Restaurants)
+    {
+        if (item.isPromoted == true)
+        {
+            <div class="card" style="width: 14rem;height:20rem;margin:auto;">
+                @if (item.ImagePath != null)
+                {
+                    <img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Card image cap">
+                }
+                else
+                {
+                    <img class="card-img-top" src="~/Images/NoPhoto.jpg" alt="Card image cap">
+                }
+                <div class="card-body text-center">
+                    <h5 class="card-text"><a href="~/Restaurants/Details/@item.RestaurantId">@item.RestaurantName</a></h5>
+                    <small>@item.Cuisine.CuisineName</small>
+                </div>
+            </div>
+        }
+    }
+</div>
+<br />
+<div class="row">
+    <a href="~/Restaurants/Index" class="btn btn-outline-primary" style="margin:auto;">Go to all Restaurants</a>
+</div>
+
+<br />
+
+<h1 class="text-center">Promoted Menu Items</h1>
+<div class="row">
+    @foreach (var item in Model.MenuItems)
+    {
+        if (item.isPromoted == true)
+        {
+            <div class="card" style="width: 14rem;height:20rem;margin:auto;">
+                @if (item.ImagePath != null)
+                {
+                    <img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Card image cap">
+                }
+                else
+                {
+                    <img class="card-img-top" src="~/Images/NoPhoto.jpg" alt="Card image cap">
+                }
+                <div class="card-body text-center">
+                    <h5 class="card-text"><a href="~/MenuItems/Details/@item.MenuItemId">@item.MenuItemId</a></h5>
+                    <small>@item.Restaurant.RestaurantName</small>
+                    <br />
+                    <small>@item.Cuisine.CuisineName</small>
+                </div>
+            </div>
+        }
+    }
+</div>
+<br />
+<div class="row">
+    <a href="#" class="btn btn-outline-primary" style="margin:auto;">Go to all Menu Items</a>
+</div>

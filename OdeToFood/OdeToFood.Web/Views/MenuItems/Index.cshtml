@@ -1,0 +1,57 @@
+﻿@model IEnumerable<OdeToFood.Domain.Models.MenuItem>
+
+@{
+    ViewBag.Title = "Menu Items index";
+}
+
+<h2 class="text-center">Menu Items index</h2>
+
+<div>
+    <a href="~/MenuItems/Create" class="btn btn-outline-primary float-right">+ Add Menu Item</a>
+</div>
+
+<br /><br />
+
+<table class="table table-striped">
+    <tr class="bg-primary text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.MenuItemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuisine.CuisineName)
+        </th>
+        <th class="float-right">
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MenuItemName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price) $
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Restaurant.RestaurantName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
+    </td>
+    <td class="float-right">
+        @Html.ActionLink("Edit", "Edit", new { id = item.MenuItemId }) 
+        @Html.ActionLink("Details", "Details", new { id = item.MenuItemId }) 
+        @Html.ActionLink("Delete", "Delete", new { id = item.MenuItemId })
+    </td>
+</tr>
+    }
+
+</table>
