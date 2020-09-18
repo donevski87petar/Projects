@@ -1,0 +1,106 @@
+﻿@model IEnumerable<ReadLater.Entities.Bookmark>
+
+@{
+    ViewBag.Title = "My Link Stats";
+}
+
+<h1 class="text-center">My Link Stats</h1>
+
+<div class="jumbotron">
+    <h3 class="text-center">User stats for @ViewBag.userEmail</h3>
+
+    <ul>
+        <li><h4>Total Categories : @ViewBag.totalCategories</h4></li>
+        <li><h4>Total links : @ViewBag.totalLinks</h4></li>
+        <li><h4>Total clicks : @ViewBag.totalClicks</h4></li>
+    </ul>
+
+</div>
+
+
+
+<h1 class="text-center">List of  most popular links </h1>
+
+@if (Model.Count() > 0)
+{
+    <table class="table table-striped">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.URL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClickCounter)
+            </th>
+        </tr>
+        @{ int i = 0;}
+        @foreach (var item in Model)
+        {
+            i++;
+            <tr>
+                <td>@i</td>
+                <td>
+                    <a href="@item.URL" target="_blank" id="@item.ID" onclick=LinkClick("/Bookmarks/LinkClickCounter/@item.ID")>@item.URL</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClickCounter)
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <h3 class="text-center">No links are added yet.</h3>
+}
+
+
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script>
+
+    $(document).ready(function () {
+        LinkClick(url);
+    });
+
+    function LinkClick(url) {
+        $.ajax({
+            type: 'POST',
+            url: url,
+            success: function (data) {
+                if (data.success) {
+                    console.log("success");
+                }
+                else {
+                    console.log("fail")
+                }
+            }
+        });
+    }
+
+
+</script>
