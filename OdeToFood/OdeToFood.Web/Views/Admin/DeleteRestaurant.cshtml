@@ -1,0 +1,70 @@
+﻿@model OdeToFood.Domain.Models.Restaurant
+
+@{
+    ViewBag.Title = "DeleteRestaurant";
+}
+
+<h3 class="text-center">Are you sure you want to delete this?</h3>
+
+<br />
+
+<div>
+    <table class="table table-striped">
+        <tr class="bg-primary text-white">
+            <th>
+                <h4>@Html.DisplayNameFor(model => model.RestaurantName)</h4>
+            </th>
+            <th>
+                <h4>@Html.DisplayNameFor(model => model.Address)</h4>
+            </th>
+            <th>
+                <h4>@Html.DisplayNameFor(model => model.Phone)</h4>
+            </th>
+            <th>
+                <h4>@Html.DisplayNameFor(model => model.isPromoted)</h4>
+            </th>
+        </tr>
+
+        <tr>
+            <td>
+                @if (Model.ImagePath != null)
+                {
+                    <img style="width:50px;" src="@Url.Content(Model.ImagePath)" alt="Cuisine logo">
+                }
+                else
+                {
+                    <img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Cuisine logo">
+                }
+                @Html.DisplayFor(modelItem => Model.RestaurantName)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Phone)
+            </td>
+            <td>
+                @if (Model.isPromoted == true)
+                {
+                    <div>YES</div>
+                }
+                else
+                {
+                    <div>NO</div>
+                }
+            </td>
+        </tr>
+    </table>
+
+    <div class="text-center">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-primary" />
+                @Html.ActionLink("Back to List", "IndexRestaurant")
+            </div>
+        }
+    </div>
+</div>

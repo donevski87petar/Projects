@@ -1,0 +1,93 @@
+﻿@model OdeToFood.Domain.ViewModels.RestaurantDetailsViewModel
+
+@{
+    ViewBag.Title = "Restaurant Details";
+}
+
+<h1 class="text-center">Restaurant Details for: @Model.Restaurant.RestaurantName</h1>
+<h5 class="text-center">@Model.Restaurant.Cuisine.CuisineName</h5>
+
+<br />
+
+<table class="table table-striped">
+    <tr class="bg-primary text-white">
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.Restaurant.RestaurantName)</h4>
+        </th>
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.Restaurant.Address)</h4>
+        </th>
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.Restaurant.Phone)</h4>
+        </th>
+        <th>
+            <h4>@Html.DisplayNameFor(model => model.Restaurant.isPromoted)</h4>
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @if (Model.Restaurant.ImagePath != null)
+            {
+                <img style="width:50px;" src="@Url.Content(Model.Restaurant.ImagePath)" alt="Cuisine logo">
+            }
+            else
+            {
+                <img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Cuisine logo">
+            }
+            @Html.DisplayFor(modelItem => Model.Restaurant.RestaurantName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Restaurant.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Restaurant.Phone)
+        </td>
+        <td>
+            @if (Model.Restaurant.isPromoted == true)
+            {
+                <div>YES</div>
+            }
+            else
+            { 
+                <div>NO</div>
+            }
+        </td>
+        <td class="float-right">
+            @Html.ActionLink("Edit", "EditRestaurant", new { id = Model.Restaurant.RestaurantId })
+            @Html.ActionLink("Details", "DetailsRestaurant", new { id = Model.Restaurant.RestaurantId })
+            @Html.ActionLink("Delete", "DeleteRestaurant", new { id = Model.Restaurant.RestaurantId })
+        </td>
+    </tr>
+</table>
+
+<br />
+
+<h3 class="text-center">Restaurant Menu Items:</h3>
+
+<div class="row">
+    @foreach (var item in Model.MenuItems)
+    {
+        <div class="card" style="width: 14rem;height:20rem; margin:auto;">
+            @if (item.ImagePath != null)
+            {
+                <img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Card image cap">
+            }
+            else
+            {
+                <img class="card-img-top" src="~/Images/NoPhoto.jpg" alt="Card image cap">
+            }
+        <div class="card-body text-center">
+            <h5 class="card-text"><a href="~/MenuItems/Details/@item.MenuItemId">@item.MenuItemName</a></h5>
+
+            @Html.ActionLink("Edit", "EditMenuItem", new { id = item.MenuItemId })
+            @Html.ActionLink("Details", "DetailsMenuItem", new { id = item.MenuItemId })
+            @Html.ActionLink("Delete", "DeleteMenuItem", new { id = item.MenuItemId })
+        </div>
+        </div>
+    }
+</div>
+

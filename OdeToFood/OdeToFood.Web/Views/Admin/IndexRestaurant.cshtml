@@ -1,0 +1,77 @@
+﻿@model IEnumerable<OdeToFood.Domain.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Restaurant Index";
+}
+
+<h1 class="text-center">Restaurant Index</h1>
+
+<div>
+    <a href="~/Admin/CreateRestaurant" class="btn btn-outline-primary float-right">+ Add Restaurant</a>
+</div>
+
+<br />
+<br />
+
+<table class="table table-striped">
+    <tr class="bg-primary text-white">
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isPromoted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cuisine.CuisineName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.ImagePath != null)
+                {
+                    <a href="~/Restaurants/Details/@item.RestaurantId"><img style="width:50px;" src="@Url.Content(item.ImagePath)" alt="Restaurant Image"></a>
+                }
+                else
+                {
+                    <a href="~/Restaurants/Details/@item.RestaurantId"><img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Restaurant Image"></a>
+                }
+                @Html.DisplayFor(modelItem => item.RestaurantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @if(item.isPromoted == true)
+                {
+                    <div>YES</div>
+                }
+                else
+                {
+                    <div>NO</div>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditRestaurant", new { id = item.RestaurantId }) 
+                @Html.ActionLink("Details", "DetailsRestaurant", new { id = item.RestaurantId }) 
+                @Html.ActionLink("Delete", "DeleteRestaurant", new { id = item.RestaurantId })
+            </td>
+        </tr>
+    }
+
+</table>

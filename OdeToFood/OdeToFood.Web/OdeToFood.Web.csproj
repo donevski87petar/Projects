@@ -377,10 +377,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Cuisines\Index.cshtml" />
     <Content Include="Views\Cuisines\Details.cshtml" />
-    <Content Include="Views\Restaurants\Create.cshtml" />
-    <Content Include="Views\Restaurants\Delete.cshtml" />
     <Content Include="Views\Restaurants\Details.cshtml" />
-    <Content Include="Views\Restaurants\Edit.cshtml" />
     <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\MenuItems\Create.cshtml" />
     <Content Include="Views\MenuItems\Delete.cshtml" />
@@ -392,6 +389,12 @@
     <Content Include="Views\Admin\EditCuisine.cshtml" />
     <Content Include="Views\Admin\CreateCuisine.cshtml" />
     <Content Include="Views\Admin\DeleteCuisine.cshtml" />
+    <Content Include="Views\Admin\IndexRestaurant.cshtml" />
+    <Content Include="Views\Admin\CreateRestaurant.cshtml" />
+    <Content Include="Views\Admin\DetailsRestaurant.cshtml" />
+    <Content Include="Views\Admin\EditRestaurant.cshtml" />
+    <Content Include="Views\Admin\DeleteRestaurant.cshtml" />
+    <Content Include="Views\Admin\DetailsMenuItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

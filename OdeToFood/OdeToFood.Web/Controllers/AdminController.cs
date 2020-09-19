@@ -125,9 +125,248 @@ namespace OdeToFood.Web.Controllers
         {
             var cuisine = _cuisineRepository.GetCuisine(id);
             _cuisineRepository.DeleteCuisine(cuisine);
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexCuisine");
         }
 
         #endregion Cuisine
+
+
+        #region Restaurant
+        public ActionResult IndexRestaurant()
+        {
+            var model = _restaurantRepository.GetRestaurants();
+            return View(model);
+        }
+
+        public ActionResult DetailsRestaurant(int id)
+        {
+            Restaurant restaurant = _restaurantRepository.GetRestaurant(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            IEnumerable<MenuItem> menuItems = _menuItemRepository.GetMenuItems()
+                                                   .Where(r => r.RestaurantId == id);
+
+            RestaurantDetailsViewModel restaurantDetailsVM = new RestaurantDetailsViewModel();
+            restaurantDetailsVM.Restaurant = restaurant;
+            restaurantDetailsVM.MenuItems = menuItems;
+
+            return View(restaurantDetailsVM);
+        }
+
+        public ActionResult CreateRestaurant()
+        {
+            var cuisines = _cuisineRepository.GetCuisines();
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRestaurant(Restaurant restaurant)
+        {
+            if (ModelState.IsValid)
+            {
+                //Add image logic
+                string fileName = Path.GetFileNameWithoutExtension(restaurant.ImageFile.FileName);
+                string extension = Path.GetExtension(restaurant.ImageFile.FileName);
+
+                //add date time now to make unique names always
+                fileName = DateTime.Now.ToString("yymmssfff") + extension;
+
+                restaurant.ImagePath = "~/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+
+                //save in folder images
+                restaurant.ImageFile.SaveAs(fileName);
+
+                _restaurantRepository.CreateRestaurant(restaurant);
+
+                ModelState.Clear();
+
+                return RedirectToAction("DetailsRestaurant", "Admin", new { id = restaurant.RestaurantId });
+            }
+
+            var cuisines = _cuisineRepository.GetCuisines();
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName", restaurant.CuisineId);
+            return View(restaurant);
+        }
+
+        public ActionResult EditRestaurant(int id)
+        {
+            Restaurant restaurant = _restaurantRepository.GetRestaurant(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            var cuisines = _cuisineRepository.GetCuisines();
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName", restaurant.CuisineId);
+            return View(restaurant);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditRestaurant(Restaurant restaurant)
+        {
+            if (ModelState.IsValid)
+            {
+                //Add image logic
+                string fileName = Path.GetFileNameWithoutExtension(restaurant.ImageFile.FileName);
+                string extension = Path.GetExtension(restaurant.ImageFile.FileName);
+
+                //add date time now to make unique names always
+                fileName = DateTime.Now.ToString("yymmssfff") + extension;
+
+                restaurant.ImagePath = "~/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+
+                //save in folder images
+                restaurant.ImageFile.SaveAs(fileName);
+
+                _restaurantRepository.UpdateRestaurant(restaurant);
+
+                ModelState.Clear();
+
+                return RedirectToAction("Details", "DetailsRestaurant", new { id = restaurant.RestaurantId });
+            }
+            var cuisines = _cuisineRepository.GetCuisines();
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName", restaurant.CuisineId);
+            return View(restaurant);
+        }
+
+        public ActionResult DeleteRestaurant(int id)
+        {
+            Restaurant restaurant = _restaurantRepository.GetRestaurant(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
+        }
+
+        [HttpPost, ActionName("DeleteRestaurant")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Restaurant restaurant = _restaurantRepository.GetRestaurant(id);
+            _restaurantRepository.DeleteRestaurant(restaurant);
+            return RedirectToAction("IndexRestaurant");
+        }
+
+        #endregion Restaurant
+
+
+        #region Menu Item
+
+        public ActionResult DetailsMenuItem(int id)
+        {
+            MenuItem menuItem = _menuItemRepository.GetMenuItem(id);
+            if(menuItem == null)
+            {
+                return HttpNotFound();
+            }
+            return View(menuItem);
+        }
+
+        public ActionResult CreateMenuItem()
+        {
+            var cuisines = _cuisineRepository.GetCuisines();
+            var restaurants = _restaurantRepository.GetRestaurants();
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName");
+            ViewBag.RestaurantId = new SelectList(restaurants, "RestaurantId", "RestaurantName");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateMenuItem(MenuItem menuItem)
+        {
+            if (ModelState.IsValid)
+            {
+
+                //Add image logic
+                string fileName = Path.GetFileNameWithoutExtension(menuItem.ImageFile.FileName);
+                string extension = Path.GetExtension(menuItem.ImageFile.FileName);
+
+                //add date time now to make unique names always
+                fileName = DateTime.Now.ToString("yymmssfff") + extension;
+
+                menuItem.ImagePath = "~/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+
+                //save in folder images
+                menuItem.ImageFile.SaveAs(fileName);
+
+                _menuItemRepository.CreateMenuItem(menuItem);
+                ModelState.Clear();
+                return RedirectToAction("Details", "MenuItems", new { id = menuItem.MenuItemId });
+            }
+            var cuisines = _cuisineRepository.GetCuisines();
+            var restaurants = _restaurantRepository.GetRestaurants();
+
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName", menuItem.CuisineId);
+            ViewBag.RestaurantId = new SelectList(restaurants, "RestaurantId", "RestaurantName", menuItem.RestaurantId);
+
+            return View(menuItem);
+        }
+
+        public ActionResult EditMenuItem(int id)
+        {
+            MenuItem menuItem = _menuItemRepository.GetMenuItem(id);
+            if (menuItem == null)
+            {
+                return HttpNotFound();
+            }
+
+            var cuisines = _cuisineRepository.GetCuisines();
+            var subcategories = _restaurantRepository.GetRestaurants();
+
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName", menuItem.CuisineId);
+            ViewBag.RestaurantId = new SelectList(subcategories, "RestaurantId", "RestaurantName", menuItem.RestaurantId);
+
+            return View(menuItem);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditMenuItem(MenuItem menuItem)
+        {
+            if (ModelState.IsValid)
+            {
+                _menuItemRepository.UpdateMenuItem(menuItem);
+                return RedirectToAction("Details", "MenuItems", new { id = menuItem.MenuItemId });
+            }
+
+            var cuisines = _cuisineRepository.GetCuisines();
+            var subcategories = _restaurantRepository.GetRestaurants();
+
+            ViewBag.CuisineId = new SelectList(cuisines, "CuisineId", "CuisineName", menuItem.CuisineId);
+            ViewBag.RestaurantId = new SelectList(subcategories, "RestaurantId", "RestaurantName", menuItem.RestaurantId);
+
+            return View(menuItem);
+        }
+
+
+        public ActionResult DeleteMenuItem(int id)
+        {
+            MenuItem menuItem = _menuItemRepository.GetMenuItem(id);
+            if (menuItem == null)
+            {
+                return HttpNotFound();
+            }
+            return View(menuItem);
+        }
+
+        [HttpPost, ActionName("DeleteMenuItem")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteMenuItemConfirmed(int id)
+        {
+            MenuItem menuItem = _menuItemRepository.GetMenuItem(id);
+            _menuItemRepository.DeleteMenuItem(menuItem);
+            return RedirectToAction("Index");
+        }
+
+        #endregion
     }
 }

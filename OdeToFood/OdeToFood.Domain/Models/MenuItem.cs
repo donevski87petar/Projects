@@ -16,8 +16,10 @@ namespace OdeToFood.Domain.Models
         public int MenuItemId { get; set; }
         [Display(Name = "Menu Item")]
         public string MenuItemName { get; set; }
+        [Display(Name = "Menu Item Type")]
         public MenuItemType MenuItemType { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Is Promoted?")]
         public bool isPromoted { get; set; }
         public double Price { get; set; }
 
