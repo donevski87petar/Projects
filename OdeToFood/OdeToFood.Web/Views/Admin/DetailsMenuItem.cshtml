@@ -4,10 +4,22 @@
     ViewBag.Title = "MenuItemDetails";
 }
 
-<h1 class="text-center">Menu Item Details</h1>
+<h1 class="text-center">Details for @Model.MenuItemName</h1>
+<h5 class="text-center">@Model.Restaurant.RestaurantName</h5>
+
+<br />
+
+@if (Model.ImagePath != null)
+{
+    <img style="width:400px;" src="@Url.Content(Model.ImagePath)" alt="Card image cap">
+}
+else
+{
+    <img style="width:400px;" src="~/Images/NoPhoto.jpg" alt="Card image cap">
+}
+
 
 <div>
-    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.MenuItemName)
@@ -42,32 +54,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImagePath)
+            @Html.DisplayNameFor(model => model.Cuisine.CuisineName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImagePath)
+            @Html.DisplayFor(model => model.Cuisine.CuisineName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CuisineId)
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CuisineId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.RestaurantId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.RestaurantId)
+            @Html.DisplayFor(model => model.Restaurant.RestaurantName)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MenuItemId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "EditMenuItem", new { id = Model.MenuItemId }) |
+    @Html.ActionLink("Back to List", "IndexRestaurant")
 </p>

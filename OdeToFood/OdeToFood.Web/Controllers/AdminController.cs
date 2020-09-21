@@ -58,18 +58,18 @@ namespace OdeToFood.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Add image logic
-                string fileName = Path.GetFileNameWithoutExtension(cuisine.ImageFile.FileName);
-                string extension = Path.GetExtension(cuisine.ImageFile.FileName);
+                    //Add image logic
+                    string fileName = Path.GetFileNameWithoutExtension(cuisine.ImageFile.FileName);
+                    string extension = Path.GetExtension(cuisine.ImageFile.FileName);
 
-                //add date time now to make unique names always
-                fileName = DateTime.Now.ToString("yymmssfff") + extension;
+                    //add date time now to make unique names always
+                    fileName = DateTime.Now.ToString("yymmssfff") + extension;
 
-                cuisine.ImagePath = "~/Images/" + fileName;
-                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+                    cuisine.ImagePath = "~/Images/" + fileName;
+                    fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
 
-                //save in folder images
-                cuisine.ImageFile.SaveAs(fileName);
+                    //save in folder images
+                    cuisine.ImageFile.SaveAs(fileName);
 
                 _cuisineRepository.UpdateCuisine(cuisine);
                 ModelState.Clear();
@@ -284,7 +284,6 @@ namespace OdeToFood.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 //Add image logic
                 string fileName = Path.GetFileNameWithoutExtension(menuItem.ImageFile.FileName);
                 string extension = Path.GetExtension(menuItem.ImageFile.FileName);
@@ -334,7 +333,21 @@ namespace OdeToFood.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Add image logic
+                string fileName = Path.GetFileNameWithoutExtension(menuItem.ImageFile.FileName);
+                string extension = Path.GetExtension(menuItem.ImageFile.FileName);
+
+                //add date time now to make unique names always
+                fileName = DateTime.Now.ToString("yymmssfff") + extension;
+
+                menuItem.ImagePath = "~/Images/" + fileName;
+                fileName = Path.Combine(Server.MapPath("~/Images/"), fileName);
+
+                //save in folder images
+                menuItem.ImageFile.SaveAs(fileName);
+
                 _menuItemRepository.UpdateMenuItem(menuItem);
+                ModelState.Clear();
                 return RedirectToAction("Details", "MenuItems", new { id = menuItem.MenuItemId });
             }
 

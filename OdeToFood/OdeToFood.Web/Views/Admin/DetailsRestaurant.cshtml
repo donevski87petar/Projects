@@ -4,7 +4,7 @@
     ViewBag.Title = "Restaurant Details";
 }
 
-<h1 class="text-center">Restaurant Details for: @Model.Restaurant.RestaurantName</h1>
+<h1 class="text-center">Details for @Model.Restaurant.RestaurantName</h1>
 <h5 class="text-center">@Model.Restaurant.Cuisine.CuisineName</h5>
 
 <br />
@@ -12,16 +12,16 @@
 <table class="table table-striped">
     <tr class="bg-primary text-white">
         <th>
-            <h4>@Html.DisplayNameFor(model => model.Restaurant.RestaurantName)</h4>
+            @Html.DisplayNameFor(model => model.Restaurant.RestaurantName)
         </th>
         <th>
-            <h4>@Html.DisplayNameFor(model => model.Restaurant.Address)</h4>
+            @Html.DisplayNameFor(model => model.Restaurant.Address)
         </th>
         <th>
-            <h4>@Html.DisplayNameFor(model => model.Restaurant.Phone)</h4>
+            @Html.DisplayNameFor(model => model.Restaurant.Phone)
         </th>
         <th>
-            <h4>@Html.DisplayNameFor(model => model.Restaurant.isPromoted)</h4>
+            @Html.DisplayNameFor(model => model.Restaurant.isPromoted)
         </th>
         <th>
 
@@ -52,7 +52,7 @@
                 <div>YES</div>
             }
             else
-            { 
+            {
                 <div>NO</div>
             }
         </td>
@@ -68,26 +68,74 @@
 
 <h3 class="text-center">Restaurant Menu Items:</h3>
 
-<div class="row">
+<div>
+    <a href="~/Admin/CreateMenuItem/" class="btn btn-outline-primary float-right">+ Add Menu Item</a>
+</div>
+
+<br />
+<br />
+
+
+<table class="table table-striped">
+    <tr class="bg-primary text-white">
+        <th>
+            Menu Item Name
+        </th>
+        <th>
+            Menu Item Type
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Is Promoted ?
+        </th>
+        <th class="float-right">
+
+        </th>
+    </tr>
     @foreach (var item in Model.MenuItems)
     {
-        <div class="card" style="width: 14rem;height:20rem; margin:auto;">
-            @if (item.ImagePath != null)
-            {
-                <img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Card image cap">
-            }
-            else
-            {
-                <img class="card-img-top" src="~/Images/NoPhoto.jpg" alt="Card image cap">
-            }
-        <div class="card-body text-center">
-            <h5 class="card-text"><a href="~/MenuItems/Details/@item.MenuItemId">@item.MenuItemName</a></h5>
-
-            @Html.ActionLink("Edit", "EditMenuItem", new { id = item.MenuItemId })
-            @Html.ActionLink("Details", "DetailsMenuItem", new { id = item.MenuItemId })
-            @Html.ActionLink("Delete", "DeleteMenuItem", new { id = item.MenuItemId })
-        </div>
-        </div>
+        <tr>
+            <td>
+                @if (item.ImagePath != null)
+                {
+                    <img style="width:50px;" src="@Url.Content(item.ImagePath)" alt="Card image cap">
+                }
+                else
+                {
+                    <img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Card image cap">
+                }
+                @Html.DisplayFor(modelItem => item.MenuItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenuItemType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price) $
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @if (item.isPromoted == true)
+                {
+                    <div>YES</div>
+                }
+                else
+                {
+                    <div>NO</div>
+                }
+            </td>
+            <td class="float-right">
+                @Html.ActionLink("Edit", "EditMenuItem", new { id = item.MenuItemId })
+                @Html.ActionLink("Details", "DetailsMenuItem", new { id = item.MenuItemId })
+                @Html.ActionLink("Delete", "DeleteMenuItem", new { id = item.MenuItemId })
+            </td>
+        </tr>
     }
-</div>
+</table>
 

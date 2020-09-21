@@ -4,43 +4,25 @@
     ViewBag.Title = "Restaurants index";
 }
 
-<h2 class="text-center">Restaurants index</h2>
+<h1 class="text-center">All Restaurants</h1>
 
-<div>
-    <a href="~/Restaurants/Create" class="btn btn-outline-primary float-right">+ Add Restaurant</a>
-</div>
-
-<br />
-<br />
-
-<table class="table table-striped">
-    <tr class="bg-primary text-white">
-        <th>
-            @Html.DisplayNameFor(model => model.RestaurantName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cuisine.CuisineName)
-        </th>
-        <th class="float-right">
-            Actions
-        </th>
-    </tr>
-
+<div class="row">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RestaurantName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
-            </td>
-            <td class="float-right">
-                @Html.ActionLink("Edit", "Edit", new { id = item.RestaurantId }) 
-                @Html.ActionLink("Details", "Details", new { id = item.RestaurantId }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.RestaurantId })
-            </td>
-        </tr>
+            <div class="card" style="width: 14rem;height:20rem;margin:auto;">
+                @if (item.ImagePath != null)
+                {
+                    <a href="~/Restaurants/Details/@item.RestaurantId"><img class="card-img-top" src="@Url.Content(item.ImagePath)" alt="Restaurant Image"></a>
+                }
+                else
+                {
+                    <a href="~/Restaurants/Details/@item.RestaurantId"><img class="card-img-top" src="~/Images/NoPhoto.jpg" alt="Restaurant Image"></a>
+                }
+                <div class="card-body text-center">
+                    <h5 class="card-text"><a href="~/Restaurants/Details/@item.RestaurantId">@item.RestaurantName</a></h5>
+                    <small>@item.Cuisine.CuisineName</small>
+                </div>
+            </div>
     }
+</div>
 
-</table>

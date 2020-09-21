@@ -39,13 +39,13 @@
             <td>
                 @if (item.ImagePath != null)
                 {
-                    <a href="~/Restaurants/Details/@item.RestaurantId"><img style="width:50px;" src="@Url.Content(item.ImagePath)" alt="Restaurant Image"></a>
+                    <a href="~/Admin/DetailsRestaurant/@item.RestaurantId"><img style="width:50px;" src="@Url.Content(item.ImagePath)" alt="Restaurant Image"></a>
                 }
                 else
                 {
-                    <a href="~/Restaurants/Details/@item.RestaurantId"><img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Restaurant Image"></a>
+                    <a href="~/Admin/DetailsRestaurant/@item.RestaurantId"><img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Restaurant Image"></a>
                 }
-                @Html.DisplayFor(modelItem => item.RestaurantName)
+            <a href="~/Restaurants/Details/@item.RestaurantId">@Html.DisplayFor(modelItem => item.RestaurantName)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
@@ -64,7 +64,7 @@
                 }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cuisine.CuisineName)
+                <a href="~/Admin/DetailsCuisine/@item.CuisineId">@Html.DisplayFor(modelItem => item.Cuisine.CuisineName)</a>
             </td>
             <td>
                 @Html.ActionLink("Edit", "EditRestaurant", new { id = item.RestaurantId }) 

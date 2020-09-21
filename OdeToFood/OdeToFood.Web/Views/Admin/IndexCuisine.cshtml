@@ -28,13 +28,13 @@
             <td>
                 @if (item.ImagePath != null)
                 {
-                    <img style="width:50px;" src="@Url.Content(item.ImagePath)" alt="Cuisine logo">
+                <a href="~/Admin/DetailsCuisine/@item.CuisineId"><img style="width:50px;" src="@Url.Content(item.ImagePath)" alt="Cuisine logo"></a>
                 }
                 else
                 {
-                    <img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Cuisine logo">
+                <a href="~/Admin/DetailsCuisine/@item.CuisineId"><img style="width:50px;" src="~/Images/NoPhoto.jpg" alt="Cuisine logo"></a>
                 }
-                @Html.DisplayFor(modelItem => item.CuisineName)
+            <a href="~/Admin/DetailsCuisine/@item.CuisineId">@Html.DisplayFor(modelItem => item.CuisineName)</a>
             </td>
             <td class="float-right">
                 @Html.ActionLink("Edit", "EditCuisine", new { id = item.CuisineId }) 
